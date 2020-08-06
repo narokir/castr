@@ -1,0 +1,49 @@
+// Its rediculouts , but use this to customize bootstrap
+@import url('https://fonts.googleapis.com/css?family=Merriweather:900i');
+
+// Options
+//
+// Quickly modify global styling by enabling or disabling optional features.
+$enable-responsive-font-sizes: true !default;
+
+$white: #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black: #000 !default;
+
+// Body
+$body-bg: $gray-900 !default;
+$body-color: $white !default;
+
+$theme-colors: (
+  'primary': darken(#1097ff, 6.5%),
+  'danger': hsl(345, 88%, 52%),
+  'success': #38ba00,
+  'warning': #ff9200,
+  'info': #59bcf5,
+  'action': #e2d23f,
+  'filter': rgba(0, 0, 0, 0.589),
+);
+
+// logo
+a.navbar-brand {
+  font-size: 21px;
+  font-family: Merriweather, serif;
+  font-weight: 900;
+  font-style: italic;
+  color: #ff002d !important;
+}
+
+//bootstrap toast positions
+.toast {
+  position: absolute;
+  top: 80px;
+  right: 10px;
+}

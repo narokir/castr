@@ -1,0 +1,27 @@
+<% if member_signed_in? %>
+
+  <ul class="nav navbar-nav navbar-right">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+        <%# image_tag(profile_img, :alt => "member", :size => "22", class: "member-menu-thumb") %>
+        <%= current_member.email %>
+      </a>
+      <div class="dropdown-menu">
+        <%# link_to "Profile", member_path(current_member), :class => "dropdown-item" %>
+        <%= link_to "Edit Account", edit_member_registration_path, :class => "dropdown-item" %>
+        <div class="dropdown-divider"></div>
+        <%= link_to "Log Out", destroy_member_session_path, method: :delete, :class => "dropdown-item" %>
+      </div>
+    </li>
+  </ul>
+
+<% else %>
+
+  <ul class="nav navbar-nav">
+    <li class='nav-item'><%= link_to "Log In", new_member_session_path, :class => "nav-link" %></li>
+    <li class='nav-item'><%= link_to "Sign up", new_member_registration_path, :class => "btn btn-outline-action" %></li>
+  </ul>
+  
+<% end %>
+
+

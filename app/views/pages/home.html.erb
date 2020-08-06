@@ -1,0 +1,12 @@
+<h1>Pages#home</h1>
+<p>Find me in app/views/pages/home.html.erb</p>
+
+
+
+
+<% if current_member.nil? %>
+	<%= link_to 'Sign in', new_member_session_path, class: 'login-button' %>
+<% else %>
+	<%# link_to app_dashboard_index_path, class: 'login-button' do %>Go to App
+	<%= link_to 'Log out', destroy_member_session_path, method: :delete %>
+<% end %>
