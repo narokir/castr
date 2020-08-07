@@ -24,6 +24,7 @@ gem "jbuilder", "~> 2.7"
 gem "figaro"
 gem "devise"
 gem "omniauth-facebook"
+gem "rack-timeout"
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
