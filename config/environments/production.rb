@@ -69,14 +69,30 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: "castr.herokuapp.com", port: 8000 }
   config.action_mailer.perform_caching = false
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
-    port: "587", #or 587 465
-    user_name: ENV["g_user"],
-    password: ENV["g_pwd"],
-    authentication: :plain,
-    enable_starttls_auto: true,
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  #   address: "smtp.gmail.com",
+  #   port: "587", #or 587 465
+  #   user_name: ENV["g_user"],
+  #   password: ENV["g_pwd"],
+  #   authentication: :plain,
+  #   enable_starttls_auto: true,
+  # }
+
+  require "rest-client"
+  require "json"
+
+  response = RestClient.get "https://mailtrap.io/api/v1/inboxes.json?api_token=#{ENV["MAILTRAP_API_TOKEN"]}"
+  first_inbox = JSON.parse(response)[0] # get first inbox
+
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+    :user_name => first_inbox["username"],
+    :password => first_inbox["password"],
+    :address => first_inbox["domain"],
+    :domain => first_inbox["domain"],
+    :port => first_inbox["smtp_ports"][0],
+    :authentication => :plain,
   }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
