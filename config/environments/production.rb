@@ -66,7 +66,7 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
   # smtp setting for gmail nxk01240@gmail.com. 2factor auth setup with app pwd
-  config.action_mailer.default_url_options = { host: "castr.herokuapp.com", port: 8000 }
+  config.action_mailer.default_url_options = { host: "castr.herokuapp.com", port: 3000 }
   config.action_mailer.perform_caching = false
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
