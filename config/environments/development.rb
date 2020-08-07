@@ -1,7 +1,7 @@
 Rails.application.configure do
-  # efined default url options in your environments files.
+  # defined default url options in your environments files.
   # In production, :host should be set to the actual host of your application.
-
+  config.action_mailer.default_url_options = { host: "localhost" }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
@@ -38,7 +38,6 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
 
   # smtp setting for gmail nxk01240@gmail.com. 2factor auth setup with app pwd
-  config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
   config.action_mailer.perform_caching = false
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp

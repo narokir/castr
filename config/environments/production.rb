@@ -1,6 +1,6 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-
+  config.action_mailer.default_url_options = { host: "castr.herokuapp.com" }
   # Code is not reloaded between requests.
   config.cache_classes = true
 
@@ -66,8 +66,6 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
   # smtp setting for gmail nxk01240@gmail.com. 2factor auth setup with app pwd
-  config.action_mailer.default_url_options = { host: "https://castr.herokuapp.com" }
-  config.action_mailer.perform_caching = false
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
