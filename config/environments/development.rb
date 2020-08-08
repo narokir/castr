@@ -1,7 +1,7 @@
 Rails.application.configure do
   # defined default url options in your environments files.
   # In production, :host should be set to the actual host of your application.
-  config.action_mailer.default_url_options = { host: "localhost" }
+  config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
