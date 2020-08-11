@@ -25,6 +25,7 @@ gem "figaro"
 gem "devise"
 gem "omniauth-facebook"
 gem "rack-timeout"
+gem "aws-sdk-s3", require: false
 
 # Use Active Storage variant
 gem "image_processing", "~> 1.2"
