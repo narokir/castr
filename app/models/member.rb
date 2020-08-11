@@ -50,6 +50,10 @@ class Member < ApplicationRecord
   def acceptable_image
     return unless profile_image.attached?
 
+    if profile_image.attached == nil
+      errors.add(:profile_image, "is nil")
+    end
+
     unless profile_image.byte_size <= 1.megabyte
       errors.add(:profile_image, "is too big")
     end
