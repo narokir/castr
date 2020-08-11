@@ -16,6 +16,10 @@ $black: #000 !default;
 // Body
 $body-bg: $gray-900 !default;
 $body-color: $white !default;
+// Radius and border
+$border-radius: 0.123rem;
+$input-focus-border-color: #59bcf5;
+$input-transition: border-color 0.15s;
 
 $theme-colors: (
   'primary': darken(#1097ff, 6.5%),

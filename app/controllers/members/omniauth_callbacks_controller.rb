@@ -1,8 +1,7 @@
 class Members::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def facebook
-    # You need to implement the method below in your model (e.g. app/models/member.rb)
+    # render :json => request.env["omniauth.auth"]
     @member = Member.from_omniauth(request.env["omniauth.auth"])
-
     if @member.persisted?
       sign_in_and_redirect @member, event: :authentication #this will throw if @member is not activated
       set_flash_message(:notice, :success, kind: "Facebook") if is_navigational_format?
