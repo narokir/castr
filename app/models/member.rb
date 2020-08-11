@@ -45,6 +45,21 @@ class Member < ApplicationRecord
          :omniauthable, omniauth_providers: %i[facebook]
 
   has_one_attached :profile_image
+  validate :acceptable_image
+
+  def acceptable_image
+    return unless profile_image.attached?
+
+    unless profile_image.byte_size <= 1.megabyte
+      errors.add(:profile_image, "is too big")
+    end
+
+    acceptable_types = ["image/jpeg", "image/png"]
+    unless acceptable_types.include?(profile_image.content_type)
+      errors.add(:profile_image, "must be JPEG or PNG")
+    end
+  end
+
   # def self.new_with_session(params, session)
   #   super.tap do |member|
   #     if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
@@ -71,7 +86,14 @@ class Member < ApplicationRecord
     provider.blank?
   end
 
-  def update_resource(resource, params)
-    resource.update_without_password(params)
+  def update_without_password(params, *options)
+    if params[:password].blank?
+      params.delete(:password)
+      params.delete(:password_confirmation) if params[:password_confirmation].blank?
+    end
+
+    result = update_attributes(params, *options)
+    clean_up_passwords
+    result
   end
 end
