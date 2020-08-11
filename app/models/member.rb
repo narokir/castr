@@ -50,7 +50,7 @@ class Member < ApplicationRecord
   def acceptable_image
     return unless profile_image.attached?
 
-    if profile_image.attached == nil
+    if profile_image.attached? == nil
       errors.add(:profile_image, "is nil")
     end
 
@@ -90,6 +90,7 @@ class Member < ApplicationRecord
     provider.blank?
   end
 
+  # Overwrite devise update without password method
   def update_without_password(params, *options)
     if params[:password].blank?
       params.delete(:password)
