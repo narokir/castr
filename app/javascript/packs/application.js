@@ -23,3 +23,7 @@ document.addEventListener('turbolinks:load', () => {
   });
   $('.toast').toast('show');
 });
+// for dynamic file input fields
+$(document).ready(function () {
+  bsCustomFileInput.init();
+});
