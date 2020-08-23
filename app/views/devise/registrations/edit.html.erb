@@ -1,12 +1,8 @@
 <div class="container-fluid bg-dark">
   <div class="row py-4">
-  <div class="col-md-3 col-lg-2 border-right border-secondary">
-  Hello
-  <% if current_member.profile_image.nil? %>
-  <%= puts 'There is no image' %>
-  <% end %>
-  <%= image_tag current_member.profile_image %>
-  <%= image_tag current_member.profile_image.variant(resize_to_limit: [150, 150]) %>
+  <div class="col-md-4 col-lg-3 border-right border-secondary">
+  <%= image_tag current_member.profile_image, class:'img-fluid' %>
+  <%# image_tag current_member.profile_image.variant(resize_to_limit: [150, 150]) %>
   </div>
     <div class="col-md-6 col-lg-3">
 
@@ -70,7 +66,7 @@
         </div>
       <% end %>
       <hr/>
-      <h3>Delete my account</h3>
+      <h5>Delete my account</h5>
       
       <p>Once deleted, your account is gone forever.<%= button_to "Delete your account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-outline-danger" %></p>
       
