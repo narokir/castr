@@ -1,0 +1,53 @@
+# == Schema Information
+#
+# Table name: jobs
+#
+#  id                   :bigint           not null, primary key
+#  company_name         :string
+#  listing_expires      :datetime
+#  payment              :string
+#  payment_detials      :text
+#  shoot_date           :datetime
+#  shoot_location       :string
+#  special_instructions :text
+#  title                :string
+#  union_status         :string
+#  url                  :string
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#  member_id            :bigint           not null
+#
+# Indexes
+#
+#  index_jobs_on_member_id  (member_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (member_id => members.id)
+#
+
+one:
+  title: MyString
+  company_name: MyString
+  listing_expires: 2020-08-23 15:19:47
+  url: MyString
+  union_status: MyString
+  payment: MyString
+  payment_detials: MyText
+  shoot_date: 2020-08-23 15:19:47
+  shoot_location: MyString
+  special_instructions: MyText
+  member: one
+
+two:
+  title: MyString
+  company_name: MyString
+  listing_expires: 2020-08-23 15:19:47
+  url: MyString
+  union_status: MyString
+  payment: MyString
+  payment_detials: MyText
+  shoot_date: 2020-08-23 15:19:47
+  shoot_location: MyString
+  special_instructions: MyText
+  member: two

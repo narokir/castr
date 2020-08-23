@@ -45,39 +45,26 @@ class Member < ApplicationRecord
          :omniauthable, omniauth_providers: %i[facebook]
 
   has_one_attached :profile_image
+  has_many :jobs, dependent: :destroy
   validate :acceptable_image
 
   def acceptable_image
     return unless profile_image.attached?
 
-    if profile_image.attached? == nil
-      errors.add(:profile_image, "is nil")
-    end
+    errors.add(:profile_image, 'is nil') if profile_image.attached?.nil?
 
-    unless profile_image.byte_size <= 1.megabyte
-      errors.add(:profile_image, "is too big")
-    end
+    errors.add(:profile_image, 'is too big') unless profile_image.byte_size <= 1.megabyte
 
-    acceptable_types = ["image/jpeg", "image/png"]
-    unless acceptable_types.include?(profile_image.content_type)
-      errors.add(:profile_image, "must be JPEG or PNG")
-    end
+    acceptable_types = ['image/jpeg', 'image/png']
+    errors.add(:profile_image, 'must be JPEG or PNG') unless acceptable_types.include?(profile_image.content_type)
   end
-
-  # def self.new_with_session(params, session)
-  #   super.tap do |member|
-  #     if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
-  #       member.email = data["email"] if member.email.blank?
-  #     end
-  #   end
-  # end
 
   def self.from_omniauth(auth)
     member = find_or_initialize_by(provider: auth.provider, uid: auth.uid)
     member.email = auth.info.email
     member.password = Devise.friendly_token[0, 20]
-    member.first_name = auth.info.name.split(" ").first
-    member.last_name = auth.info.name.split(" ").last
+    member.first_name = auth.info.name.split(' ').first
+    member.last_name = auth.info.name.split(' ').last
     # member.profile_img = auth.info.image # assuming the member model has an image
     # If you are using confirmable and the provider(s) you use validate emails,
     # uncomment the line below to skip the confirmation emails.

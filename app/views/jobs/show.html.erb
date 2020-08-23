@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @job.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @job.description %>
+</p>
+
+<p>
+  <strong>Company name:</strong>
+  <%= @job.company_name %>
+</p>
+
+<p>
+  <strong>Listing expires:</strong>
+  <%= @job.listing_expires %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @job.url %>
+</p>
+
+<p>
+  <strong>Union status:</strong>
+  <%= @job.union_status %>
+</p>
+
+<p>
+  <strong>Payment:</strong>
+  <%= @job.payment %>
+</p>
+
+<p>
+  <strong>Payment detials:</strong>
+  <%= @job.payment_detials %>
+</p>
+
+<p>
+  <strong>Shoot date:</strong>
+  <%= @job.shoot_date %>
+</p>
+
+<p>
+  <strong>Shoot location:</strong>
+  <%= @job.shoot_location %>
+</p>
+
+<p>
+  <strong>Special instructions:</strong>
+  <%= @job.special_instructions %>
+</p>
+
+<p>
+  <strong>Member:</strong>
+  <%= @job.member_id %>
+</p>
+
+<%= link_to 'Edit', edit_job_path(@job) %> |
+<%= link_to 'Back', jobs_path %>

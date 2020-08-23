@@ -1,0 +1,77 @@
+<%= form_with(model: job, local: true) do |form| %>
+  <% if job.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(job.errors.count, "error") %> prohibited this job from being saved:</h2>
+
+      <ul>
+        <% job.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.rich_text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :company_name %>
+    <%= form.text_field :company_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :listing_expires %>
+    <%= form.datetime_select :listing_expires %>
+  </div>
+
+  <div class="field">
+    <%= form.label :url %>
+    <%= form.text_field :url %>
+  </div>
+
+  <div class="field">
+    <%= form.label :union_status %>
+    <%= form.text_field :union_status %>
+  </div>
+
+  <div class="field">
+    <%= form.label :payment %>
+    <%= form.text_field :payment %>
+  </div>
+
+  <div class="field">
+    <%= form.label :payment_detials %>
+    <%= form.text_area :payment_detials %>
+  </div>
+
+  <div class="field">
+    <%= form.label :shoot_date %>
+    <%= form.datetime_select :shoot_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :shoot_location %>
+    <%= form.text_field :shoot_location %>
+  </div>
+
+  <div class="field">
+    <%= form.label :special_instructions %>
+    <%= form.text_area :special_instructions %>
+  </div>
+
+  <div class="field">
+    <%= form.label :member_id %>
+    <%= form.text_field :member_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
