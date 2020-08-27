@@ -26,6 +26,7 @@ gem "devise"
 gem "omniauth-facebook"
 gem "rack-timeout"
 gem "aws-sdk-s3", require: false
+gem "faker", "~> 2.13"
 
 # Use Active Storage variant
 gem "image_processing", "~> 1.2"
@@ -46,6 +47,7 @@ group :development do
   gem "listen", "~> 3.2"
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
+  gem "faker", "~> 2.13"
 end
 
 group :test do

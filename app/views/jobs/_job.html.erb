@@ -3,7 +3,6 @@
     <%# image_tag(job.production_image, class:"card-img", :alt => "...") if job.production_image.attached? %>
     <div class="card-body bg-filter">
       <h5 class="card-title"><%= job.title %></h5>
-      <%= job.featured %>
       <h6 class="card-subtitle mb-2 text-muted "><%= job.member.first_name %></h6>
       <h6 class="card-subtitle mb-2 text-muted small"><%= job.company_name %></h6>
       <p class="card-text"><%= (job.description) %></p>
