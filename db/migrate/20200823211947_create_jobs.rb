@@ -9,6 +9,8 @@ class CreateJobs < ActiveRecord::Migration[6.0]
       t.string :payment
       t.text :payment_detials
       t.datetime :shoot_date
+      t.boolean :featured, default: false
+      t.string :status, default: "pending"
       t.string :shoot_location
       t.text :special_instructions
       t.references :member, null: false, foreign_key: true

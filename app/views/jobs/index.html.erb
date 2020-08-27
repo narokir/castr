@@ -1,49 +1,5 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Jobs</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Company name</th>
-      <th>Listing expires</th>
-      <th>Url</th>
-      <th>Union status</th>
-      <th>Payment</th>
-      <th>Payment detials</th>
-      <th>Shoot date</th>
-      <th>Shoot location</th>
-      <th>Special instructions</th>
-      <th>Member</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @jobs.each do |job| %>
-      <tr>
-        <td><%= job.title %></td>
-        <td><%= job.description %></td>
-        <td><%= job.company_name %></td>
-        <td><%= job.listing_expires %></td>
-        <td><%= job.url %></td>
-        <td><%= job.union_status %></td>
-        <td><%= job.payment %></td>
-        <td><%= job.payment_detials %></td>
-        <td><%= job.shoot_date %></td>
-        <td><%= job.shoot_location %></td>
-        <td><%= job.special_instructions %></td>
-        <td><%= job.member_id %></td>
-        <td><%= link_to 'Show', job %></td>
-        <td><%= link_to 'Edit', edit_job_path(job) %></td>
-        <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Job', new_job_path %>
+<div class="container-fluid bg-dark">
+ <div class="row py-4">
+  <%=render @jobs%>   
+  </div>
+</div>

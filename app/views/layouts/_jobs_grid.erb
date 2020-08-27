@@ -1,0 +1,24 @@
+
+  <% @jobs.each do |job| %> 
+    <div class="col-md-6 col-sm-auto col-lg-4 d-flex">
+        <div class="card-group">
+          <div class="card mb-3 bg-dark" >
+            <%= image_tag(job.production_image, class:"card-img-top", :alt => "...") if job.production_image.attached? %>
+            <div class="card-img-overlay bg-filter">
+              <h5 class="card-title"><%= job.title %></h5>
+              <p class="card-text"><%= (job.description) %></p>
+              <p class="card-text">
+              <%= link_to "View Details", job_path(job), class: "btn btn-info btn-sm" %>
+              </p>
+              <p class="card-text">
+                <span class="small">
+                  <%= link_to "Show", job_path(job) %> |
+                  <%= link_to "Edit", edit_job_path(job) %> |
+                  <%= link_to "Delete", job_path(job), method: :delete, data: { confirm: "Are you sure?" } %>
+                </span>
+              </p>
+            </div>
+        </div>
+      </div>
+    </div>
+  <% end %>

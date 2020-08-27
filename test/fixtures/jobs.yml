@@ -4,12 +4,14 @@
 #
 #  id                   :bigint           not null, primary key
 #  company_name         :string
+#  featured             :boolean          default(FALSE)
 #  listing_expires      :datetime
 #  payment              :string
 #  payment_detials      :text
 #  shoot_date           :datetime
 #  shoot_location       :string
 #  special_instructions :text
+#  status               :string           default("pending")
 #  title                :string
 #  union_status         :string
 #  url                  :string

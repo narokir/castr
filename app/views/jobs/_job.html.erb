@@ -1,0 +1,29 @@
+<div class="d-flex col-md-4 mb-4">
+  <div class="card h-100 bg-dark text-white">
+    <%# image_tag(job.production_image, class:"card-img", :alt => "...") if job.production_image.attached? %>
+    <div class="card-body bg-filter">
+      <h5 class="card-title"><%= job.title %></h5>
+      <%= job.featured %>
+      <h6 class="card-subtitle mb-2 text-muted "><%= job.member.first_name %></h6>
+      <h6 class="card-subtitle mb-2 text-muted small"><%= job.company_name %></h6>
+      <p class="card-text"><%= (job.description) %></p>
+      <p class="card-text">
+      <%= link_to "View Details", job_path(job), class: "btn btn-info btn-sm" %>
+      </p>
+      <% if admin?%>
+      <p class="card-text">
+        <span class="small">
+          <%= link_to "Edit", edit_job_path(job) %> |
+          <%= link_to "Delete", job_path(job), method: :delete, data: { confirm: "Are you sure?" } %>
+        </span>
+      </p>
+      <% end %>
+    </div>
+    <% if job.production_image.attached? %>
+      <%= image_tag(job.production_image, class:"card-img clear", :alt => "...") %>
+      <% else %>
+      <%= image_tag(job.some_image, class:"card-img clear", :alt => "...") %>
+    <% end %>
+    <div class="card-footer text-muted small">Posted <%= time_ago_in_words(job.created_at) %> ago</div>
+  </div>
+</div>

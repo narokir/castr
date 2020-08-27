@@ -1,5 +1,12 @@
-<h1>New Job</h1>
+<div class="container-fluid bg-dark">
+  <div class="row py-4">
+    <div class="col-6">
+      <h1>New Job</h1>
+      
+      <%= render 'form', job: @job %>
+      
+      <%= link_to 'Back', jobs_path %>
+    </div>
+  </div>
+</div>
 
-<%= render 'form', job: @job %>
-
-<%= link_to 'Back', jobs_path %>

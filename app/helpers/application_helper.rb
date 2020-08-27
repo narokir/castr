@@ -23,4 +23,12 @@ module ApplicationHelper
       page_title + " | " + base_title
     end
   end
+
+  def admin?
+    member_signed_in? && current_member.admin?
+  end
+
+  def castr_of(resource)
+    member_signed_in? && current_member.id == resource.member_id
+  end
 end

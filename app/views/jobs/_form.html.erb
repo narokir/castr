@@ -11,67 +11,76 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
+    <div class="custom-file">
+      <%= form.label :production_image, class:"custom-file-label" %>
+        <%= form.file_field :production_image, class:"custom-file-input" %>
+    </div>
+  </div>
+
+  <div class="form-group">
     <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, class:'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :description %>
-    <%= form.rich_text_area :description %>
+    <%= form.rich_text_area :description, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :company_name %>
-    <%= form.text_field :company_name %>
+    <%= form.text_field :company_name, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :listing_expires %>
-    <%= form.datetime_select :listing_expires %>
+    <%= form.datetime_select :listing_expires, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :url %>
-    <%= form.text_field :url %>
+    <%= form.text_field :url, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :union_status %>
-    <%= form.text_field :union_status %>
+    <%= form.text_field :union_status, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :payment %>
-    <%= form.text_field :payment %>
+    <%= form.text_field :payment, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :payment_detials %>
-    <%= form.text_area :payment_detials %>
+    <%= form.text_area :payment_detials, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :shoot_date %>
-    <%= form.datetime_select :shoot_date %>
+    <%= form.datetime_select :shoot_date, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :shoot_location %>
-    <%= form.text_field :shoot_location %>
+    <%= form.text_field :shoot_location, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :special_instructions %>
-    <%= form.text_area :special_instructions %>
+    <%= form.text_area :special_instructions, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :member_id %>
-    <%= form.text_field :member_id %>
+    <%= form.text_field :member_id, class: 'form-control' %>
   </div>
 
+<div class="form-group">
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: 'btn btn-success' %>
   </div>
+</div>
 <% end %>

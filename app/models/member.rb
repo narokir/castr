@@ -51,20 +51,20 @@ class Member < ApplicationRecord
   def acceptable_image
     return unless profile_image.attached?
 
-    errors.add(:profile_image, 'is nil') if profile_image.attached?.nil?
+    errors.add(:profile_image, "is nil") if profile_image.attached?.nil?
 
-    errors.add(:profile_image, 'is too big') unless profile_image.byte_size <= 1.megabyte
+    errors.add(:profile_image, "is too big") unless profile_image.byte_size <= 1.megabyte
 
-    acceptable_types = ['image/jpeg', 'image/png']
-    errors.add(:profile_image, 'must be JPEG or PNG') unless acceptable_types.include?(profile_image.content_type)
+    acceptable_types = ["image/jpeg", "image/png"]
+    errors.add(:profile_image, "must be JPEG or PNG") unless acceptable_types.include?(profile_image.content_type)
   end
 
   def self.from_omniauth(auth)
     member = find_or_initialize_by(provider: auth.provider, uid: auth.uid)
     member.email = auth.info.email
     member.password = Devise.friendly_token[0, 20]
-    member.first_name = auth.info.name.split(' ').first
-    member.last_name = auth.info.name.split(' ').last
+    member.first_name = auth.info.name.split(" ").first
+    member.last_name = auth.info.name.split(" ").last
     # member.profile_img = auth.info.image # assuming the member model has an image
     # If you are using confirmable and the provider(s) you use validate emails,
     # uncomment the line below to skip the confirmation emails.

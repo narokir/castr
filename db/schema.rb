@@ -55,6 +55,8 @@ ActiveRecord::Schema.define(version: 2020_08_23_211947) do
     t.string "payment"
     t.text "payment_detials"
     t.datetime "shoot_date"
+    t.boolean "featured", default: false
+    t.string "status", default: "pending"
     t.string "shoot_location"
     t.text "special_instructions"
     t.bigint "member_id", null: false
