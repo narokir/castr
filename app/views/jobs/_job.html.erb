@@ -1,4 +1,4 @@
-<div class="d-flex col-md-4 mb-4">
+<div class="col-md-6 col-sm-6 col-lg-4   mb-4">
   <div class="card h-100 bg-dark text-white">
     <%# image_tag(job.production_image, class:"card-img", :alt => "...") if job.production_image.attached? %>
     <div class="card-body bg-filter">
@@ -18,11 +18,11 @@
       </p>
       <% end %>
     </div>
-    <% if job.production_image.attached? %>
-      <%= image_tag(job.production_image, class:"card-img clear", :alt => "...") %>
-      <% else %>
-      <%= image_tag(job.some_image, class:"card-img clear", :alt => "...") %>
-    <% end %>
+    <%# if job.production_image.attached? %>
+      <%# image_tag(job.production_image, class:"card-img clear", :alt => "...") %>
+      <%# else %>
+      <%# image_tag(job.some_image, class:"card-img clear", :alt => "...") %>
+    <%# end %>
     <div class="card-footer text-muted small">Posted <%= time_ago_in_words(job.created_at) %> ago</div>
   </div>
 </div>

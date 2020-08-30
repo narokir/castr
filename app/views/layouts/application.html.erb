@@ -18,6 +18,7 @@
   <%= render "layouts/toasts" %> <%# messages and notificationns %>
     <%# <p class="notice"><%= notice</p> %>
     <%# <p class="alert"><%= alert</p> %> 
+    <%= yield :jumbotron%>
     <%= yield %>
   </body>
 </html>

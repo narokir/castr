@@ -2,8 +2,6 @@ class JobsController < ApplicationController
   before_action :set_job, only: %i[show edit update destroy]
   before_action :authenticate_member!, except: %i[index show]
 
-  # GET /jobs
-  # GET /jobs.json
   def index
     @jobs = Job.all
   end
@@ -12,7 +10,6 @@ class JobsController < ApplicationController
   # GET /jobs/1.json
   def show; end
 
-  # GET /jobs/new
   def new
     @job = Job.new
   end
@@ -20,15 +17,13 @@ class JobsController < ApplicationController
   # GET /jobs/1/edit
   def edit; end
 
-  # POST /jobs
-  # POST /jobs.json
   def create
     @job = Job.new(job_params)
     @job.member = current_member
 
     respond_to do |format|
       if @job.save
-        format.html { redirect_to @job, notice: 'Job was successfully created.' }
+        format.html { redirect_to @job, notice: "Job was successfully created." }
         format.json { render :show, status: :created, location: @job }
       else
         format.html { render :new }
@@ -37,12 +32,10 @@ class JobsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /jobs/1
-  # PATCH/PUT /jobs/1.json
   def update
     respond_to do |format|
       if @job.update(job_params)
-        format.html { redirect_to @job, notice: 'Job was successfully updated.' }
+        format.html { redirect_to @job, notice: "Job was successfully updated." }
         format.json { render :show, status: :ok, location: @job }
       else
         format.html { render :edit }
@@ -51,12 +44,10 @@ class JobsController < ApplicationController
     end
   end
 
-  # DELETE /jobs/1
-  # DELETE /jobs/1.json
   def destroy
     @job.destroy
     respond_to do |format|
-      format.html { redirect_to jobs_url, notice: 'Job was successfully destroyed.' }
+      format.html { redirect_to jobs_url, notice: "Job was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -70,6 +61,20 @@ class JobsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def job_params
-    params.require(:job).permit(:title, :description, :company_name, :listing_expires, :url, :union_status, :payment, :payment_detials, :shoot_date, :shoot_location, :special_instructions, :member_id, :production_image)
+    params.require(:job).permit(
+      :title,
+      :description,
+      :company_name,
+      :listing_expires,
+      :url,
+      :union_status,
+      :payment,
+      :payment_detials,
+      :shoot_date,
+      :shoot_location,
+      :special_instructions,
+      :member_id,
+      :production_image
+    )
   end
 end

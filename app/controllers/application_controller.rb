@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     # Need to revisit these params and decide whether "roles" are permited params
-    keys = %i[first_name last_name castr talent admin profile_image password password_confirmation current_password]
+    keys = %i[first_name last_name castr talent admin profile_image password password_confirmation]
     devise_parameter_sanitizer.permit(:sign_up, keys: keys)
     devise_parameter_sanitizer.permit(:account_update, keys: keys)
   end

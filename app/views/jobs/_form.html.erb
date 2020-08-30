@@ -1,4 +1,4 @@
-<%= form_with(model: job, local: true) do |form| %>
+<%= form_with(model: job, local: true, multipart: true) do |form| %>
   <% if job.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(job.errors.count, "error") %> prohibited this job from being saved:</h2>
@@ -9,6 +9,10 @@
         <% end %>
       </ul>
     </div>
+  <% end %>
+
+  <% if form.object.production_image.attached? %>
+  <%= image_tag form.object.production_image, class: 'image-fluid w-50' %>
   <% end %>
 
   <div class="form-group">
@@ -40,7 +44,7 @@
 
   <div class="form-group">
     <%= form.label :url %>
-    <%= form.text_field :url, class: 'form-control' %>
+    <%= form.url_field :url, class: 'form-control' %>
   </div>
 
   <div class="form-group">

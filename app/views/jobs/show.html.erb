@@ -63,10 +63,10 @@
       <p>
         <strong>Member:</strong>
         <%= @job.member_id %>
-        <span>Currnet Member id is :<%= current_member.id %></span>
+        <span>Currnet Member id is :<%= current_member.id if member_signed_in?%></span>
       </p>
-      <%= link_to "Delete", job_path(@job), method: :delete, data: { confirm: "Are you sure?" } if castr_of(@job) %>
-      <%= link_to 'Edit', edit_job_path(@job) if castr_of(@job) %> |
+      <%= link_to "Delete", job_path(@job), method: :delete, data: { confirm: "Are you sure?" } if castr_of(@job) || admin? %>
+      <%= link_to 'Edit', edit_job_path(@job) if castr_of(@job) || admin? %> |
       <%= link_to 'Back', jobs_path %>
 
     </div>

@@ -1,16 +1,21 @@
-<section id="home" class="display">
-	<div class="container">
-		<div class="row">
-			<div class="col">
-				<h1 class="display-2">Castr</h1>
+<section id="hero">
+	<% content_for :jumbotron do %>
+		<div class="jumbotron jumbotron-fluid bg-dark bg-filter ">
+			<div class="container">
+				<h1 class ="display-5 text-center text-action">Find Background Acting Jobs in New Mexico</h1>
+				<p class="lead text-center ">New Mexico's first Background Actors job portal.</p>
+				<p class="text-center">
+					<%= link_to 'Join The Party',new_member_registration_path, class:'btn btn-action'%>
+				</p><hr class='w-50'>
+				<p class="text-center text-muted">Need extras for your project? <%= link_to 'Post a Job', new_job_path, class:'action'  %></p>
 			</div>
 		</div>
-	</div>
+	<% end %>
 </section>
 
 <section id="casting_calls" class="display">
 	<div class="container-fluid">
-		<div class="row py-4">
+		<div class="row">
 		<%= render @jobs %>
 		</div>
 	</div>
