@@ -77,3 +77,17 @@ a.navbar-brand {
 .bg-filter {
   background-color: rgba(0, 0, 0, 0.589) !important;
 }
+// Dropzone
+@import 'dropzone/dist/min/basic.min.css';
+@import 'dropzone/dist/min/dropzone.min.css';
+.dropzone {
+  border-style: dashed;
+  background-color: $gray-900;
+  border-color: $gray-700;
+  p {
+    color: $gray-600;
+  }
+}
+.dropzone .dz-preview.dz-image-preview {
+  background: inherit !important;
+}
