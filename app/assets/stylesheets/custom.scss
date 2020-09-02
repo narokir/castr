@@ -2,6 +2,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Asar&family=Assistant&display=swap');
 $enable-responsive-font-sizes: true !default;
 
+$theme-colors: (
+  'primary': darken(#3caaff, 6.5%),
+  'danger': hsl(345, 88%, 52%),
+  'success': #38ba00,
+  'warning': #ff9200,
+  'info': #59bcf5,
+  'action': #e2d23f,
+  'filter': rgba(0, 0, 0, 0.589),
+);
+
 $white: #fff !default;
 $gray-100: #f8f9fa !default;
 $gray-200: #e9ecef !default;
@@ -14,20 +24,20 @@ $gray-800: #343a40 !default;
 $gray-900: #212529 !default;
 $black: #000 !default;
 
-// Body//
+// Body //
 $body-bg: $gray-900 !default;
 $body-color: $white !default;
-// Radius and border
-$border-radius: 0.123rem;
+
+// Radius and border //
+$border-radius: 0.2rem;
+
+// inputs //
+$input-focus-color: #3dc8ff;
+$input-bg: $gray-700;
+$input-border-color: $gray-600;
+$input-color: $gray-500;
 $input-focus-border-color: #3dc8ff;
 $input-transition: border-color 0.15s;
-/// inputs
-$input-focus-color: #3dc8ff;
-$input-border-focus: rgb(203, 236, 15);
-$input-focus-box-shadow: 3 1 3 #111;
-$input-bg: $gray-900;
-$input-border-color: $gray-700;
-//$input-box-shadow: rgb(19, 108, 224);
 
 $font-family-sans-serif: -apple-system, BlinkMacSystemFont, 'Assistant', Roboto,
   'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
@@ -36,16 +46,6 @@ $font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
   'Liberation Mono', 'Courier New', monospace !default;
 $font-family-base: $font-family-sans-serif !default;
 $font-family-display: 'Asar';
-
-$theme-colors: (
-  'primary': darken(#3caaff, 6.5%),
-  'danger': hsl(345, 88%, 52%),
-  'success': #38ba00,
-  'warning': #ff9200,
-  'info': #59bcf5,
-  'action': #e2d23f,
-  'filter': rgba(0, 0, 0, 0.589),
-);
 
 // logo
 a.navbar-brand {
@@ -56,6 +56,7 @@ a.navbar-brand {
   color: #ff002d !important;
 }
 
+// custom font for display class
 .display-1,
 .display-2,
 .display-3,
@@ -74,9 +75,11 @@ a.navbar-brand {
 .vh-100 {
   min-height: 100vh;
 }
+
 .bg-filter {
   background-color: rgba(0, 0, 0, 0.589) !important;
 }
+
 // Dropzone
 // @import 'dropzone/dist/min/basic.min.css';
 // @import 'dropzone/dist/min/dropzone.min.css';
@@ -90,4 +93,15 @@ a.navbar-brand {
 }
 .dropzone .dz-preview.dz-image-preview {
   background: inherit;
+}
+
+// trix editor minor restyle. currently Action text is off.
+.trix-button-row {
+  .trix-button-group {
+    border: none;
+    .trix-button {
+      background: $gray-700;
+      border: none;
+    }
+  }
 }

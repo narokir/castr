@@ -1,11 +1,11 @@
 <section id="hero">
 	<% content_for :jumbotron do %>
-		<div class="jumbotron jumbotron-fluid bg-dark bg-filter ">
+		<div class="jumbotron jumbotron-fluid bg-dark ">
 			<div class="container">
 				<h1 class ="display-5 text-center text-action">Find Background Acting Jobs in New Mexico</h1>
 				<p class="lead text-center ">New Mexico's first Background Actors job portal.</p>
 				<p class="text-center">
-					<%= link_to 'Join The Party',new_member_registration_path, class:'btn btn-action'%>
+					<%= link_to 'Sign Up',new_member_registration_path, class:'btn btn-action'%>
 				</p><hr class='w-50'>
 				<p class="text-center text-muted">Need extras for your project? <%= link_to 'Post a Job', new_job_path, class:'action'  %></p>
 			</div>
@@ -20,13 +20,3 @@
 		</div>
 	</div>
 </section>
-
-
-
-
-<% if current_member.nil? %>
-	<%= link_to 'Sign in', new_member_session_path, class: 'login-button' %>
-<% else %>
-	<%# link_to app_dashboard_index_path, class: 'login-button' do %>Go to App
-	<%= link_to 'Log out', destroy_member_session_path, method: :delete %>
-<% end %>

@@ -1,15 +1,24 @@
-<div class="col-md-6 col-sm-6 col-lg-4   mb-4">
-  <div class="card h-100 bg-dark text-white">
-    <%# image_tag(job.production_image, class:"card-img", :alt => "...") if job.production_image.attached? %>
+<div class="col-md-6 col-sm-6 col-lg-4 mb-4">
+  <div class="card h-100 bg-dark text-white">  
+    <div class="card-header d-flex align-items-center">
+
+      <% if job.member.profile_image.attached? %>
+        <%= image_tag(job.member.profile_image.variant(resize_to_limit: [50, 50]), class:'rounded-circle mr-3') %>
+      <% else %>
+        <%= icon("person-circle", class: "text-muted mr-3", width:"50px", height:"50px") %>
+      <% end %>
+      <strong class="text-muted "><%= job.member.first_name %><br>
+      <span class="small text-muted">Posted <%= time_ago_in_words(job.created_at) %> ago</span></strong>
+      
+    </div>
     <div class="card-body bg-filter">
       <h5 class="card-title"><%= job.title %></h5>
-      <h6 class="card-subtitle mb-2 text-muted "><%= job.member.first_name %></h6>
       <h6 class="card-subtitle mb-2 text-muted small"><%= job.company_name %></h6>
-      <p class="card-text"><%= (job.description) %></p>
+      <p class="card-text"><%= truncate(job.description.to_plain_text, :ommision => "... Read More", :length => 150) %></p>
       <p class="card-text">
       <%= link_to "View Details", job_path(job), class: "btn btn-info btn-sm" %>
       </p>
-      <% if admin?%>
+      <% if admin? || author_of(job)%>
       <p class="card-text">
         <span class="small">
           <%= link_to "Edit", edit_job_path(job) %> |
@@ -23,6 +32,5 @@
       <%# else %>
       <%# image_tag(job.some_image, class:"card-img clear", :alt => "...") %>
     <%# end %>
-    <div class="card-footer text-muted small">Posted <%= time_ago_in_words(job.created_at) %> ago</div>
   </div>
 </div>
