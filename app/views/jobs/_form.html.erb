@@ -1,7 +1,7 @@
 <%= form_with(model: job, local: true, multipart: true) do |f| %>
   <% if job.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(job.errors.count, "error") %> prohibited this job from being saved:</h2>
+    <div id="error_explanation" class="alert alert-danger bg-action">
+      <h4>Check the form.There are <%= pluralize(job.errors.count, "error") %></h4>
 
       <ul>
         <% job.errors.full_messages.each do |message| %>
