@@ -26,35 +26,57 @@ p "Created talent"
     title: Faker::Movie.title,
     company_name: Faker::Company.name,
     description: Faker::Lorem.paragraph(sentence_count: 9, supplemental: false, random_sentences_to_add: 4),
+    union_status: "SAG",
+    payment: "$125/day",
+    shoot_location: "Albuquerque",
+    payment_detials: Faker::Lorem.paragraph(sentence_count: 4),
+    shoot_date: Faker::Date.forward(days: 83),
     member_id: castr.id,
     # main_image: Faker::LoremPixel.image(size: "300x300"),
   )
   job.save
 end
-4.times do |index|
+3.times do |index|
   job = Job.create!(
     title: Faker::Movie.title,
     company_name: Faker::Company.name,
-    description: Faker::Lorem.paragraph(sentence_count: 14, supplemental: false, random_sentences_to_add: 4),
+    description: Faker::Lorem.paragraph(sentence_count: 9, supplemental: false, random_sentences_to_add: 4),
+    union_status: "Nonunion",
+    payment: "$92/8",
+    shoot_location: "Santa Fe",
+    payment_detials: Faker::Lorem.paragraph(sentence_count: 4),
+    shoot_date: Faker::Date.forward(days: 33),
     member_id: admin.id,
     featured: true,
     # main_image: Faker::LoremPixel.image(size: "300x300"),
   )
   job.save
 end
-5.times do |index|
+3.times do |index|
   job = Job.create!(
     title: Faker::Movie.title,
-    description: Faker::Lorem.paragraph(sentence_count: 4, supplemental: false, random_sentences_to_add: 4),
+    company_name: Faker::Company.name,
+    description: Faker::Lorem.paragraph(sentence_count: 9, supplemental: false, random_sentences_to_add: 4),
+    union_status: "Any",
+    payment: "$92/8",
+    shoot_location: "Placitas,NM",
+    payment_detials: Faker::Lorem.paragraph(sentence_count: 4),
+    shoot_date: Faker::Date.forward(days: 83),
     member_id: castr.id,
     # main_image: Faker::LoremPixel.image(size: "300x300"),
   )
   job.save
 end
-6.times do |index|
+3.times do |index|
   job = Job.create!(
     title: Faker::Movie.title,
-    description: Faker::Lorem.paragraph(sentence_count: 2, supplemental: false, random_sentences_to_add: 4),
+    company_name: Faker::Company.name,
+    description: Faker::Lorem.paragraph(sentence_count: 9, supplemental: false, random_sentences_to_add: 4),
+    union_status: "Nonunion",
+    payment: "$150/day",
+    shoot_location: "Las Vegas,NM",
+    payment_detials: Faker::Lorem.paragraph(sentence_count: 4),
+    shoot_date: Faker::Date.forward(days: 83),
     member_id: talent.id,
     featured: true,
     # main_image: Faker::LoremPixel.image(size: "300x300"),

@@ -4,6 +4,7 @@
 #
 #  id                   :bigint           not null, primary key
 #  company_name         :string
+#  description          :text
 #  featured             :boolean          default(FALSE)
 #  listing_expires      :datetime
 #  payment              :string

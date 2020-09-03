@@ -10,6 +10,15 @@ $theme-colors: (
   'info': #59bcf5,
   'action': #e2d23f,
   'filter': rgba(0, 0, 0, 0.589),
+  'gray-100': #f8f9fa,
+  'gray-200': #e9ecef,
+  'gray-300': #dee2e6,
+  'gray-400': #ced4da,
+  'gray-500': #adb5bd,
+  'gray-600': #6c757d,
+  'gray-700': #495057,
+  'gray-800': #343a40,
+  'gray-900': #212529,
 );
 
 $white: #fff !default;
@@ -23,10 +32,11 @@ $gray-700: #495057 !default;
 $gray-800: #343a40 !default;
 $gray-900: #212529 !default;
 $black: #000 !default;
+$cyan: #3dc8ff;
 
 // Body //
 $body-bg: $gray-900 !default;
-$body-color: $white !default;
+$body-color: $gray-400 !default;
 
 // Radius and border //
 $border-radius: 0.2rem;
@@ -35,7 +45,7 @@ $border-radius: 0.2rem;
 $input-focus-color: #3dc8ff;
 $input-bg: $gray-700;
 $input-border-color: $gray-600;
-$input-color: $gray-500;
+$input-color: #69aac4;
 $input-focus-border-color: #3dc8ff;
 $input-transition: border-color 0.15s;
 
@@ -103,5 +113,10 @@ a.navbar-brand {
       background: $gray-700;
       border: none;
     }
+  }
+}
+.field_with_errors {
+  .form-control {
+    border-color: hsl(345, 88%, 52%);
   }
 }

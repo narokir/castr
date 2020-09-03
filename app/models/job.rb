@@ -4,6 +4,7 @@
 #
 #  id                   :bigint           not null, primary key
 #  company_name         :string
+#  description          :text
 #  featured             :boolean          default(FALSE)
 #  listing_expires      :datetime
 #  payment              :string
@@ -29,11 +30,15 @@
 #
 class Job < ApplicationRecord
   belongs_to :member
-  has_rich_text :description
+  # has_rich_text :description
   has_one_attached :production_image
   validate :acceptable_image
   validates :title, presence: true
   validates :description, presence: true
+  validates :shoot_date, presence: true
+  validates :shoot_location, presence: true
+
+  UNION_STATUS = ["Any", "SAG", "SAG-AFTRA", "Nonunion"]
 
   def acceptable_image
     return unless production_image.attached?

@@ -1,31 +1,25 @@
 <div class="col-md-6 col-sm-6 col-lg-4 mb-4">
-  <div class="card h-100 bg-dark text-white">  
-    <div class="card-header d-flex align-items-center">
-
-      <% if job.member.profile_image.attached? %>
-        <%= image_tag(job.member.profile_image.variant(resize_to_limit: [50, 50]), class:'rounded-circle mr-3') %>
-      <% else %>
-        <%= icon("person-circle", class: "text-muted mr-3", width:"50px", height:"50px") %>
-      <% end %>
-      <strong class="text-muted "><%= job.member.first_name %><br>
-      <span class="small text-muted">Posted <%= time_ago_in_words(job.created_at) %> ago</span></strong>
-      
-    </div>
-    <div class="card-body bg-filter">
+  <div class="card h-100 bg-dark text-white border-gray-700 shadow-sm">
+    <div class="card-body">
+        <% if admin? || author_of(job)%>
+          <span class="small float-right">
+            <%= link_to "Edit", edit_job_path(job) %> |
+            <%= link_to "Delete", job_path(job), method: :delete, data: { confirm: "Are you sure?" } %>
+          </span>
+        <% end %>
       <h5 class="card-title"><%= job.title %></h5>
       <h6 class="card-subtitle mb-2 text-muted small"><%= job.company_name %></h6>
-      <p class="card-text"><%= truncate(job.description.to_plain_text, :ommision => "... Read More", :length => 150) %></p>
+      <p class="card-text"><%= truncate(job.description, :ommision => "... Read More", :length => 150) %></p>
+      <div class="card-text small"> Union Status: <%= job.union_status %><br>
+        <span class="strong">Shoot Date: <%= job.shoot_date.strftime("%m/%d/%Y") %></span><br>
+        <span class="">Location: <%= job.shoot_location %></span>
+      </div>
+      <br>
+      <p class="card-text font-weight-bold">Payment: <%= job.payment %></p>
       <p class="card-text">
-      <%= link_to "View Details", job_path(job), class: "btn btn-info btn-sm" %>
+        <%= link_to "View Details", job_path(job), class: "btn btn-info btn-sm" %>
       </p>
-      <% if admin? || author_of(job)%>
-      <p class="card-text">
-        <span class="small">
-          <%= link_to "Edit", edit_job_path(job) %> |
-          <%= link_to "Delete", job_path(job), method: :delete, data: { confirm: "Are you sure?" } %>
-        </span>
-      </p>
-      <% end %>
+      <div class="card-text small"><span class="small text-muted">Posted <%= time_ago_in_words(job.created_at) %> ago</span></div>
     </div>
     <%# if job.production_image.attached? %>
       <%# image_tag(job.production_image, class:"card-img clear", :alt => "...") %>

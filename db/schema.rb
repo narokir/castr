@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2020_08_23_211947) do
 
   create_table "jobs", force: :cascade do |t|
     t.string "title"
+    t.text "description"
     t.string "company_name"
     t.datetime "listing_expires"
     t.string "url"

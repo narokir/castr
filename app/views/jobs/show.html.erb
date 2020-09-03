@@ -1,75 +1,29 @@
 <div class="container-fluid bg-dark">
   <div class="row py-4">
+  
     <div class="col-md-5 col-lg-3">
-      <p id="notice"><%# notice %></p>
+      <p class="align-text-top"><%= icon("chevron-left", class: "text-info ", width:".8rem", height:".8rem") %><%= link_to 'Back', jobs_path %></p>
       
       <%= image_tag(@job.production_image, class:'img-fluid') if @job.production_image.attached? %>
-      
-      <p>
-        <strong>Title:</strong>
-        <%= @job.title %>
-      </p>
-      
-      <p>
-        <strong>Description:</strong>
-        <%= @job.description %>
-      </p>
-      
-      <p>
-        <strong>Company name:</strong>
+        <h1>
+          <%= @job.title %>
+        </h1>
+        <p>
+          <%= @job.description %>
+        </p>
         <%= @job.company_name %>
-      </p>
-      
-      <p>
-        <strong>Listing expires:</strong>
         <%= @job.listing_expires %>
-      </p>
-      
-      <p>
-        <strong>Url:</strong>
         <%= @job.url %>
-      </p>
-      
-      <p>
-        <strong>Union status:</strong>
         <%= @job.union_status %>
-      </p>
-      
-      <p>
-        <strong>Payment:</strong>
         <%= @job.payment %>
-      </p>
-      
-      <p>
-        <strong>Payment detials:</strong>
         <%= @job.payment_detials %>
-      </p>
-      
-      <p>
-        <strong>Shoot date:</strong>
-        <%= @job.shoot_date %>
-      </p>
-      
-      <p>
-        <strong>Shoot location:</strong>
+        <%= @job.shoot_date.strftime("%m/%d/%Y") %>
         <%= @job.shoot_location %>
-      </p>
-      
-      <p>
-        <strong>Special instructions:</strong>
         <%= @job.special_instructions %>
-      </p>
       
-      <p>
-        <strong>Member:</strong>
-        <%= @job.member_id %>
-        <%= @job.member.email %>
-        <%= @job.member.profile_image.attached? %>
-        <span>Curent Member id is :<%= current_member.id if member_signed_in?%></span>
-      </p>
       <%= link_to "Delete", job_path(@job), method: :delete, data: { confirm: "Are you sure?" } if author_of(@job) || admin? %>
       <%= link_to 'Edit', edit_job_path(@job) if author_of(@job) || admin? %> |
-      <%= link_to 'Back', jobs_path %>
+      
 
     </div>
   </div>
