@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Merriweather:900i');
 @import url('https://fonts.googleapis.com/css2?family=Asar&family=Assistant&display=swap');
+
+// key global options
+$enable-deprecation-messages: true;
+$enable-validation-icons: true;
 $enable-responsive-font-sizes: true !default;
+$enable-shadows: true;
 
 $theme-colors: (
   'primary': darken(#3caaff, 6.5%),
@@ -31,6 +36,7 @@ $gray-600: #6c757d !default;
 $gray-700: #495057 !default;
 $gray-800: #343a40 !default;
 $gray-900: #212529 !default;
+$gray-999: #121416 !default;
 $black: #000 !default;
 $cyan: #3dc8ff;
 
@@ -58,12 +64,17 @@ $font-family-base: $font-family-sans-serif !default;
 $font-family-display: 'Asar';
 
 // logo
-a.navbar-brand {
+.navbar-brand {
   font-size: 21px;
   font-family: Merriweather, serif;
   font-weight: 900;
   font-style: italic;
   color: #ff002d !important;
+}
+
+//Card
+.card-body:hover {
+  background-color: #2d3539;
 }
 
 // custom font for display class
@@ -80,6 +91,7 @@ a.navbar-brand {
   position: absolute;
   top: 80px;
   right: 10px;
+  color: $gray-900 !important;
 }
 
 .vh-100 {
@@ -89,10 +101,11 @@ a.navbar-brand {
 .bg-filter {
   background-color: rgba(0, 0, 0, 0.589) !important;
 }
+.bg-666 {
+  background-color: #292f33 !important;
+}
 
-// Dropzone
-// @import 'dropzone/dist/min/basic.min.css';
-// @import 'dropzone/dist/min/dropzone.min.css';
+// dropzone
 .dropzone {
   border-style: dashed;
   background-color: $gray-700;

@@ -3,8 +3,12 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_member!
 
-  def after_sign_out_path_for(_resource)
-    new_member_session_path
+  def after_sign_out_path_for(member)
+    goodbye_path
+  end
+
+  def after_sign_in_path_for(member)
+    hello_path
   end
 
   protected

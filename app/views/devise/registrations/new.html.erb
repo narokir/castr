@@ -9,25 +9,25 @@
       	  
       	  <div class="form-row">
       	    <div class="col">
-      	      <div class="form-group">
+      	      <div class="form-group input-group-lg">
       	        <%= f.label :first_name %><br />
       	        <%= f.text_field :first_name, autofocus: true, autocomplete: "Name", class: 'form-control' %>
       	      </div>
       	    </div>
       	    <div class="col">
-      	      <div class="form-group">
+      	      <div class="form-group input-group-lg">
       	        <%= f.label :last_name %><br />
       	        <%= f.text_field :last_name, autofocus: true, autocomplete: "Lastname", class: 'form-control' %>
       	      </div>
       	    </div>
       	  </div>
       	
-      	  <div class="form-group">
+      	  <div class="form-group input-group-lg">
       	    <%= f.label :email %><br />
       	    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
       	  </div>
       
-      	  <div class="form-group">
+      	  <div class="form-group input-group-lg">
       	    <%= f.label :password %>
       	    <span class="small text-warning">
       	    <% if @minimum_password_length %>
@@ -36,14 +36,14 @@
       	    <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
       	  </div>
       	
-      	  <div class="form-group">
+      	  <div class="form-group input-group-lg">
       	    <%= f.label :password_confirmation %><br />
       	    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
       	  </div>
       	
-      	  <div class="form-group">
+      	  <div class="form-group input-group-lg">
       	    <div class="actions">
-      	      <%= f.submit "Sign up", class: 'btn btn-success' %>
+      	      <%= f.submit "Sign up", class: 'btn btn-success btn-lg btn-block' %>
       	    </div>
       	  </div>
       	<% end %>

@@ -55,7 +55,8 @@ ActiveRecord::Schema.define(version: 2020_08_23_211947) do
     t.string "union_status"
     t.string "payment"
     t.text "payment_detials"
-    t.datetime "shoot_date"
+    t.datetime "shoot_start_date"
+    t.datetime "shoot_end_date"
     t.boolean "featured", default: false
     t.string "status", default: "pending"
     t.string "shoot_location"

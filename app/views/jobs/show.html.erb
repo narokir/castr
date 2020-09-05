@@ -1,30 +1,33 @@
-<div class="container-fluid bg-dark">
-  <div class="row py-4">
-  
-    <div class="col-md-5 col-lg-3">
-      <p class="align-text-top"><%= icon("chevron-left", class: "text-info ", width:".8rem", height:".8rem") %><%= link_to 'Back', jobs_path %></p>
-      
-      <%= image_tag(@job.production_image, class:'img-fluid') if @job.production_image.attached? %>
-        <h1>
-          <%= @job.title %>
-        </h1>
-        <p>
-          <%= @job.description %>
+<div class="container-fluid bg-dark ">
+  <div class="row py-0">
+    <div class=" col-sm-3 col-md-3 border-right border-danger p-4 sticky-top bg-filter">
+      <div class="sticky-top ">
+      <p class="align-text-top"><%= icon("chevron-left", class: "text-info align-middle") %><%= link_to 'Back', jobs_path %></p>
+        <h1 class="text-warning"><%= @job.title %></h1>
+        <p><%= @job.url %></p>
+        <p><%= @job.union_status %> <strong><%= @job.payment %></strong></p>
+        <p><%= @job.payment_detials %></p>
+        <p> <span>Dates & Location:</span><br>
+          <%= @job.shoot_start_date.strftime('%b %d') %> - <%= @job.shoot_end_date.strftime('%b %d') %> in <%= @job.shoot_location %>
         </p>
-        <%= @job.company_name %>
-        <%= @job.listing_expires %>
-        <%= @job.url %>
-        <%= @job.union_status %>
-        <%= @job.payment %>
-        <%= @job.payment_detials %>
-        <%= @job.shoot_date.strftime("%m/%d/%Y") %>
-        <%= @job.shoot_location %>
-        <%= @job.special_instructions %>
-      
-      <%= link_to "Delete", job_path(@job), method: :delete, data: { confirm: "Are you sure?" } if author_of(@job) || admin? %>
-      <%= link_to 'Edit', edit_job_path(@job) if author_of(@job) || admin? %> |
-      
-
+        <p><%= @job.company_name %></p>
+        <%= link_to 'Apply Now', '#', class:'btn btn-success' %>
+        <hr>
+        <div class="small">
+        <span class= "text-muted">Expires: <%= @job.listing_expires.strftime('%b %d') %></span>
+          <% if author_of(@job) || admin? %>
+            <%= link_to "Delete", job_path(@job), method: :delete, data: { confirm: "Are you sure?" }  %> |
+            <%= link_to 'Edit', edit_job_path(@job) %> 
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class=" col-sm-9 col-md-9 col-lg-7 col-xl-5 bg-dark p-4">
+    <p><%= image_tag(@job.production_image, class:'img-fluid') if @job.production_image.attached? %></p>
+      <p><%= @job.description %></p>
     </div>
   </div>
 </div>
+
+
+

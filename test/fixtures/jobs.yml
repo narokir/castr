@@ -9,8 +9,9 @@
 #  listing_expires      :datetime
 #  payment              :string
 #  payment_detials      :text
-#  shoot_date           :datetime
+#  shoot_end_date       :datetime
 #  shoot_location       :string
+#  shoot_start_date     :datetime
 #  special_instructions :text
 #  status               :string           default("pending")
 #  title                :string

@@ -1,8 +1,7 @@
 <%= form_with(model: job, local: true, multipart: true) do |f| %>
   <% if job.errors.any? %>
     <div id="error_explanation" class="alert alert-danger bg-action">
-      <h4>Check the form.There are <%= pluralize(job.errors.count, "error") %></h4>
-
+      <h4>Hey check the form</h4>
       <ul>
         <% job.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -14,6 +13,17 @@
   <% if f.object.production_image.attached? %>
   <%= image_tag f.object.production_image, class: 'image-fluid w-50' %>
   <% end %>
+
+  <div class="form-group">
+    <%= f.label :production_image %>
+    <div class="dropzone dropzone-default dz-clickable " data-controller="dropzone" data-dropzone-max-file-size="1" data-dropzone-max-files="2">
+      <%= f.file_field :production_image, direct_upload: true, data: { target: 'dropzone.input' } %>
+    <div class="dropzone-msg dz-message needsclick ">
+      <p class="dropzone-msg-title">Drag image here to start upload or tap to browse</p>
+      <span class="dropzone-msg-desc small text-muted">2 MB file size maximum. Allowed file types png, jpg.</span>
+    </div>
+    </div>
+  </div>
 
  <div class="form-group">
     <%= f.label :title %>
@@ -27,29 +37,12 @@
   </div>
   
   <div class="form-group">
-    <%= f.label :production_image %>
-    <div class="dropzone dropzone-default dz-clickable " data-controller="dropzone" data-dropzone-max-file-size="1" data-dropzone-max-files="2">
-      <%= f.file_field :production_image, direct_upload: true, data: { target: 'dropzone.input' } %>
-    <div class="dropzone-msg dz-message needsclick ">
-      <p class="dropzone-msg-title">Drag image here to start upload or tap to browse</p>
-      <span class="dropzone-msg-desc small text-muted">2 MB file size maximum. Allowed file types png, jpg.</span>
-    </div>
-    </div>
-  </div>
-
-
-  <div class="form-group">
     <%= f.label :company_name %>
     <%= f.text_field :company_name, class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= f.label :listing_expires %>
-    <%= f.date_select :listing_expires, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :url %>
+    <%= f.label 'Production URL' %>
     <%= f.url_field :url, class: 'form-control' %>
   </div>
 
@@ -72,15 +65,9 @@
     </div>
   </div>
 
-
   <div class="form-group">
     <%= f.label :payment_detials %>
     <%= f.text_area :payment_detials, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :shoot_date %>
-    <%= f.date_select :shoot_date, class: 'form-control' %>
   </div>
 
   <div class="form-group">
@@ -89,13 +76,29 @@
   </div>
 
   <div class="form-group">
+    <%= f.label "Shoot dates" %>
+    <div class="input-group">
+      <%= f.date_field :shoot_start_date, class:'form-control' %>
+      <div class="input-group-append input-group-prepend">
+        <span class="input-group-text bg-dark">to</span>
+      </div>
+      <%= f.date_field :shoot_start_date, class:'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
     <%= f.label :special_instructions %>
     <%= f.text_area :special_instructions, class: 'form-control' %>
   </div>
 
-<div class="form-group">
-  <div class="actions">
-    <%= f.submit class: 'btn btn-success' %>
+  <div class="form-group">
+    <%= f.label :listing_expires %>
+    <%= f.date_field :listing_expires, class: 'form-control' %>
   </div>
-</div>
+
+  <div class="form-group">
+    <div class="actions">
+      <%= f.submit class: 'btn btn-success' %>
+    </div>
+  </div>
 <% end %>

@@ -1,8 +1,11 @@
 <section id="hero">
 	<% content_for :jumbotron do %>
 		<div class="jumbotron jumbotron-fluid bg-filter ">
-			<div class="container">
-				<h1 class ="display-2 text-center text-info">Find Background Acting Jobs in New Mexico</h1>
+			<div class="container text-center">
+			<% unless member_signed_in? %>
+			<h1 class="navbar-brand" style="font-size:2em;">Castr</h1>
+			<% end %>
+				<h2 class ="display-3 text-info">Find Background Acting Jobs<br> in New Mexico</h2>
 				<p class="lead text-center ">New Mexico's first Background Actors job portal.</p>
 				<p class="text-center">
 					<%= link_to 'Sign Up',new_member_registration_path, class:'btn btn-action'%>
@@ -15,8 +18,10 @@
 
 <section id="casting_calls" class="display">
 	<div class="container-fluid">
-		<div class="row">
-		<%= render @jobs %>
+		<div class="row justify-content-center">
+			<div class="col-md-12 col-sm-6 col-lg-6 mb-4">
+				<%= render @jobs %>
+			</div>
 		</div>
 	</div>
 </section>

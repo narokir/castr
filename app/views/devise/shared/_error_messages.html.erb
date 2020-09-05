@@ -1,10 +1,16 @@
 <% if resource.errors.any? %>
   <div id="error_explanation" class="alert alert-warning bg-action">
-    <h4><%= ("Check the form") %></h4>
-    <ul>
-      <% resource.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
+  <div class="row justify-content-start align-items-center">
+    <div class="">
+      <%= icon("exclamation-diamond", class: "text-danger ml-3", width:"2.5em", height:"2.5em") %>
+    </div>
+      <div class="">
+        <ul class="mb-0">
+          <% resource.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+  </div>
   </div>
 <% end %>

@@ -9,8 +9,9 @@
 #  listing_expires      :datetime
 #  payment              :string
 #  payment_detials      :text
-#  shoot_date           :datetime
+#  shoot_end_date       :datetime
 #  shoot_location       :string
+#  shoot_start_date     :datetime
 #  special_instructions :text
 #  status               :string           default("pending")
 #  title                :string
@@ -35,7 +36,8 @@ class Job < ApplicationRecord
   validate :acceptable_image
   validates :title, presence: true
   validates :description, presence: true
-  validates :shoot_date, presence: true
+  validates :shoot_start_date, presence: true
+  validates :shoot_end_date, presence: true
   validates :shoot_location, presence: true
 
   UNION_STATUS = ["Any", "SAG", "SAG-AFTRA", "Nonunion"]
