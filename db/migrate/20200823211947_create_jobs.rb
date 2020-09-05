@@ -12,7 +12,7 @@ class CreateJobs < ActiveRecord::Migration[6.0]
       t.datetime :shoot_start_date
       t.datetime :shoot_end_date
       t.boolean :featured, default: false
-      t.string :status, default: "pending"
+      t.boolean :published, default: false
       t.string :shoot_location
       t.text :special_instructions
       t.references :member, null: false, foreign_key: true

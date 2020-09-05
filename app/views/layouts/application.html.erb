@@ -15,9 +15,7 @@
 
   <body>
   <%= render "layouts/navbar" if member_signed_in? %>
-  <%= render "layouts/toasts" %> <%# messages and notificationns %>
-    <%# <p class="notice"><%= notice</p> %>
-    <%# <p class="alert"><%= alert</p> %> 
+  <%= render "layouts/toasts" %> 
     <%= yield :jumbotron%>
     <%= yield %>
      <%= render "layouts/footer" %>

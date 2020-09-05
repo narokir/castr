@@ -1,20 +1,18 @@
 class JobsController < ApplicationController
+  before_action :fetch_job, only: [:publish, :unpublish]
   before_action :set_job, only: %i[show edit update destroy]
   before_action :authenticate_member!, except: %i[index show]
 
   def index
-    @jobs = Job.all
+    @jobs = Job.published.all.limit(9)
   end
 
-  # GET /jobs/1
-  # GET /jobs/1.json
   def show; end
 
   def new
     @job = Job.new
   end
 
-  # GET /jobs/1/edit
   def edit; end
 
   def create
@@ -44,6 +42,30 @@ class JobsController < ApplicationController
     end
   end
 
+  def publish
+    respond_to do |format|
+      if @job.update(published: true)
+        format.html { redirect_to @job, notice: "This job is now published!" }
+        format.json { render :show, status: :ok, location: @job }
+      else
+        format.html { render :edit }
+        format.json { render json: @job.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def unpublish
+    respond_to do |format|
+      if @job.update(published: false)
+        format.html { redirect_to @job, notice: "Job unpublished" }
+        format.json { render :show, status: :ok, location: @job }
+      else
+        format.html { render :edit }
+        format.json { render json: @job.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   def destroy
     @job.destroy
     respond_to do |format|
@@ -57,6 +79,10 @@ class JobsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_job
     @job = Job.find(params[:id])
+  end
+
+  def fetch_job
+    @job = Job.find(params.require(:id))
   end
 
   # Only allow a list of trusted parameters through.
