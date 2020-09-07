@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
   before_action :fetch_job, only: [:publish, :unpublish]
-  before_action :set_job, only: %i[show edit update destroy]
+  before_action :set_job, only: %i[show edit update destroy publish unpublish]
   before_action :authenticate_member!, except: %i[index show]
 
   def index
@@ -93,6 +93,7 @@ class JobsController < ApplicationController
       :company_name,
       :listing_expires,
       :url,
+      :published,
       :union_status,
       :payment,
       :payment_detials,
