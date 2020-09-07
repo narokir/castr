@@ -1,9 +1,11 @@
 module JobsHelper
   def published?(job)
     if job.published?
-      p "Published"
+      @class = "success"
+      @status = "Published"
     else
-      p "Pending"
+      @class = "primary"
+      @status = "Pending"
     end
   end
 end

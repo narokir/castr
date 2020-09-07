@@ -14,7 +14,7 @@
   <%= image_tag f.object.production_image, class: 'image-fluid w-50' %>
   <% end %>
 
-  <div class="form-group">
+  <div class="form-group input-group-lg">
     <%= f.label :production_image %>
     <div class="dropzone dropzone-default dz-clickable " data-controller="dropzone" data-dropzone-max-file-size="1" data-dropzone-max-files="2">
       <%= f.file_field :production_image, direct_upload: true, data: { target: 'dropzone.input' } %>
@@ -25,30 +25,30 @@
     </div>
   </div>
 
- <div class="form-group">
+ <div class="form-group input-group-lg">
     <%= f.label :title %>
     <%= f.text_field :title, class:'form-control' %>
   </div>
 
-  <div class="form-group">
+  <div class="form-group input-group-lg">
     <%= f.label :description %>
     <%# f.rich_text_area :description, class: 'form-control' %>
     <%= f.text_area :description, class: 'form-control' %>
   </div>
   
-  <div class="form-group">
+  <div class="form-group input-group-lg">
     <%= f.label :company_name %>
     <%= f.text_field :company_name, class: 'form-control' %>
   </div>
 
-  <div class="form-group">
+  <div class="form-group input-group-lg">
     <%= f.label 'Production URL' %>
     <%= f.url_field :url, class: 'form-control' %>
   </div>
 
   <div class="form-row">
     <div class="col">
-      <div class="form-group">
+      <div class="form-group input-group-lg">
         <%= f.label :union_status %>
         <%= f.select :union_status, Job::UNION_STATUS,{ include_blank: true }, class: 'form-control custom-select' %>
       </div>
@@ -56,7 +56,7 @@
   
     <div class="col">
       <%= f.label :payment %>
-      <div class="input-group mb-3">
+      <div class="input-group input-group-lg mb-3">
         <div class="input-group-prepend ">
           <span class="input-group-text bg-dark">$</span>
         </div>
@@ -65,19 +65,19 @@
     </div>
   </div>
 
-  <div class="form-group">
+  <div class="form-group input-group-lg">
     <%= f.label :payment_detials %>
     <%= f.text_area :payment_detials, class: 'form-control' %>
   </div>
 
-  <div class="form-group">
+  <div class="form-group input-group-lg">
     <%= f.label :shoot_location %>
     <%= f.text_field :shoot_location, class: 'form-control' %>
   </div>
 
-  <div class="form-group">
+  <div class="form-group input-group-lg">
     <%= f.label "Shoot dates" %>
-    <div class="input-group">
+    <div class="input-group input-group-lg">
       <%= f.date_field :shoot_start_date, class:'form-control' %>
       <div class="input-group-append input-group-prepend">
         <span class="input-group-text bg-dark">to</span>
@@ -86,19 +86,22 @@
     </div>
   </div>
 
-  <div class="form-group">
+  <div class="form-group input-group-lg">
     <%= f.label :special_instructions %>
     <%= f.text_area :special_instructions, class: 'form-control' %>
   </div>
 
-  <div class="form-group">
+  <div class="form-group input-group-lg">
     <%= f.label :listing_expires %>
     <%= f.date_field :listing_expires, class: 'form-control' %>
   </div>
 
-  <div class="form-group">
+  <div class="form-group input-group-lg">
     <div class="actions">
-      <%= f.submit class: 'btn btn-success' %>
+      <%= f.submit class: 'btn btn-success btn-lg' %>
     </div>
   </div>
 <% end %>
+
+
+

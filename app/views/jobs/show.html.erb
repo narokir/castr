@@ -1,38 +1,41 @@
-<div class="container-fluid bg-dark ">
-  <div class="row py-0">
-    <div class=" col-sm-3 col-md-3 border-right border-danger p-4 sticky-top bg-filter">
-      <div class="sticky-top ">
-      <p class="align-text-top"><%= icon("chevron-left", class: "text-info align-middle") %><%= link_to 'Back', jobs_path %></p>
-        <h1 class="text-warning"><%= @job.title %></h1>
-        <p><%= @job.url %></p>
-        <p><%= @job.union_status %> <strong><%= @job.payment %></strong></p>
-        <p><%= @job.payment_detials %></p>
-        <p> <span>Dates & Location:</span><br>
-          <%= @job.shoot_start_date.strftime('%b %d') %> - <%= @job.shoot_end_date.strftime('%b %d') %> in <%= @job.shoot_location %>
-        </p>
-        <p><%= @job.company_name %></p>
-        <%= link_to 'Apply Now', '#', class:'btn btn-success' %>
-        <hr>
-        <div class="small">
-        <span class= "text-muted">Expires: <%= @job.listing_expires.strftime('%b %d') %></span>
-          <% if author_of(@job) || admin? %>
-          <p>Status: <%=published?(@job) %></p>
-            <div class="btn-group" role="group" aria-label="Basic example">
-              <%= link_to('Publish', publish_job_path(@job), method: :put, class:"btn btn-sm btn-outline-success") %>
-              <%= link_to('Unpublish', unpublish_job_path(@job), method: :put, class:"btn btn-sm btn-outline-secondary") %>
-              <%= link_to('Edit', edit_job_path(@job),class:"btn btn-sm btn-outline-secondary" )%>
-              <%= link_to 'Delete', job_path(@job), class:"btn btn-sm btn-outline-danger", method: :delete, data: { confirm: "Are you sure?" }  %>
-            </div>
-          <% end %>
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-sm-12 mx-auto bg-666" style="max-width: 800px;" >
+
+        <p class="align-text-top py-4 mb-0"><%= icon("chevron-left", class: "text-info align-middle") %><%= link_to 'Back', jobs_path %></p>
+        <div class="row">
+          <%= image_tag(@job.production_image, class:'img-fluid w-100') if @job.production_image.attached? %>
         </div>
-      </div>
-    </div>
-    <div class=" col-sm-9 col-md-9 col-lg-7 col-xl-5 bg-dark p-4">
-    <p><%= image_tag(@job.production_image, class:'img-fluid') if @job.production_image.attached? %></p>
-      <p><%= @job.description %></p>
+          <div class="row bg-dark sticky-top shadow-sm mb-4">  
+            <div class="col py-4">
+              <h3 class=""><%= @job.title %></h1>
+              <p><%= @job.union_status %> <strong><%= @job.payment %></strong></p>
+                <p> <span>Dates & Location:</span><br>
+                <%= @job.shoot_start_date.strftime('%b %d') %> - <%= @job.shoot_end_date.strftime('%b %d') %> in <%= @job.shoot_location %></p>
+                <%= link_to 'Apply Now', '#', class:'btn btn-success' %>  
+            </div>
+          </div>  
+          <p><%= @job.description %></p>
+          <p><%= @job.url %></p>
+          <p><%= @job.payment_detials %></p>
+
+          <div class="row bg-gray-900">
+            <div class="col my-4 rounded bg-gray-700 py-4">
+              <span class= "text-muted">Expires: <%= @job.listing_expires.strftime('%b %d') %></span>
+              <% if author_of(@job) || admin? %>
+              <% published?(@job) %><p>Status: <span class='text-<%=@class%>'><%= @status %></span></p>
+              <div class="btn-group">
+                <% if !@job.published? %>
+                  <%= link_to('Publish', publish_job_path(@job), method: :put, class:"btn btn-sm btn-outline-success") %>
+                <% else %>
+                  <%= link_to('Unpublish', unpublish_job_path(@job), method: :put, class:"btn btn-sm btn-outline-primary") %>
+                <% end %>
+                <%= link_to('Edit', edit_job_path(@job),class:"btn btn-sm btn-outline-secondary" )%>
+                <%= link_to 'Delete', job_path(@job), class:"btn btn-sm btn-outline-danger", method: :delete, data: { confirm: "Are you sure?" }  %>
+              </div>
+              <% end %>
+            </div>
+          </div>
     </div>
   </div>
 </div>
-
-
-

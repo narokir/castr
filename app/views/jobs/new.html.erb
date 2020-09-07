@@ -1,15 +1,12 @@
-<div class="container-fluid bg-dark ">
-  <div class="row py-0">
-    <div class=" col-sm-3 col-md-3 border-right border-success p-4  sticky-top ">
-      <div class="sticky-top bg-dark">
+  
+  <div class="container-fluid">
+		<div class="row justify-content-center">
+			<div class="col-sm-12 mx-auto bg-666" style="max-width: 800px;" >
+      <div class="py-5">
       <p class="align-text-top"><%= icon("chevron-left", class: "text-info align-middle") %><%= link_to 'Back', jobs_path %></p>
-        <h1 class="text-success">Post New Job</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse error delectus minus quaerat doloremque, nulla deleniti eaque optio molestiae consequatur minima maiores nam, dicta quidem excepturi. Accusamus quibusdam quas debitis!</p>
       </div>
-    </div>
-    <div class=" col-sm-9 col-md-9 col-lg-7 col-xl-5 bg-dark p-4">
-      <%= render 'form', job: @job %>
-    </div>
-  </div>
-</div>
+        <%= render 'form', job: @job %>
+			</div>
+		</div>
+	</div>
 
