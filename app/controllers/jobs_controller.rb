@@ -7,7 +7,12 @@ class JobsController < ApplicationController
     @jobs = Job.published.all.limit(9)
   end
 
-  def show; end
+  def show
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
 
   def new
     @job = Job.new

@@ -28,3 +28,15 @@ var jQuery = require('jquery');
 // in your web browser, when you type $('.div'), it is actually refering to global.$('.div')
 global.$ = global.jQuery = jQuery;
 window.$ = window.jQuery = jQuery;
+
+// window.addEventListener('load', () => {
+//   const links = document.querySelectorAll('a[data-remote]');
+//   const results = document.querySelector('#job-details');
+//   results.innerHTML = '';
+//   links.forEach((element) => {
+//     element.addEventListener('ajax:success', (event) => {
+//       const [data, status, xhr] = event.detail;
+//       results.innerHTML = data;
+//     });
+//   });
+// });

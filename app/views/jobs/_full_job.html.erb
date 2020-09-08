@@ -1,0 +1,24 @@
+<%# This template is for home page only  %>
+
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-sm-12 mx-auto bg-666" style="max-width: 800px;" >
+        <div class="row">
+          <%= image_tag(@job.production_image, class:'img-fluid w-100') if @job.production_image.attached? %>
+        </div>
+          <div class="row bg-dark shadow-sm mb-4"> 
+            <div class="col py-4">
+              <h3 class=""><%= @job.title %></h1>
+              <p><%= @job.union_status %> <strong><%= @job.payment %></strong></p>
+                <p> <span>Dates & Location:</span><br>
+                <%= @job.shoot_start_date.strftime('%b %d') %> - <%= @job.shoot_end_date.strftime('%b %d') %> in <%= @job.shoot_location %></p>
+                <%= link_to 'Apply Now', '#', class:'btn btn-success' %>  
+            </div>
+          </div> 
+
+          <p><%= @job.description %></p>
+          <p><%= @job.url %></p>
+          <p><%= @job.payment_detials %></p>
+    </div>
+  </div>
+</div>
