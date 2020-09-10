@@ -2,7 +2,7 @@
   <div class="card-body">
       <% if admin? || author_of(job)%>
         <span class="small float-right">
-          <%= link_to "Edit", edit_job_path(job) %> |
+          <%= link_to("Edit", edit_job_path(job),html_options = {class:'zindex-modal'}) %> |
           <%= link_to "Delete", job_path(job), method: :delete, data: { confirm: "Are you sure?" } %>
         </span>
       <% end %>
@@ -12,7 +12,7 @@
     <p class="card-text text-gray-500 font-weight-light"><%= truncate(job.description, :ommision => "... Read More", :length => 150) %></p>
     <p class="card-text font-weight-bold"><%= job.payment %></p>
     <p class="card-text">
-      <%= link_to "View Details", job_path(job), class: "link-stretch" %>
+      <%# link_to "View Details", job_path(job), class: "link-stretch" %>
     </p>
     <div class="card-text small"><span class="small text-muted">Posted <%= time_ago_in_words(job.created_at) %> ago</span></div>
   </div>

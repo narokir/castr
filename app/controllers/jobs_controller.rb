@@ -50,8 +50,9 @@ class JobsController < ApplicationController
   def publish
     respond_to do |format|
       if @job.update(published: true)
-        format.html { redirect_to @job, notice: "This job is now published!" }
-        format.json { render :show, status: :ok, location: @job }
+        format.js { redirect_to @job, notice: "This job is now published!" }
+        #format.html { redirect_to @job, notice: "This job is now published!" }
+        #format.json { render :show, status: :ok, location: @job }
       else
         format.html { render :edit }
         format.json { render json: @job.errors, status: :unprocessable_entity }
@@ -62,8 +63,9 @@ class JobsController < ApplicationController
   def unpublish
     respond_to do |format|
       if @job.update(published: false)
-        format.html { redirect_to @job, notice: "Job unpublished" }
-        format.json { render :show, status: :ok, location: @job }
+        format.js { redirect_to @job, notice: "Job unpublished" }
+        #format.html { redirect_to @job, notice: "Job unpublished" }
+        #format.json { render :show, status: :ok, location: @job }
       else
         format.html { render :edit }
         format.json { render json: @job.errors, status: :unprocessable_entity }

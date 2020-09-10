@@ -23,15 +23,15 @@
             <div class="col my-4 rounded bg-gray-700 py-4">
               <span class= "text-muted">Expires: <%= @job.listing_expires.strftime('%b %d') %></span>
               <% if author_of(@job) || admin? %>
-              <% published?(@job) %><p>Status: <span class='text-<%=@class%>'><%= @status %></span></p>
+              <% published?(@job) %><p>Status: <span id='status', class='text-<%=@class%>'><%= @status %></span></p>
               <div class="btn-group">
                 <% if !@job.published? %>
-                  <%= link_to('Publish', publish_job_path(@job), method: :put, class:"btn btn-sm btn-outline-success") %>
+                  <%= link_to('Publish', publish_job_path(@job), remote: true, method: :put, class:"btn btn-sm btn-outline-secondary") %>
                 <% else %>
-                  <%= link_to('Unpublish', unpublish_job_path(@job), method: :put, class:"btn btn-sm btn-outline-primary") %>
+                  <%= link_to('Unpublish', unpublish_job_path(@job), remote: true, method: :put, class:"btn btn-sm btn-outline-secondary") %>
                 <% end %>
                 <%= link_to('Edit', edit_job_path(@job),class:"btn btn-sm btn-outline-secondary" )%>
-                <%= link_to 'Delete', job_path(@job), class:"btn btn-sm btn-outline-danger", method: :delete, data: { confirm: "Are you sure?" }  %>
+                <%= link_to 'Delete', job_path(@job), class:"btn btn-sm btn-outline-secondary", method: :delete, data: { confirm: "Are you sure?" }  %>
               </div>
               <% end %>
             </div>

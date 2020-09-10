@@ -2,14 +2,14 @@
 	<% content_for :jumbotron do %>
 		<div class="jumbotron jumbotron-fluid bg-filter ">
 			<div class="container text-center">
-			<% unless member_signed_in? %>
-			<h1 class="navbar-brand" style="font-size:2em;">Castr</h1>
-			<% end %>
-				<h2 class ="display-3 text-info">Find Background Acting Jobs<br> in New Mexico</h2>
-				<p class="lead text-center ">New Mexico's first Background Actors job portal.</p>
+				<h2 class ="display-4 text-info">Find Background Acting Jobs<br> in New Mexico</h2>
+				<% unless member_signed_in? %>
 				<p class="text-center">
-					<%= link_to 'Sign Up',new_member_registration_path, class:'btn btn-action'%>
-				</p><hr class='w-50'>
+					<%= link_to 'Sign in',new_member_session_path, class:'btn btn-primary'%>
+					<%= link_to 'Sign Up',new_member_registration_path, class:'btn btn-outline-action'%>
+				</p>
+				<% end %>
+				<hr class='w-50'>
 				<p class="text-center text-muted">Need extras for your project? <%= link_to 'Post a Job', new_job_path, class:'action'  %></p>
 			</div>
 		</div>
@@ -17,17 +17,20 @@
 </section>
 
 <section id="casting_calls" class="display">
-	<div class="container-fluid">
-		<div class="row justify-content-center">
-			<div class="col-md-4 col-sm-6 col-lg-3 mb-4">
+	<div class="container">
+	
+		<div class="row">
+			<div class="col-5">
 			<%= render partial: 'jobs/job_card', object: @jobs %>
 				<%# render @jobs %>
 			</div>
-			<div class="col-md-4 col-sm-5 col-lg-4">
-				<div id="job-details" class=" row sticky-top">
-					<div class=" w-100 p-5 bg-dark">Signup to get updates about local productions and casting calls</div>
-				</div>
+			<div class="col-6">
+					<div id="job-details" class="sticky-top">
+					Signup to get updates about local productions and casting calls
+					</div>
 			</div>
 		</div> 
 	</div>
 </section>
+
+

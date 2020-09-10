@@ -29,14 +29,6 @@ var jQuery = require('jquery');
 global.$ = global.jQuery = jQuery;
 window.$ = window.jQuery = jQuery;
 
-// window.addEventListener('load', () => {
-//   const links = document.querySelectorAll('a[data-remote]');
-//   const results = document.querySelector('#job-details');
-//   results.innerHTML = '';
-//   links.forEach((element) => {
-//     element.addEventListener('ajax:success', (event) => {
-//       const [data, status, xhr] = event.detail;
-//       results.innerHTML = data;
-//     });
-//   });
-// });
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip();
+});
