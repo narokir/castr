@@ -1,0 +1,16 @@
+<h1>apply view</h1>
+
+<p>Your profile has been submited to <%= @job.title %></p>
+
+whats a good way to do this?
+
+1. Create an Applications table and set up "through" associations.
+for example
+
+Member:
+  has_many :applications :through :jobs
+
+2.  Add "applicant_id" colum to Jobs table
+
+def apply
+ applicant_id = member_id

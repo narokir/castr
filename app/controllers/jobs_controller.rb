@@ -1,5 +1,5 @@
 class JobsController < ApplicationController
-  before_action :fetch_job, only: [:publish, :unpublish]
+  before_action :fetch_job, only: [:publish, :unpublish, :apply]
   before_action :set_job, only: %i[show edit update destroy]
   before_action :authenticate_member!, except: %i[index show]
 
@@ -45,6 +45,10 @@ class JobsController < ApplicationController
         format.json { render json: @job.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def apply
+    # format.html
   end
 
   def publish
