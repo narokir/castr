@@ -8,6 +8,9 @@
       <p class="card-text"><%= job.payment %></p>
       <div class="card-text small"><span class="small text-muted">Posted <%= time_ago_in_words(job.created_at) %> ago</span></div>
     </div>
+    <div class="card-body" id="phone-only" style="transform: rotate(0);">
+      <%= link_to('Details', job_path(job),class:'btn btn-primary stretched-link btn-lg ') %>
+    </div>
     <%# if job.production_image.attached? %>
       <%# image_tag(job.production_image, class:"card-img clear", :alt => "...") %>
       <%# else %>

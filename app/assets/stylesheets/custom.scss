@@ -133,3 +133,11 @@ $font-family-display: 'Asar';
     border-color: hsl(345, 88%, 52%);
   }
 }
+
+// chnage how jobs show up on phone screens
+
+@media screen and (min-width: 750px) {
+  #phone-only {
+    display: none;
+  }
+}
