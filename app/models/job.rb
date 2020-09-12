@@ -48,8 +48,8 @@ class Job < ApplicationRecord
 
   # SCOPES
   # ======================================================================
-  scope :featured, -> { where(featured: true) }
-  scope :published, -> { where(published: true) }
+  scope :featured, -> { where(featured: true).order(created_at: :desc) }
+  scope :published, -> { where(published: true).order(created_at: :desc) }
 
   # CONSTANTSS
   # ======================================================================

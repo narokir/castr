@@ -48,7 +48,9 @@ class JobsController < ApplicationController
   end
 
   def apply
-    # format.html
+    @job = Job.find(params[:id])
+    @talent = current_member
+    JobMailer.with(talent: @talent, job: @job).apply_email.deliver_now
   end
 
   def publish
