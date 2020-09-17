@@ -1,6 +1,6 @@
 <div class="container-lg">
   <div class="row justify-content-center">
-    <div class="col-sm-12 mx-auto" style="max-width: 800px;" >
+    <div class="col-sm-12 mx-auto bg-dark" style="max-width: 600px;" >
 
         <p class="align-text-top py-4 mb-0"><%= icon("chevron-left", class: "text-info align-middle") %><%= link_to 'Back', jobs_path %></p>
         <div class="row">
@@ -21,7 +21,7 @@
 
           <div class="row">
             <div class="col my-4 rounded py-4">
-              <span class= "text-muted">Expires: <%= @job.listing_expires %></span>
+              <span class= "text-muted">Expires: <%= @job.listing_expires.strftime('%b %d, %Y') %></span>
               <% if author_of(@job) || admin? %>
               <% published?(@job) %><p>Status: <span id='status', class='text-<%=@class%>'><%= @status %></span></p>
               <div class="btn-group">

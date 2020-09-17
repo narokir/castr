@@ -189,6 +189,10 @@ $font-family-display: 'Asar';
   background-color: #333 !important;
 }
 
+[data-theme='dark'] .bg-dark {
+  background-color: $gray-999 !important;
+}
+
 [data-theme='dark'] .bg-white {
   background-color: #292f33 !important;
 }
