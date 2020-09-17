@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg ">
+<nav class="navbar navbar-expand-md border-bottom navbar-dark bg-666">
     <%= link_to "Castr", root_path, :class => "navbar-brand" %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -14,7 +14,10 @@
           <%= link_to "Post New Casting Notice", new_job_path, :class => "nav-link" %>
         </li>
       </ul>
+      <div class="custom-control custom-switch">
+        <input type="checkbox" class="custom-control-input" id="darkSwitch" />
+        <label class="custom-control-label" for="darkSwitch">Dark Mode</label>
+      </div>
       <%= render "layouts/usernav" %>
     </div>
-
 </nav>

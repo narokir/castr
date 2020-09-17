@@ -1,8 +1,11 @@
 <%# This job template is for home page only %>
 <% @jobs.each do |job| %>
-  <div class="card bg-666 text-white border-left border-dark shadow-sm mb-3">
+  <div class="card shadow-sm mb-3">
     <div class="card-body" style="transform: rotate(0);">
-      <h5 class="card-title"><%= link_to job.title, job_path(job), remote: true, class:'text-reset stretched-link', id:'remote' %></h5>
+    <% unless job.created_at < DateTime.current.days_ago(5) %>
+      <span class="badge bg-action small text-dark">New</span>
+    <% end %>
+      <h5 class="card-title mt-3"><%= link_to job.title, job_path(job), remote: true, class:'text-reset stretched-link', id:'remote' %></h5>
       <p class="text-muted small mb-0">Union Status: <%= job.union_status %></p>
       <p class="text-muted small mb-1">Shoots: <%= job.shoot_start_date.strftime('%b %d') %> - <%= job.shoot_end_date.strftime('%b %d') %> in <%= job.shoot_location %></p>
       <p class="card-text"><%= job.payment %></p>

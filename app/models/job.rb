@@ -54,6 +54,7 @@ class Job < ApplicationRecord
   # CONSTANTSS
   # ======================================================================
   UNION_STATUS = ["Any", "SAG", "SAG-AFTRA", "Nonunion"]
+  LOCATION = ["Albuquerque", "Santa Fe", "Taos", "Las Vegas", "Espanola"]
 
   # HELPERS
   # ======================================================================

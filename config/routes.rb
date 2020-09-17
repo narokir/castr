@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     end
   end
   root to: "pages#home"
+  get "/search", to: "jobs#search"
   get "/hello", to: "pages#hello"
   get "/goodbye", to: "pages#goodbye"
   devise_for :members,

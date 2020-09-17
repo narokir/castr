@@ -47,10 +47,28 @@ class JobsController < ApplicationController
     end
   end
 
+  def destroy
+    @job.destroy
+    respond_to do |format|
+      format.html { redirect_to jobs_url, notice: "Job was successfully destroyed." }
+      format.json { head :no_content }
+    end
+  end
+
   def apply
     @job = Job.find(params[:id])
     @talent = current_member
+    respond_to :html
     JobMailer.with(talent: @talent, job: @job).apply_email.deliver_now
+  end
+
+  def search
+    if params[:search].blank?
+      redirect_to(root_path, notice: "Nothing to search") and return
+    else
+      @parameter = params[:search].downcase
+      @results = Job.all.where("title ILIKE :search", search: "%#{@parameter}%")
+    end
   end
 
   def publish
@@ -76,14 +94,6 @@ class JobsController < ApplicationController
         format.html { render :edit }
         format.json { render json: @job.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  def destroy
-    @job.destroy
-    respond_to do |format|
-      format.html { redirect_to jobs_url, notice: "Job was successfully destroyed." }
-      format.json { head :no_content }
     end
   end
 

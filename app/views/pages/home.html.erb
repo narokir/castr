@@ -1,6 +1,6 @@
 <section id="hero">
 	<% content_for :jumbotron do %>
-		<div class="jumbotron jumbotron-fluid bg-filter ">
+		<div class="jumbotron jumbotron-fluid">
 			<div class="container text-center">
 				<h2 class ="display-4 text-info">Find Background Acting Jobs<br> in New Mexico</h2>
 				<% unless member_signed_in? %>
@@ -18,7 +18,7 @@
 
 <section id="casting_calls" class="display">
 	<div class="container">
-	
+	<%= render 'layouts/search-form' %>
 		<div class="row">
 			<div class="col-lg-5 col-md-5">
 			<%= render partial: 'jobs/job_card', object: @jobs %>

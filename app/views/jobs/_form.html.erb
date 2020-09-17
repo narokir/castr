@@ -58,7 +58,7 @@
       <%= f.label :payment %>
       <div class="input-group input-group-lg mb-3">
         <div class="input-group-prepend ">
-          <span class="input-group-text bg-dark">$</span>
+          <span class="input-group-text">$</span>
         </div>
         <%= f.text_field :payment, class: 'form-control' %>
       </div>
@@ -72,19 +72,22 @@
 
   <div class="form-group input-group-lg">
     <%= f.label :shoot_location %>
-    <%= f.text_field :shoot_location, class: 'form-control' %>
+    <%= f.select :shoot_location, Job::LOCATION,{ include_blank: true }, class: 'form-control custom-select' %>
   </div>
 
-  <div class="form-group input-group-lg">
+  <div class="form-group mb-3">
     <%= f.label "Shoot dates" %>
     <div class="input-group input-group-lg">
-      <%= f.date_field :shoot_start_date, class:'form-control' %>
-      <div class="input-group-append input-group-prepend">
-        <span class="input-group-text bg-dark">to</span>
+      <%= f.text_field :shoot_start_date, class:'form-control', data: {behavior: 'flatpickr'} %>
+      <div class="input-group-prepend">
+        <span class="input-group-text">to</span>
       </div>
-      <%= f.date_field :shoot_end_date, class:'form-control' %>
+      <%= f.text_field :shoot_end_date, class:'form-control', data: {behavior: 'flatpickr'} %>
     </div>
   </div>
+
+  
+
 
   <div class="form-group input-group-lg">
     <%= f.label :special_instructions %>
@@ -93,7 +96,7 @@
 
   <div class="form-group input-group-lg">
     <%= f.label :listing_expires %>
-    <%= f.date_field :listing_expires, class: 'form-control' %>
+    <%= f.text_field :listing_expires, data: {behavior: 'flatpickr'}, class: 'form-control date-field' %>
   </div>
 
   <div class="form-group input-group-lg">

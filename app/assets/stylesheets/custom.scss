@@ -41,17 +41,17 @@ $black: #000 !default;
 $cyan: #3dc8ff;
 
 // Body //
-$body-bg: $gray-900 !default;
-$body-color: $gray-400 !default;
+//$body-bg: $gray-900 !default;
+//$body-color: $gray-400 !default;
 
 // Radius and border //
 $border-radius: 0.2rem;
 
 // inputs //
 $input-focus-color: #3dc8ff;
-$input-bg: $gray-700;
-$input-border-color: $gray-600;
-$input-color: #69aac4;
+//$input-bg: $gray-700;
+//$input-border-color: $gray-600;
+//$input-color: #69aac4;
 $input-focus-border-color: #3dc8ff;
 $input-transition: border-color 0.15s;
 
@@ -74,7 +74,7 @@ $font-family-display: 'Asar';
 
 //Card
 .card-body:hover {
-  background-color: #2d3539;
+  background-color: #f8f9fa;
 }
 
 // custom font for display class
@@ -105,10 +105,17 @@ $font-family-display: 'Asar';
   background-color: #292f33 !important;
 }
 
+.block {
+  background-color: #292f33 !important;
+  border-color: $gray-800;
+}
+.date-field {
+  background-color: $white;
+}
+
 // dropzone
 .dropzone {
   border-style: dashed;
-  background-color: $gray-700;
   border-color: $gray-600;
   p {
     color: $gray-600;
@@ -134,10 +141,58 @@ $font-family-display: 'Asar';
   }
 }
 
-// chnage how jobs show up on phone screens
+// Change how jobs show up on phone screens
 
 @media screen and (min-width: 750px) {
   #phone-only {
     display: none;
   }
+}
+
+// Dark mode Styles
+
+[data-theme='dark'] {
+  background-color: $gray-900 !important;
+  color: $gray-400;
+
+  .card {
+    background-color: #292f33 !important;
+    border-color: $gray-800;
+  }
+  .card-body:hover {
+    background-color: #2d3539;
+  }
+  .form-control,
+  .date-field {
+    background-color: $gray-700 !important;
+    border-color: $gray-600 !important;
+    color: $cyan;
+  }
+  .form-control:focus {
+    background-color: $gray-700;
+    border-color: $cyan;
+  }
+  .navbar {
+    background-color: $gray-999;
+    border-color: $gray-900 !important;
+  }
+  .jumbotron {
+    background-color: $gray-999;
+    color: $gray-400;
+  }
+  .dropzone {
+    background-color: $gray-700;
+  }
+}
+
+[data-theme='dark'] .bg-light {
+  background-color: #333 !important;
+}
+
+[data-theme='dark'] .bg-white {
+  background-color: #292f33 !important;
+}
+
+[data-theme='dark'] .bg-black {
+  background-color: #eee !important;
 }
