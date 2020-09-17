@@ -2,13 +2,15 @@
 <% @jobs.each do |job| %>
   <div class="card shadow-sm mb-3">
     <div class="card-body" style="transform: rotate(0);">
-    <% unless job.created_at < DateTime.current.days_ago(5) %>
-      <span class="badge bg-action small text-dark">New</span>
-    <% end %>
-      <h5 class="card-title mt-3"><%= link_to job.title, job_path(job), remote: true, class:'text-reset stretched-link', id:'remote' %></h5>
+    <h6 class="card-title">
+      <% unless job.created_at < DateTime.current.days_ago(5) %>
+        <span class="badge bg-action small text-dark mr-2">New</span>
+      <% end %>
+      <%= link_to job.title, job_path(job), remote: true, class:'text-reset stretched-link', id:'remote' %>
+      </h6>
       <p class="text-muted small mb-0">Union Status: <%= job.union_status %></p>
       <p class="text-muted small mb-1">Shoots: <%= job.shoot_start_date.strftime('%b %d') %> - <%= job.shoot_end_date.strftime('%b %d') %> in <%= job.shoot_location %></p>
-      <p class="card-text"><%= job.payment %></p>
+      <p class="card-text">$ <%= job.payment %></p>
       <div class="card-text small"><span class="small text-muted">Posted <%= time_ago_in_words(job.created_at) %> ago</span></div>
     </div>
     <div class="card-body" id="phone-only" style="transform: rotate(0);">

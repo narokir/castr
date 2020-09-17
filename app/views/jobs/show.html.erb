@@ -1,12 +1,12 @@
 <div class="container-lg">
   <div class="row justify-content-center">
-    <div class="col-sm-12 mx-auto bg-dark" style="max-width: 600px;" >
+    <div class="col-sm-12 mx-auto bg-light shadow-sm" style="max-width: 600px;" >
 
         <p class="align-text-top py-4 mb-0"><%= icon("chevron-left", class: "text-info align-middle") %><%= link_to 'Back', jobs_path %></p>
         <div class="row">
           <%= image_tag(@job.production_image, class:'img-fluid w-100') if @job.production_image.attached? %>
         </div>
-          <div class="row sticky-top shadow-sm mb-4">  
+          <div class="row sticky-top mb-4">  
             <div class="col py-4">
               <h3 class=""><%= @job.title %></h1>
               <p><%= @job.union_status %> <strong><%= @job.payment %></strong></p>
@@ -20,11 +20,10 @@
           <p><%= @job.payment_detials %></p>
 
           <div class="row">
-            <div class="col my-4 rounded py-4">
-              <span class= "text-muted">Expires: <%= @job.listing_expires.strftime('%b %d, %Y') %></span>
+            <div class="col  rounded ">
               <% if author_of(@job) || admin? %>
               <% published?(@job) %><p>Status: <span id='status', class='text-<%=@class%>'><%= @status %></span></p>
-              <div class="btn-group">
+              <div class="btn-group mb-4">
                 <% if !@job.published? %>
                   <%= link_to('Publish', publish_job_path(@job), remote: true, method: :put, class:"btn btn-sm btn-outline-secondary") %>
                 <% else %>
@@ -34,6 +33,8 @@
                 <%= link_to 'Delete', job_path(@job), class:"btn btn-sm btn-outline-secondary", method: :delete, data: { confirm: "Are you sure?" }  %>
               </div>
               <% end %>
+              <p class="small">Posted by: <%= @job.member.first_name %>
+              <span class= "text-muted small">Expires: <%= @job.listing_expires.strftime('%b %d, %Y') %></span></p>
             </div>
           </div>
     </div>

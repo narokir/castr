@@ -1,7 +1,7 @@
 class JobsController < ApplicationController
-  before_action :fetch_job, only: [:publish, :unpublish, :apply]
-  before_action :set_job, only: %i[show edit update destroy]
-  before_action :authenticate_member!, except: %i[index show]
+  before_action :fetch_job, only: [:publish, :unpublish, :apply, :show, :edit, :update, :destroy]
+  #before_action :set_job, only: %i[show edit update destroy]
+  before_action :authenticate_member!, except: %i[index show search]
 
   def index
     @jobs = Job.published.all.limit(9)

@@ -17,7 +17,9 @@
   <%= render "layouts/navbar" %>
   <%= render "layouts/toasts" %> 
     <%= yield :jumbotron%>
-    <%= yield %>
+    <div class="content py-5">
+      <%= yield %>
+    </div>
      <%= render "layouts/footer" %>
   </body>
 </html>

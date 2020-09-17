@@ -10,7 +10,7 @@ $enable-shadows: true;
 $theme-colors: (
   'primary': darken(#3caaff, 6.5%),
   'danger': hsl(345, 88%, 52%),
-  'success': #38ba00,
+  'success': #00ba7c,
   'warning': #ff9200,
   'info': #59bcf5,
   'action': #e2d23f,
@@ -39,6 +39,7 @@ $gray-900: #212529 !default;
 $gray-999: #121416 !default;
 $black: #000 !default;
 $cyan: #3dc8ff;
+$danger: hsl(345, 88%, 52%);
 
 // Body //
 //$body-bg: $gray-900 !default;
@@ -136,8 +137,9 @@ $font-family-display: 'Asar';
   }
 }
 .field_with_errors {
-  .form-control {
-    border-color: hsl(345, 88%, 52%);
+  .form-control,
+  .form-control-* {
+    border-color: $danger;
   }
 }
 
@@ -176,9 +178,16 @@ $font-family-display: 'Asar';
     background-color: $gray-999;
     border-color: $gray-900 !important;
   }
+  .navbar-light .navbar-nav .nav-link {
+    color: $gray-200 !important;
+  }
+  .navbar-light .navbar-toggler {
+    color: $gray-200 !important;
+    border-color: $gray-200 !important;
+  }
   .jumbotron {
-    background-color: $gray-999;
-    color: $gray-400;
+    background-color: #0d0e0e;
+    color: $danger;
   }
   .dropzone {
     background-color: $gray-700;
@@ -186,7 +195,7 @@ $font-family-display: 'Asar';
 }
 
 [data-theme='dark'] .bg-light {
-  background-color: #333 !important;
+  background-color: $gray-999 !important;
 }
 
 [data-theme='dark'] .bg-dark {

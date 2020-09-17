@@ -58,7 +58,7 @@
       <%= f.label :payment %>
       <div class="input-group input-group-lg mb-3">
         <div class="input-group-prepend ">
-          <span class="input-group-text">$</span>
+          <span class="input-group-text bg-light">$</span>
         </div>
         <%= f.text_field :payment, class: 'form-control' %>
       </div>
@@ -80,7 +80,7 @@
     <div class="input-group input-group-lg">
       <%= f.text_field :shoot_start_date, class:'form-control', data: {behavior: 'flatpickr'} %>
       <div class="input-group-prepend">
-        <span class="input-group-text">to</span>
+        <span class="input-group-text bg-light border-0">to</span>
       </div>
       <%= f.text_field :shoot_end_date, class:'form-control', data: {behavior: 'flatpickr'} %>
     </div>

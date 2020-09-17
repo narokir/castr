@@ -1,10 +1,10 @@
 <% if member_signed_in? %>
 
-  <ul class="nav navbar-nav navbar-right">
-    <li class="nav-item dropdown ">
+  <ul class="nav navbar-nav navbar-right ">
+    <li class="nav-item dropdown bg-light border border-gray-500 rounded">
       <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
         <%# image_tag(profile_img, :alt => "member", :size => "22", class: "member-menu-thumb") %>
-        <span class=""><%= icon("person-circle", class: "text-info", width:"20px", height:"20px") %></span> <%= current_member.first_name %>
+        <span class="ml-2"><%= icon("person-circle", class: "text-info", width:"20px", height:"20px") %></span> <%= current_member.first_name %>
       </a>
       <div class="dropdown-menu dropdown-menu-right" style="min-width: 250px;">
         <p class="px-4 mb-0 text-muted">

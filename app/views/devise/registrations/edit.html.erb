@@ -1,7 +1,6 @@
   <div class="container-fluid">
 		<div class="row justify-content-center">
-			<div class="col-sm-12 mx-auto" style="max-width: 500px;" >
-      <p class="align-text-top py-4 mb-0"><%= icon("chevron-left", class: "text-info align-middle") %><%= link_to 'Back', jobs_path %></p>
+			<div class="col-sm-12 mx-auto bg-light shadow-sm rounded py-4" style="max-width: 600px;" >
       <h2>Your Public Profile <%# resource_name.to_s.humanize %></h2>
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name),local: true, multipart: true, html: { method: :put }) do |f| %>

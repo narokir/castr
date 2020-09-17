@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_member!, only: [:home, :goodbye, :hello]
 
   def home
-    @jobs = Job.featured.all.limit(3)
+    @jobs = Job.published.all.limit(5)
   end
 
   def hello
