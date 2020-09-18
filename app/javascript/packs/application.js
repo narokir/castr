@@ -22,7 +22,7 @@ import 'controllers';
 import 'toaster/bootstrap_toast';
 
 // dark mode
-import 'dark-mode-switch/dark-mode-switch';
+//import 'dark-mode-switch/dark-mode-switch';
 //require('dark-mode-switch/dark-mode.css');
 
 // flatpicker(Date Picker)
@@ -50,3 +50,37 @@ var jQuery = require('jquery');
 // in your web browser, when you type $('.div'), it is actually refering to global.$('.div')
 global.$ = global.jQuery = jQuery;
 window.$ = window.jQuery = jQuery;
+
+document.addEventListener('turbolinks:load', () => {
+  (function () {
+    var darkSwitch = document.getElementById('darkSwitch');
+    var navBg = document.getElementById('main-nav');
+    if (darkSwitch) {
+      initTheme();
+      darkSwitch.addEventListener('change', function (event) {
+        resetTheme();
+      });
+      function initTheme() {
+        var darkThemeSelected =
+          localStorage.getItem('darkSwitch') !== null &&
+          localStorage.getItem('darkSwitch') === 'dark';
+        darkSwitch.checked = darkThemeSelected;
+        darkThemeSelected
+          ? document.body.setAttribute('data-theme', 'dark')
+          : document.body.removeAttribute('data-theme');
+        navBg.classList.add('navbar-light', 'bg-light');
+      }
+      function resetTheme() {
+        if (darkSwitch.checked) {
+          document.body.setAttribute('data-theme', 'dark');
+          localStorage.setItem('darkSwitch', 'dark');
+        } else {
+          document.body.removeAttribute('data-theme');
+          localStorage.removeItem('darkSwitch');
+          //navBg.classList.remove("navbar-dark","bg-dark");
+          //navBg.classList.add("navbar-light","bg-light");
+        }
+      }
+    }
+  })();
+});
