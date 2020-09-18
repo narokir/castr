@@ -1,18 +1,20 @@
   <div class="container-fluid">
 		<div class="row justify-content-center">
-			<div class="col-sm-12 mx-auto bg-light shadow-sm rounded py-4" style="max-width: 600px;" >
+			<div class="col-sm-12 mx-auto bg-light shadow-sm rounded" style="max-width: 600px;" >
+      <p class="align-text-top py-4 mb-0"><%= icon("chevron-left", class: "text-info align-middle") %><%= link_to 'Back', :back %></p>
       <h2>Your Public Profile <%# resource_name.to_s.humanize %></h2>
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name),local: true, multipart: true, html: { method: :put }) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
 
-      <% if current_member.profile_image.attached? %>
+
         <div class="row mb-5">
           <div class="col-md-4">
             <%= image_tag current_member.profile_image , class:"img-fluid rounded mx-auto w-100" %>
+            <%# link_to('Delete Photo',  member_registration_path,{ controller: "registrations", action: "delete_profile_foto" }, class:"btn btn-sm btn-secondary") %>
           </div>
         </div>
-      <% else %>
+
 
         <div class="form-group input-group-lg">
           <%= f.label :profile_image %>
@@ -25,7 +27,7 @@
           </div>
         </div>
 
-      <% end %>
+ 
       
         <div class="form-group input-group-lg">
           <%= f.label :first_name %><br />

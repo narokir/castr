@@ -72,8 +72,12 @@ class Member < ApplicationRecord
     member
   end
 
+  # def password_required?
+  #   provider.blank?
+  # end
+
   def password_required?
-    provider.blank?
+    new_record? || password.present? || password_confirmation.present?
   end
 
   # Overwrite devise update without password method
