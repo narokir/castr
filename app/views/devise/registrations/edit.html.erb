@@ -10,7 +10,7 @@
 
         <div class="row mb-5">
           <div class="col-md-4">
-            <%= image_tag current_member.profile_image , class:"img-fluid rounded mx-auto w-100" %>
+            <%= image_tag current_member.profile_image , class:"img-fluid rounded mx-auto w-100" if current_member.profile_image.attached? %>
             <%# link_to('Delete Photo',  member_registration_path,{ controller: "registrations", action: "delete_profile_foto" }, class:"btn btn-sm btn-secondary") %>
           </div>
         </div>
