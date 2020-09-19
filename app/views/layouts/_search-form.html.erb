@@ -1,6 +1,8 @@
-<div class="col bg-light shadow-sm py-4 rounded">
-  <%= form_with(url: search_path, class: "input-group input-group-lg", local: true, method: :get) do |f| %>
-    <%= f.text_field :search, class: 'form-control mr-sm-2', placeholder: 'Enter search term...' %>
-    <%= f.submit "Search", disable_with: 'Searching...', class:"btn btn-lg btn-outline-success my-2 my-sm-0" %>
-  <% end %>
-</div>
+<%= form_with(url: search_path, class: "bg-light shadow-sm p-3 rounded", local: true, method: :get) do |f| %>
+  <div class=" input-group input-group-lg">
+    <%= f.text_field :search, class: 'form-control', placeholder: 'Enter search term...' %>
+    <div class="input-group-append">
+      <%= f.submit "Search", disable_with: 'Searching...', class:"btn btn-lg btn-outline-success" %>
+    </div>
+  </div>
+<% end %>

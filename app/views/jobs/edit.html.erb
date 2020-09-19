@@ -1,12 +1,35 @@
-<div class="container-fluid">
+<div class="container">
   <div class="row justify-content-center">
-    <div class="col-sm-12 mx-auto bg-light shadow-sm rounded py-4" style="max-width: 600px;" >
-      <h1>Editing Job</h1>
-      
+    <div class="col bg-light shadow-sm rounded pb-3" style="max-width: 600px;">
+      <p class="align-text-top py-4 mb-0"><%= icon("chevron-left", class: "text-info align-middle") %><%= link_to 'Back', :back %></p>
       <%= render 'form', job: @job %>
-      <%= link_to 'Show', @job %> |
-      <%= link_to 'Back', jobs_path %>
-      
+      <%= link_to 'Show Listing', @job %>
     </div>
+
+    <% if author_of(@job) || admin? %>
+      <div class="col-md-4 pr-md-0">
+        <div class="card shadow-sm">
+          <h5 class="card-header">Edit Listing</h5>
+          <div class="card-body">
+          <p class="small">Created on: <%= @job.created_at.strftime('%b %d, %Y') %></p>
+            <% published?(@job) %><p>Status: <span id='status', class='text-<%=@class%>'><%= @status %></span></p>
+             <div class="form-group input-group-lg">
+              <div class="actions">
+                <input type="submit" class="btn btn-lg btn-success" value="Update" form="edit-job">
+              </div>
+            </div>
+            
+            <div class="btn-group mb-4">
+              <% if !@job.published? %>
+                <%= link_to('Publish', publish_job_path(@job), remote: true, method: :put, class:"btn btn-sm btn-outline-secondary") %>
+              <% else %>
+                <%= link_to('Unpublish', unpublish_job_path(@job), remote: true, method: :put, class:"btn btn-sm btn-outline-secondary") %>
+              <% end %>
+              <%= link_to 'Delete', job_path(@job), class:"btn btn-sm btn-outline-secondary", method: :delete, data: { confirm: "Are you sure?" }  %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>

@@ -1,42 +1,51 @@
-<div class="container-lg">
+<div class="container">
   <div class="row justify-content-center">
-    <div class="col-sm-12 mx-auto bg-light shadow-sm" style="max-width: 600px;" >
+    <div class="col bg-light shadow-sm rounded" style="max-width: 600px;">
+      <p class="align-text-top py-4 mb-0"><%= icon("chevron-left", class: "text-info align-middle") %><%= link_to 'Back', :back %></p>
+      <div class="sticky-top border-bottom mb-3 bg-light pb-4">
+        <h3 class=""><%= @job.title %></h1>
+      <p><%= @job.description %></p>
+      <p><span class="text-secondary">Payment: </span>  <%= @job.payment %><br><%= @job.payment_detials %></p>
+        <%= link_to 'Apply Now', apply_job_path, method: :put, class:'btn btn-success ' %>
+      </div>
+      <p><span class="text-secondary">Union Status: </span><%= @job.union_status %></p>
+      <p><span class="text-secondary">Shoot dates & Location:</span><br>
+      <%= @job.shoot_start_date.strftime('%b %d') %> - <%= @job.shoot_end_date.strftime('%b %d') %> in <%= @job.shoot_location %></p>
+      <hr>
+      <p><span class="text-secondary">Special Instructions:</span><br><%= @job.special_instructions %></p>
 
-        <p class="align-text-top py-4 mb-0"><%= icon("chevron-left", class: "text-info align-middle") %><%= link_to 'Back', :back %></p>
-        <div class="">
-          <%= image_tag(@job.production_image, class:'img-fluid w-100') if @job.production_image.attached? %>
-        </div>
-          <div class="row sticky-top mb-4">  
-            <div class="col py-4">
-              <h3 class=""><%= @job.title %></h1>
-              <p><%= @job.union_status %> <strong><%= @job.payment %></strong></p>
-                <p> <span>Dates & Location:</span><br>
-                <%= @job.shoot_start_date.strftime('%b %d') %> - <%= @job.shoot_end_date.strftime('%b %d') %> in <%= @job.shoot_location %></p>
-                <%= link_to 'Apply Now', apply_job_path, method: :put, class:'btn btn-success' %>  
-            </div>
-          </div>  
-          <p><%= @job.description %></p>
-          <p><%= @job.url %></p>
-          <p><%= @job.payment_detials %></p>
+      <div class="">
+        <%= image_tag(@job.production_image, class:'img-fluid w-100') if @job.production_image.attached? %>
+      </div>
+      <% if @job.company_name.present? %>
+        <p><span class="text-secondary">Production Details:</span><br>
+        <%= @job.company_name %><br>
+        <%= @job.url %></p>
+      <% end %>
 
-          <div class="row">
-            <div class="col  rounded ">
-              <% if author_of(@job) || admin? %>
-              <% published?(@job) %><p>Status: <span id='status', class='text-<%=@class%>'><%= @status %></span></p>
-              <div class="btn-group mb-4">
-                <% if !@job.published? %>
-                  <%= link_to('Publish', publish_job_path(@job), remote: true, method: :put, class:"btn btn-sm btn-outline-secondary") %>
-                <% else %>
-                  <%= link_to('Unpublish', unpublish_job_path(@job), remote: true, method: :put, class:"btn btn-sm btn-outline-secondary") %>
-                <% end %>
-                <%= link_to('Edit', edit_job_path(@job),class:"btn btn-sm btn-outline-secondary" )%>
-                <%= link_to 'Delete', job_path(@job), class:"btn btn-sm btn-outline-secondary", method: :delete, data: { confirm: "Are you sure?" }  %>
-              </div>
+      <p class="small">Posted by: <%= @job.member.first_name %>
+      <span class= "text-muted small">Listing expires: <%= @job.listing_expires.strftime('%b %d, %Y') %></span></p>
+    </div>
+
+    <% if author_of(@job) || admin? %>
+      <div class="col-md-4 pr-md-0">
+        <div class="card shadow-sm">
+          <h5 class="card-header">Manage Listing</h5>
+          <div class="card-body">
+          <p class="small">Created on: <%= @job.created_at.strftime('%b %d, %Y') %></p>
+            <% published?(@job) %><p>Status: <span id='status', class='text-<%=@class%>'><%= @status %></span></p>
+            <div class="btn-group mb-4">
+              <% if !@job.published? %>
+                <%= link_to('Publish', publish_job_path(@job), remote: true, method: :put, class:"btn btn-sm btn-outline-secondary") %>
+              <% else %>
+                <%= link_to('Unpublish', unpublish_job_path(@job), remote: true, method: :put, class:"btn btn-sm btn-outline-secondary") %>
               <% end %>
-              <p class="small">Posted by: <%= @job.member.first_name %>
-              <span class= "text-muted small">Expires: <%= @job.listing_expires.strftime('%b %d, %Y') %></span></p>
+              <%= link_to('Edit', edit_job_path(@job),class:"btn btn-sm btn-outline-secondary" )%>
+              <%= link_to 'Delete', job_path(@job), class:"btn btn-sm btn-outline-secondary", method: :delete, data: { confirm: "Are you sure?" }  %>
             </div>
           </div>
-    </div>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>

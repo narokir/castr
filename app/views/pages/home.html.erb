@@ -16,24 +16,22 @@
 	<% end %>
 </section>
 
-<section id="casting_calls" class="display">
-	<div class="container">
-	<div class="row justify-content-center ">
-		<div class="col-11 py-4 mb-4" >
-		 <%= render 'layouts/search-form' %>
-		</div>
-	</div>
-		<div class="row justify-content-center ">
-			<div class="col-lg-5 col-md-5">
-			<%= render partial: 'jobs/job_card', object: @jobs %>
+<section id="casting_calls" class="content">
+	<div class="container" style="max-width: 800px;">
+		<div class="row justify-content-center">
+			<div class="col-12 mb-3 p-md-0">
+				<%= render 'layouts/search-form' %>
+			</div>
+			<div class="col-md-5 pl-md-0">
+				<%= render partial: 'jobs/job_card', object: @jobs %>
 				<%# render @jobs %>
 			</div>
-			<div class="col-6 shadown-sm bg-light rounded py-4">
-					<div id="job-details" class="">
+			<div class="col-md-7 bg-light shadown-sm rounded ">
+				<div id="job-details" class="pt-3">
 					Signup to get updates about local productions and casting calls
-					</div>
+				</div>
 			</div>
-		</div> 
+		</div>
 	</div>
 </section>
 

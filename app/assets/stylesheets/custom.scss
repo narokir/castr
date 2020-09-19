@@ -10,7 +10,7 @@ $enable-shadows: true;
 $theme-colors: (
   'primary': darken(#3caaff, 6.5%),
   'danger': hsl(345, 88%, 52%),
-  'success': rgb(0, 188, 183),
+  'success': rgb(0, 188, 157),
   //#00ba7c
   'warning': #ff9200,
   'info': #59bcf5,
@@ -164,6 +164,9 @@ $font-family-display: 'Asar';
   }
   .card-body:hover {
     background-color: #2d3539;
+  }
+  .card:last-of-type {
+    margin-bottom: 0 !important;
   }
   .form-control,
   .date-field {
