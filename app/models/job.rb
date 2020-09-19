@@ -61,7 +61,7 @@ class Job < ApplicationRecord
   def acceptable_image
     return unless production_image.attached?
     errors.add(:production_image, "is nil") if production_image.attached?.nil?
-    errors.add(:production_image, "is too big") unless production_image.byte_size <= 1.megabyte
+    errors.add(:production_image, "is too big") unless production_image.byte_size <= 5.megabyte
     acceptable_types = ["image/jpeg", "image/png"]
     errors.add(:production_image, "must be JPEG or PNG") unless acceptable_types.include?(production_image.content_type)
   end
