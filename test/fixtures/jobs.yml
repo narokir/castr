@@ -33,6 +33,7 @@
 one:
   title: MyString
   company_name: MyString
+  description: This is the description of job one
   listing_expires: 2020-08-23 15:19:47
   url: MyString
   union_status: MyString
@@ -40,13 +41,14 @@ one:
   payment_details: MyText
   shoot_start_date: 2020-08-23 15:19:47
   shoot_end_date: 2020-08-24 15:19:47
-  shoot_location: MyString
+  shoot_location: Albuquerque
   special_instructions: MyText
   member: one
 
 two:
   title: MyString
   company_name: MyString
+  description: This is the description of job two
   listing_expires: 2020-08-23 15:19:47
   url: MyString
   union_status: MyString
@@ -54,6 +56,6 @@ two:
   payment_details: MyText
   shoot_start_date: 2020-08-23 15:19:47
   shoot_end_date: 2020-08-24 15:19:47
-  shoot_location: MyString
+  shoot_location: Albuquerque
   special_instructions: MyText
   member: two

@@ -41,6 +41,7 @@ $gray-999: #121416 !default;
 $black: #000 !default;
 $cyan: #3dc8ff;
 $danger: hsl(345, 88%, 52%);
+$success: rgb(0, 188, 157);
 
 // Body //
 //$body-bg: $gray-900 !default;
@@ -51,7 +52,7 @@ $border-radius: 0.2rem;
 
 // inputs //
 $input-focus-color: $cyan;
-$input-focus-border-color: $cyan;
+$input-focus-border-color: $success;
 $input-transition: border-color 0.15s;
 
 $font-family-sans-serif: -apple-system, BlinkMacSystemFont, 'Assistant', Roboto,
@@ -173,7 +174,7 @@ $font-family-display: 'Asar';
   }
   .form-control:focus {
     background-color: $gray-900 !important;
-    border-color: $cyan !important;
+    border-color: $success !important;
   }
   .navbar {
     background-color: $gray-999;
