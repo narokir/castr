@@ -135,8 +135,7 @@ $font-family-display: 'Asar';
   }
 }
 .field_with_errors {
-  .form-control,
-  .form-control-* {
+  .form-control {
     border-color: $danger !important;
   }
 }
@@ -157,6 +156,11 @@ $font-family-display: 'Asar';
   }
   .card:last-of-type {
     margin-bottom: 0 !important;
+  }
+  .field_with_errors {
+    .form-control {
+      border-color: $danger !important;
+    }
   }
   .form-control,
   .flatpickr-input {
@@ -188,12 +192,6 @@ $font-family-display: 'Asar';
   }
   .dropzone {
     background-color: $gray-700;
-  }
-  .field_with_errors {
-    .form-control,
-    .form-control-* {
-      border-color: $danger;
-    }
   }
 }
 
