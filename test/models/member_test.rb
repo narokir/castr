@@ -33,10 +33,14 @@
 #  index_members_on_email                 (email) UNIQUE
 #  index_members_on_reset_password_token  (reset_password_token) UNIQUE
 #
-require 'test_helper'
+require "test_helper"
 
 class MemberTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  def setup
+    @member = Member.new(email: "unique@botmail.com", password: "password", password_confirmation: "password")
+  end
+
+  test "should be valid" do
+    assert @member.valid?
+  end
 end

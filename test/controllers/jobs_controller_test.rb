@@ -1,7 +1,9 @@
-require 'test_helper'
+require "test_helper"
 
 class JobsControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers # Rails >= 5
   setup do
+    #sign_in members(:one)
     @job = jobs(:one)
   end
 
@@ -16,8 +18,8 @@ class JobsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create job" do
-    assert_difference('Job.count') do
-      post jobs_url, params: { job: { company_name: @job.company_name, listing_expires: @job.listing_expires, member_id: @job.member_id, payment: @job.payment, payment_detials: @job.payment_detials, shoot_date: @job.shoot_date, shoot_location: @job.shoot_location, special_instructions: @job.special_instructions, title: @job.title, union_status: @job.union_status, url: @job.url } }
+    assert_difference("Job.count") do
+      post jobs_url, params: { job: { company_name: @job.company_name, listing_expires: @job.listing_expires, member_id: @job.member_id, payment: @job.payment, payment_details: @job.payment_details, shoot_start_date: @job.shoot_start_date, shoot_end_date: @job.shoot_end_date, shoot_location: @job.shoot_location, special_instructions: @job.special_instructions, title: @job.title, union_status: @job.union_status, url: @job.url } }
     end
 
     assert_redirected_to job_url(Job.last)
@@ -34,12 +36,12 @@ class JobsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update job" do
-    patch job_url(@job), params: { job: { company_name: @job.company_name, listing_expires: @job.listing_expires, member_id: @job.member_id, payment: @job.payment, payment_detials: @job.payment_detials, shoot_date: @job.shoot_date, shoot_location: @job.shoot_location, special_instructions: @job.special_instructions, title: @job.title, union_status: @job.union_status, url: @job.url } }
+    patch job_url(@job), params: { job: { company_name: @job.company_name, listing_expires: @job.listing_expires, member_id: @job.member_id, payment: @job.payment, payment_details: @job.payment_details, shoot_start_date: @job.shoot_start_date, shoot_end_date: @job.shoot_end_date, shoot_location: @job.shoot_location, special_instructions: @job.special_instructions, title: @job.title, union_status: @job.union_status, url: @job.url } }
     assert_redirected_to job_url(@job)
   end
 
   test "should destroy job" do
-    assert_difference('Job.count', -1) do
+    assert_difference("Job.count", -1) do
       delete job_url(@job)
     end
 

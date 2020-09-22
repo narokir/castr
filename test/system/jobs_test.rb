@@ -18,8 +18,8 @@ class JobsTest < ApplicationSystemTestCase
     fill_in "Listing expires", with: @job.listing_expires
     fill_in "Member", with: @job.member_id
     fill_in "Payment", with: @job.payment
-    fill_in "Payment detials", with: @job.payment_detials
-    fill_in "Shoot date", with: @job.shoot_date
+    fill_in "Payment details", with: @job.payment_details
+    fill_in "Shoot date", with: @job.shoot_start_date
     fill_in "Shoot location", with: @job.shoot_location
     fill_in "Special instructions", with: @job.special_instructions
     fill_in "Title", with: @job.title
