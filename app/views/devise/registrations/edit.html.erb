@@ -7,14 +7,12 @@
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name),local: true, multipart: true, html: { method: :put }) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
 
-
         <div class="row mb-5">
           <div class="col-md-4">
             <%= image_tag current_member.profile_image , class:"img-fluid rounded mx-auto w-100" if current_member.profile_image.attached? %>
             <%# link_to('Delete Photo',  member_registration_path,{ controller: "registrations", action: "delete_profile_foto" }, class:"btn btn-sm btn-secondary") %>
           </div>
         </div>
-
 
         <div class="form-group input-group-lg">
           <%= f.label :profile_image %>
@@ -26,8 +24,6 @@
           </div>
           </div>
         </div>
-
- 
       
         <div class="form-group input-group-lg">
           <%= f.label :first_name %><br />
@@ -62,8 +58,7 @@
           <%= f.label :password_confirmation %><br />
           <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control'  %>
         </div>
-      
-      
+       
       <%# if current_member.provider.nil?%>
         <div class="form-group input-group-lg">
           <%= f.label :current_password %>
@@ -100,8 +95,6 @@
       <h5>Delete my account</h5>
       
       <p>Once deleted, your account is gone forever.<%= button_to "Delete your account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-outline-danger" %></p>
-      
-
 			</div>
 		</div>
 	</div>

@@ -1,4 +1,4 @@
-<%= form_with(model: job, local: true, multipart: true, id:'edit-job') do |f| %>
+<%= form_with(model: job, local: true, multipart: true, id:'job-form') do |f| %>
   <% if job.errors.any? %>
     <div id="error_explanation" class="alert alert-danger bg-action">
       <h4>Hey check the form</h4>
@@ -10,21 +10,6 @@
     </div>
   <% end %>
 
-  <% if f.object.production_image.attached? %>
-  <%= image_tag f.object.production_image, class: 'image-fluid w-50' %>
-  <% end %>
-
-  <div class="form-group input-group-lg">
-    <%= f.label :production_image %>
-    <div class="dropzone dropzone-default dz-clickable " data-controller="dropzone" data-dropzone-max-file-size="1" data-dropzone-max-files="2">
-      <%= f.file_field :production_image, direct_upload: true, data: { target: 'dropzone.input' } %>
-    <div class="dropzone-msg dz-message needsclick ">
-      <p class="dropzone-msg-title">Drag image here to start upload or tap to browse</p>
-      <span class="dropzone-msg-desc small text-muted">2 MB file size maximum. Allowed file types png, jpg.</span>
-    </div>
-    </div>
-  </div>
-
  <div class="form-group input-group-lg">
     <%= f.label :title %>
     <%= f.text_field :title, class:'form-control' %>
@@ -33,7 +18,7 @@
   <div class="form-group input-group-lg">
     <%= f.label :description %>
     <%# f.rich_text_area :description, class: 'form-control' %>
-    <%= f.text_area :description, class: 'form-control' %>
+    <%= f.text_area :description, rows: 8, class: 'form-control' %>
   </div>
   
   <div class="form-group input-group-lg">
@@ -66,8 +51,8 @@
   </div>
 
   <div class="form-group input-group-lg">
-    <%= f.label :payment_detials %>
-    <%= f.text_area :payment_detials, class: 'form-control' %>
+    <%= f.label :payment_details %>
+    <%= f.text_area :payment_details, rows: 5, class: 'form-control' %>
   </div>
 
   <div class="form-group input-group-lg">
@@ -78,16 +63,13 @@
   <div class="form-group mb-3">
     <%= f.label "Shoot dates" %>
     <div class="input-group input-group-lg">
-      <%= f.text_field :shoot_start_date, class:'form-control', data: {behavior: 'flatpickr'} %>
-      <div class="input-group-prepend">
-        <span class="input-group-text bg-light border-0">to</span>
+      <%= f.text_field :shoot_start_date, class:'form-control flatpickr-input', data: {behavior: 'flatpickr'}, placeholder: "Start Date" %>
+      <div class="input-group-prepend input-group-append">
+        <span class="input-group-text bg-light">to</span>
       </div>
-      <%= f.text_field :shoot_end_date, class:'form-control', data: {behavior: 'flatpickr'} %>
+      <%= f.text_field :shoot_end_date, class:'form-control flatpickr-input', data: {behavior: 'flatpickr'}, placeholder: "End Date" %>
     </div>
   </div>
-
-  
-
 
   <div class="form-group input-group-lg">
     <%= f.label :special_instructions %>
@@ -96,7 +78,22 @@
 
   <div class="form-group input-group-lg">
     <%= f.label :listing_expires %>
-    <%= f.text_field :listing_expires, data: {behavior: 'flatpickr'}, class: 'form-control date-field' %>
+    <%= f.text_field :listing_expires, data: {behavior: 'flatpickr'}, class: 'form-control flatpickr-input' %>
+  </div>
+
+  <% if f.object.production_image.attached? %>
+  <%= image_tag f.object.production_image, class: 'image-fluid w-50' %>
+  <% end %>
+
+  <div class="form-group input-group-lg">
+    <%= f.label :production_image %>
+    <div class="bg-light rounded dropzone dropzone-default dz-clickable " data-controller="dropzone" data-dropzone-max-file-size="2" data-dropzone-max-files="1">
+      <%= f.file_field :production_image, direct_upload: true, data: { target: 'dropzone.input' } %>
+    <div class="dropzone-msg dz-message needsclick ">
+      <p class="dropzone-msg-title">Drag image here to start upload or tap to browse</p>
+      <span class="dropzone-msg-desc small text-muted">2 MB file size maximum. Allowed file types png, jpg.</span>
+    </div>
+    </div>
   </div>
 
   <div class="form-group input-group-lg">

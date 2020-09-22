@@ -26,6 +26,7 @@ class JobsController < ApplicationController
 
     respond_to do |format|
       if @job.save
+        @job.production_image.attach(params[:production_image])
         format.html { redirect_to @job, notice: "Job was successfully created." }
         format.json { render :show, status: :created, location: @job }
       else
@@ -118,7 +119,7 @@ class JobsController < ApplicationController
       :url,
       :union_status,
       :payment,
-      :payment_detials,
+      :payment_details,
       :shoot_start_date,
       :shoot_end_date,
       :shoot_location,

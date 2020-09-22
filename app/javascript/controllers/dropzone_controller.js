@@ -8,6 +8,7 @@ import {
   removeElement,
   insertAfter,
 } from 'helpers';
+import { event } from 'jquery';
 
 export default class extends Controller {
   static targets = ['input'];

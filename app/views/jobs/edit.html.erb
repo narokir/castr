@@ -7,7 +7,7 @@
     </div>
 
     <% if author_of(@job) || admin? %>
-      <div class="col-md-4 pr-md-0">
+      <div class="col-md-4 pr-md-0 d-none d-md-block">
         <div class="card shadow-sm">
           <h5 class="card-header">Edit Listing</h5>
           <div class="card-body">
@@ -15,7 +15,7 @@
             <% published?(@job) %><p>Status: <span id='status', class='text-<%=@class%>'><%= @status %></span></p>
              <div class="form-group input-group-lg">
               <div class="actions">
-                <input type="submit" class="btn btn-lg btn-success" value="Update" form="edit-job">
+                <input type="submit" class="btn btn-lg btn-success" value="Update" form="job-form">
               </div>
             </div>
             

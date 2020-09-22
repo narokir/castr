@@ -24,7 +24,7 @@
       <% end %>
 
       <p class="small">Posted by: <%= @job.member.first_name %>
-      <span class= "text-muted small">Listing expires: <%= @job.listing_expires.strftime('%b %d, %Y') %></span></p>
+      <span class= "text-muted small">Listing expires: <%= @job.listing_expires %></span></p>
     </div>
 
     <% if author_of(@job) || admin? %>

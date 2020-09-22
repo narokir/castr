@@ -8,7 +8,7 @@
 #  featured             :boolean          default(FALSE)
 #  listing_expires      :datetime
 #  payment              :string
-#  payment_detials      :text
+#  payment_details      :text
 #  published            :boolean          default(FALSE)
 #  shoot_end_date       :datetime
 #  shoot_location       :string
@@ -61,7 +61,7 @@ class Job < ApplicationRecord
   def acceptable_image
     return unless production_image.attached?
     errors.add(:production_image, "is nil") if production_image.attached?.nil?
-    errors.add(:production_image, "is too big") unless production_image.byte_size <= 5.megabyte
+    errors.add(:production_image, "is too big") unless production_image.byte_size <= 3.megabyte
     acceptable_types = ["image/jpeg", "image/png"]
     errors.add(:production_image, "must be JPEG or PNG") unless acceptable_types.include?(production_image.content_type)
   end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_23_211947) do
+ActiveRecord::Schema.define(version: 2020_09_22_023116) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2020_08_23_211947) do
     t.string "url"
     t.string "union_status"
     t.string "payment"
-    t.text "payment_detials"
+    t.text "payment_details"
     t.datetime "shoot_start_date"
     t.datetime "shoot_end_date"
     t.boolean "featured", default: false

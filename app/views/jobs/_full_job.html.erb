@@ -16,7 +16,7 @@
   <p> <span>Dates & Location:</span><br>
   <%= @job.shoot_start_date.strftime('%b %d') %> - <%= @job.shoot_end_date.strftime('%b %d') %> in <%= @job.shoot_location %></p>
   <p><%= @job.url %></p>
-  <p><%= @job.payment_detials %></p>
+  <p><%= @job.payment_details %></p>
   <%= image_tag(@job.production_image, class:'img-fluid w-100') if @job.production_image.attached? %>
 
   </div>

@@ -8,7 +8,7 @@
 #  featured             :boolean          default(FALSE)
 #  listing_expires      :datetime
 #  payment              :string
-#  payment_detials      :text
+#  payment_details      :text
 #  published            :boolean          default(FALSE)
 #  shoot_end_date       :datetime
 #  shoot_location       :string
