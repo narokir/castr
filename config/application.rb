@@ -1,7 +1,5 @@
-require_relative 'boot'
-
-require 'rails/all'
-
+require_relative "boot"
+require "rails/all"
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
@@ -10,6 +8,9 @@ module Castr
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
+
+    # Ingore these Devise paths when persisting path through session
+    config.ignored_paths = %W(/members/sign_in /members/sign_up /members/password /members/sign_out /members/confirm_password)
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
