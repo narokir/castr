@@ -42,8 +42,6 @@ class Job < ApplicationRecord
   validate :acceptable_image
   validates :title, presence: true
   validates :description, presence: true
-  validates :shoot_start_date, presence: true
-  validates :shoot_end_date, presence: true
   validates :shoot_location, presence: true
 
   # SCOPES
