@@ -1,10 +1,10 @@
 class ApplicationController < ActionController::Base
   # protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :persist_path, :authenticate_member!
+  before_action :persist_paths, :authenticate_member!
 
   def after_sign_out_path_for(member)
-    goodbye_path
+    root_path
   end
 
   def after_sign_in_path_for(resource)
@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def persist_path
+  def persist_paths
     unless Rails.configuration.ignored_paths.include?(request.path) || request.xhr?
       session[:last_visited_path] = request.path
     end

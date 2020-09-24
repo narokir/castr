@@ -73,24 +73,20 @@ class Member < ApplicationRecord
   end
 
   # def password_required?
-  #   provider.blank?
+  #   new_record? || password.present? || password_confirmation.present?
   # end
 
-  def password_required?
-    new_record? || password.present? || password_confirmation.present?
-  end
-
   # Overwrite devise update without password method
-  def update_without_password(params)
-    if provider.nil?
-      params.delete(:current_password)
-      #   if params[:password].blank?
-      #     params.delete(:password)
-      #     params.delete(:password_confirmation) if params[:password_confirmation].blank?
-    end
+  # def update_without_password(params)
+  #   if provider.nil?
+  #     params.delete(:current_password)
+  #     #   if params[:password].blank?
+  #     #     params.delete(:password)
+  #     #     params.delete(:password_confirmation) if params[:password_confirmation].blank?
+  #   end
 
-    result = update_attributes(params)
-    clean_up_passwords
-    result
-  end
+  #   result = update_attributes(params)
+  #   clean_up_passwords
+  #   result
+  # end
 end

@@ -10,7 +10,7 @@
       </div>
       <p><span class="text-secondary">Union Status: </span><%= @job.union_status %></p>
       <p><span class="text-secondary">Shoot dates & Location:</span><br>
-      <%= @job.shoot_start_date.to_s() %> - <%= @job.shoot_end_date.to_s() %> in <%= @job.shoot_location %></p>
+      <%= @job.shoot_start_date %> - <%= @job.shoot_end_date %> in <%= @job.shoot_location %></p>
       <hr>
       <p><span class="text-secondary">Special Instructions:</span><br><%= @job.special_instructions %></p>
 
