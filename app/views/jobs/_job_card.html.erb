@@ -8,10 +8,10 @@
       <% end %>
       <%= link_to job.title, job_path(job), remote: true, class:'text-reset stretched-link', id:'remote' %>
       </h6>
-      <p class="text-muted small mb-0">Union Status: <%= job.union_status %></p>
-      <p class="text-muted small mb-1">Shoots: <%= job.shoot_start_date.strftime('%b %d') %> - <%= job.shoot_end_date.strftime('%b %d') %> in <%= job.shoot_location %></p>
+      <p class="card-text small"><span class="text-muted">Posted by:</span> <%= job.member.first_name %> <span class="  text-muted">  <%= time_ago_in_words(job.created_at) %> ago</span></p>
       <p class="card-text">$ <%= job.payment %></p>
-      <div class="card-text small"><span class="small text-muted">Posted <%= time_ago_in_words(job.created_at) %> ago</span></div>
+      <p class="text-muted small mb-0">Union Status: <%= job.union_status %></p>
+      <p class="text-muted small mb-1">Shoots: <%= job.shoot_start_date %> - <%= job.shoot_end_date %> in <%= job.shoot_location %></p>
     </div>
     <div class="card-body d-sm-none" style="transform: rotate(0);">
       <%= link_to('Details', job_path(job),class:'btn btn-primary stretched-link btn-lg ') %>
