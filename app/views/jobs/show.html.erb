@@ -14,8 +14,9 @@
       <hr>
       <p><span class="text-secondary">Special Instructions:</span><br><%= @job.special_instructions %></p>
 
-      <div class="">
-        <%= image_tag(@job.production_image, class:'img-fluid w-100') if @job.production_image.attached? %>
+      <div class="job-image">
+        <%= image_tag(@job.production_image.variant(resize_to_limit: [2000,2000]),class:"img-fluid w-100 rounded") if @job.production_image.attached? %>
+        <%# link_to('Remove Photo', remove_attachment_job_path, method: :patch, remote: true, class:"") if @job.production_image.attached? %>
       </div>
       <% if @job.company_name.present? %>
         <p><span class="text-secondary">Production Details:</span><br>
@@ -32,7 +33,7 @@
         <div class="card shadow-sm">
           <h5 class="card-header">Manage Listing</h5>
           <div class="card-body">
-          <p class="small">Created on: <%= @job.created_at.strftime('%b %d, %Y') %></p>
+          <p class="small">Created on: <%= @job.created_at %></p>
             <% published?(@job) %><p>Status: <span id='status', class='text-<%=@class%>'><%= @status %></span></p>
             <div class="btn-group mb-4">
               <% if !@job.published? %>

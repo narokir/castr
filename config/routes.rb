@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       put :publish
       put :unpublish
       put :apply
+      patch :remove_attachment
     end
   end
 

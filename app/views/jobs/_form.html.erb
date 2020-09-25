@@ -81,19 +81,22 @@
     <%= f.text_field :listing_expires, data: {behavior: 'flatpickr'}, class: 'form-control flatpickr-input' %>
   </div>
 
-  <% if f.object.production_image.attached? %>
-  <%= image_tag f.object.production_image, class: 'image-fluid w-50' %>
-  <% end %>
-
   <div class="form-group input-group-lg">
     <%= f.label :production_image %>
-    <div class="bg-light rounded dropzone dropzone-default dz-clickable " data-controller="dropzone" data-dropzone-max-file-size="2" data-dropzone-max-files="1">
-      <%= f.file_field :production_image, direct_upload: true, data: { target: 'dropzone.input' } %>
-    <div class="dropzone-msg dz-message needsclick ">
-      <p class="dropzone-msg-title">Drag image here to start upload or tap to browse</p>
-      <span class="dropzone-msg-desc small text-muted">2 MB file size maximum. Allowed file types png, jpg.</span>
-    </div>
-    </div>
+    <% unless @job.production_image.attached? %>
+      <div class="bg-light rounded dropzone dropzone-default dz-clickable " data-controller="dropzone" data-dropzone-max-file-size="2" data-dropzone-max-files="1">
+        <%= f.file_field :production_image, direct_upload: true, data: { target: 'dropzone.input' } %>
+        <div class="dropzone-msg dz-message needsclick ">
+          <p class="dropzone-msg-title">Drag image here to start upload or tap to browse</p>
+          <span class="dropzone-msg-desc small text-muted">2 MB file size maximum. Allowed file types png, jpg.</span>
+        </div>
+      </div>
+    <% else %>
+      <div class="job-image">
+      <%= image_tag(@job.production_image.variant(resize_to_limit: [800,800]),class:"img-fluid w-100 rounded") %>
+      <%= link_to('Remove Photo', remove_attachment_job_path, method: :patch, remote: true, class:"") %>
+      </div>
+    <% end %>
   </div>
 
   <div class="form-group input-group-lg">

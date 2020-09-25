@@ -98,6 +98,20 @@ class JobsController < ApplicationController
     end
   end
 
+  def remove_attachment
+    @job = Job.find(params[:id])
+    #@job.production_image.purge
+    respond_to do |format|
+      if @job.update(production_image: nil)
+        format.js { }
+        # format.html { render :edit, notice: "Image removed" }
+      else
+        format.html { render :edit }
+        format.json { render json: @job.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
