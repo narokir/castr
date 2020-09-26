@@ -21,6 +21,26 @@
     <%= f.text_area :description, rows: 8, class: 'form-control' %>
   </div>
 
+  <div class="form-group input-group-lg">
+    <%= f.label :production_image %>
+    <% unless @job.production_image.attached? %>
+      <div class="bg-light rounded dropzone dropzone-default dz-clickable " data-controller="dropzone" data-dropzone-max-file-size="2" data-dropzone-max-files="1">
+        <%= f.file_field :production_image, direct_upload: true, data: { target: 'dropzone.input' } %>
+        <div class="dropzone-msg dz-message needsclick ">
+          <p class="dropzone-msg-title">Drag image here to start upload or tap to browse</p>
+          <span class="dropzone-msg-desc small text-muted">2 MB file size maximum. Allowed file types png, jpg.</span>
+        </div>
+      </div>
+    <% else %>
+      <div class="job-image">
+      <%= image_tag(@job.production_image.variant(resize_to_limit: [800,800]),class:"img-fluid w-100 rounded") %>
+      <%= link_to('Remove Photo', remove_attachment_job_path, method: :patch, remote: true, class:"") %>
+      </div>
+    <% end %>
+  </div>
+
+  <h2 class="mt-5">Dates and Location</h2>
+
   <div class="form-group mb-3">
     <%= f.label "Shoot dates" %>
     <div class="input-group input-group-lg">
@@ -37,18 +57,13 @@
     <%= f.select :shoot_location, Job::LOCATION,{ include_blank: "Select" }, class: 'form-control custom-select' %>
   </div>
 
-  <div class="form-group input-group-lg">
-    <%= f.label "Submission instructions" %>
-    <%= f.text_area :special_instructions, class: 'form-control' %>
-  </div>
-
-  <hr class="bg-light">
+ <h2 class="mt-5">Compensation</h2>
 
   <div class="form-row">
     <div class="col">
       <div class="form-group input-group-lg">
         <%= f.label :union_status %>
-        <%= f.select :union_status, Job::UNION_STATUS,{ include_blank: true }, class: 'form-control custom-select' %>
+        <%= f.select :union_status, Job::UNION_STATUS,{ include_blank: "Select" }, class: 'form-control custom-select' %>
       </div>
     </div>
   
@@ -68,7 +83,7 @@
     <%= f.text_area :payment_details, rows: 5, class: 'form-control' %>
   </div>
 
-  <hr class="bg-light">
+  <h2 class="mt-5">Production Details</h2>
   
   <div class="form-group input-group-lg">
     <%= f.label "Production name" %>
@@ -80,27 +95,16 @@
     <%= f.url_field :url, class: 'form-control' %>
   </div>
 
-  <div class="form-group input-group-lg">
-    <%= f.label :listing_expires %>
-    <%= f.text_field :listing_expires, data: {behavior: 'flatpickr'}, class: 'form-control flatpickr-input' %>
-  </div>
+  <h2 class="mt-5">Submissions</h2>
 
   <div class="form-group input-group-lg">
-    <%= f.label :production_image %>
-    <% unless @job.production_image.attached? %>
-      <div class="bg-light rounded dropzone dropzone-default dz-clickable " data-controller="dropzone" data-dropzone-max-file-size="2" data-dropzone-max-files="1">
-        <%= f.file_field :production_image, direct_upload: true, data: { target: 'dropzone.input' } %>
-        <div class="dropzone-msg dz-message needsclick ">
-          <p class="dropzone-msg-title">Drag image here to start upload or tap to browse</p>
-          <span class="dropzone-msg-desc small text-muted">2 MB file size maximum. Allowed file types png, jpg.</span>
-        </div>
-      </div>
-    <% else %>
-      <div class="job-image">
-      <%= image_tag(@job.production_image.variant(resize_to_limit: [800,800]),class:"img-fluid w-100 rounded") %>
-      <%= link_to('Remove Photo', remove_attachment_job_path, method: :patch, remote: true, class:"") %>
-      </div>
-    <% end %>
+    <%= f.text_area :special_instructions, class: 'form-control', placeholder:"Special instructionns or requirements for submitting" %>
+  </div>
+
+<hr class="bg-light">
+  <div class="form-group input-group-lg">
+    <%= f.label :listing_expires %>
+    <%= f.text_field :listing_expires, data: {behavior: 'flatpickr'}, class: 'form-control flatpickr-input', placeholder:"Set date when this listing should be removed." %>
   </div>
 
   <div class="form-group input-group-lg">

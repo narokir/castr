@@ -12,17 +12,17 @@ class JobsTest < ApplicationSystemTestCase
   end
 
   test "creating a Job" do
-    visit root_path
     sign_in members(:one)
-    click_on "Post New Casting Notice"
-    select("Albuquerque", from: "Shoot location")
+    visit jobs_url
+    click_on "Post a Casting Call"
+    select("Albuquerque", from: "job[shoot_location]")
     find_field("Start Date").set("2020-09-01")
     find_field("End Date").set("2020-09-01")
-    fill_in "Title", with: @job.title
+    fill_in "job[title]", with: @job.title
     fill_in "Description", with: @job.description
     fill_in "Payment", with: @job.payment
     fill_in "Payment details", with: @job.payment_details
-    fill_in "Special instructions", with: @job.special_instructions
+    fill_in "job[special_instructions]", with: @job.special_instructions
     click_on "Create Job"
 
     assert_text "Job was successfully created"
@@ -33,11 +33,11 @@ class JobsTest < ApplicationSystemTestCase
     sign_in members(:one)
     visit job_url(@job)
     click_on "Edit", match: :first
-    fill_in "Title", with: @job.title
+    fill_in "job[title]", with: "editing title"
     fill_in "Description", with: @job.description
     fill_in "Payment", with: @job.payment
     fill_in "Payment details", with: @job.payment_details
-    fill_in "Special instructions", with: @job.special_instructions
+    fill_in "job[special_instructions]", with: @job.special_instructions
     click_on "Update Job"
 
     assert_text "Job was successfully updated"
