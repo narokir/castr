@@ -34,7 +34,7 @@
           <h5 class="card-header">Manage Listing</h5>
           <div class="card-body">
           <p class="small">Created on: <%= @job.created_at %></p>
-            <% published?(@job) %><p>Status: <span id='status', class='text-<%=@class%>'><%= @status %></span></p>
+            <% published?(@job) %><p>Status: <span id='status', class='badge bg-<%=@class%>'><%= @status %></span></p>
             <div class="btn-group mb-4">
               <% if !@job.published? %>
                 <%= link_to('Publish', publish_job_path(@job), remote: true, method: :put, class:"btn btn-sm btn-outline-secondary") %>
