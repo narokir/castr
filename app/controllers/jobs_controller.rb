@@ -1,6 +1,5 @@
 class JobsController < ApplicationController
   before_action :fetch_job, only: [:publish, :unpublish, :apply, :show, :edit, :update, :destroy]
-  #before_action :set_job, only: %i[show edit update destroy]
   before_action :authenticate_member!, except: %i[index show search]
 
   def index
@@ -16,9 +15,11 @@ class JobsController < ApplicationController
 
   def new
     @job = Job.new
+    2.times { @job.roles.build }
   end
 
-  def edit; end
+  def edit
+  end
 
   def create
     @job = Job.new(job_params)
@@ -115,10 +116,6 @@ class JobsController < ApplicationController
   private
 
   # Use callbacks to share common setup or constraints between actions.
-  def set_job
-    @job = Job.find(params[:id])
-  end
-
   def fetch_job
     @job = Job.find(params.require(:id))
   end
@@ -139,7 +136,9 @@ class JobsController < ApplicationController
       :shoot_location,
       :special_instructions,
       :member_id,
-      :production_image
+      :production_image,
+      :pay_interval,
+      roles_attributes: [:id, :role_name, :role_description, :_destroy],
     )
   end
 end

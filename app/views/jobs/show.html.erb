@@ -1,31 +1,39 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col bg-light shadow-sm rounded" style="max-width: 600px;">
-      <p class="align-text-top py-4 mb-0"><%= icon("chevron-left", class: "text-info align-middle") %><%= link_to 'Back', :back %></p>
-      <div class="border-bottom mb-3 bg-light pb-4">
-        <h3 class=""><%= @job.title %></h1>
-      <p><%= @job.description %></p>
-      <p><span class="text-secondary">Payment: </span>  <%= @job.payment %><br><%= @job.payment_details %></p>
-        <%= link_to 'Apply Now', apply_job_path, method: :put, class:'btn btn-success ' %>
-      </div>
-      <p><span class="text-secondary">Union Status: </span><%= @job.union_status %></p>
-      <p><span class="text-secondary">Shoot dates & Location:</span><br>
-      <%= @job.shoot_start_date %> - <%= @job.shoot_end_date %> in <%= @job.shoot_location %></p>
-      <hr>
-      <p><span class="text-secondary">Special Instructions:</span><br><%= @job.special_instructions %></p>
+    <div class="col">
+      <div class="bg-light shadow-sm rounded p-5">
+        <p class="align-text-top py-4 mb-0"><%= icon("chevron-left", class: "text-info align-middle") %><%= link_to 'Back', :back %></p>
+        <div class="border-bottom mb-3 bg-light pb-4">
+          <h3 class=""><%= @job.title %></h1>
+        <p><%= @job.description %></p>
 
-      <div class="job-image">
-        <%= image_tag(@job.production_image.variant(resize_to_limit: [2000,2000]),class:"img-fluid w-100 rounded") if @job.production_image.attached? %>
-        <%# link_to('Remove Photo', remove_attachment_job_path, method: :patch, remote: true, class:"") if @job.production_image.attached? %>
+        <h3>Roles</h3>
+        <% @job.roles.each do |job| %>
+          <p><%= job.role_name %></p>
+          <p><%= job.role_description %></p>
+        <% end %>
+        <p><span class="text-secondary">Payment: </span>  $<%= @job.payment %>/<%= @job.pay_interval %><br><%= @job.payment_details %></p>
+          <%= link_to 'Apply Now', apply_job_path, method: :put, class:'btn btn-success ' %>
+        </div>
+        <p><span class="text-secondary">Union Status: </span><%= @job.union_status %></p>
+        <p><span class="text-secondary">Shoot dates & Location:</span><br>
+        <%= @job.shoot_start_date %> - <%= @job.shoot_end_date %> in <%= @job.shoot_location %></p>
+        <hr>
+        <p><span class="text-secondary">Special Instructions:</span><br><%= @job.special_instructions %></p>
+  
+        <div class="job-image">
+          <%= image_tag(@job.production_image.variant(resize_to_limit: [2000,2000]),class:"img-fluid w-100 rounded") if @job.production_image.attached? %>
+          <%# link_to('Remove Photo', remove_attachment_job_path, method: :patch, remote: true, class:"") if @job.production_image.attached? %>
+        </div>
+        <% if @job.company_name.present? %>
+          <p><span class="text-secondary">Production Details:</span><br>
+          <%= @job.company_name %><br>
+          <%= @job.url %></p>
+        <% end %>
+  
+        <p class="small">Posted by: <%= @job.member.first_name %>
+        <span class= "text-muted small">Listing expires: <%= @job.listing_expires %></span></p>
       </div>
-      <% if @job.company_name.present? %>
-        <p><span class="text-secondary">Production Details:</span><br>
-        <%= @job.company_name %><br>
-        <%= @job.url %></p>
-      <% end %>
-
-      <p class="small">Posted by: <%= @job.member.first_name %>
-      <span class= "text-muted small">Listing expires: <%= @job.listing_expires %></span></p>
     </div>
 
     <% if author_of(@job) || admin? %>

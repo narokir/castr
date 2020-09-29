@@ -8,7 +8,7 @@
     </h6>
     <p class="card-text small"><span class="text-muted">Posted by:</span> <%= job.member.first_name %> <span class="  text-muted">  <%= time_ago_in_words(job.created_at) %> ago</span></p>
     <p class="text-muted small mb-0">Union Status: <%= job.union_status %></p>
-    <p class="text-muted small">Shoots: <%= job.shoot_start_date.strftime('%b %d') %> - <%= job.shoot_end_date.strftime('%b %d') %> in <%= job.shoot_location %></p>
+    <p class="text-muted small">Shoots: <%= job.shoot_start_date %> - <%= job.shoot_end_date %> in <%= job.shoot_location %></p>
     <p class="card-text font-weight-light"><%= truncate(job.description, :ommision => "... Read More", :length => 150) %></p>
     <p class="card-text font-weight-bold">$<%= job.payment %></p>
     <p class="card-text">

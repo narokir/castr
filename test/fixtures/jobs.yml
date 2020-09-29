@@ -7,6 +7,7 @@
 #  description          :text
 #  featured             :boolean          default(FALSE)
 #  listing_expires      :datetime
+#  pay_interval         :string
 #  payment              :string
 #  payment_details      :text
 #  published            :boolean          default(FALSE)

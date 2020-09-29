@@ -15,13 +15,14 @@ class JobsTest < ApplicationSystemTestCase
     sign_in members(:one)
     visit jobs_url
     click_on "Post a Casting Call"
-    select("Albuquerque", from: "job[shoot_location]")
-    find_field("Start Date").set("2020-09-01")
-    find_field("End Date").set("2020-09-01")
     fill_in "job[title]", with: @job.title
-    fill_in "Description", with: @job.description
-    fill_in "Payment", with: @job.payment
-    fill_in "Payment details", with: @job.payment_details
+    fill_in "job[description]", with: @job.description
+    # find_field("job[shoot_start_date]").set("2020-09-01")
+    # find_field("job[shoot_end_date]").set("2020-09-01")
+    select("Albuquerque", from: "job[shoot_location]")
+    fill_in "job[payment]", with: @job.payment
+    select("Day", from: "job[pay_interval]")
+    fill_in "job[payment_details]", with: @job.payment_details
     fill_in "job[special_instructions]", with: @job.special_instructions
     click_on "Create Job"
 

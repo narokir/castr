@@ -1,9 +1,11 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col bg-light shadow-sm rounded pb-3" style="max-width: 600px;">
-      <p class="align-text-top py-4 mb-0"><%= icon("chevron-left", class: "text-info align-middle") %><%= link_to 'Back', :back %></p>
-      <%= render 'form', job: @job %>
-      <%= link_to 'Show Listing', @job %>
+    <div class="col">
+      <div class="bg-light shadow-sm rounded p-5">
+        <p class="align-text-top py-4 mb-0"><%= icon("chevron-left", class: "text-info align-middle") %><%= link_to 'Back', :back %></p>
+        <%= render 'form', job: @job %>
+        <%= link_to 'Show Listing', @job %>
+      </div>
     </div>
 
     <% if author_of(@job) || admin? %>

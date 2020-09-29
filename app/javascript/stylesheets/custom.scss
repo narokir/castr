@@ -7,6 +7,8 @@ $enable-validation-icons: true;
 $enable-responsive-font-sizes: true !default;
 $enable-shadows: true;
 
+$grid-gutter-width: 15px !default;
+
 $theme-colors: (
   'primary': darken(#3caaff, 6.5%),
   'danger': hsl(345, 88%, 52%),
@@ -51,6 +53,7 @@ $success: rgb(0, 188, 157);
 $border-radius: 0.2rem;
 
 // inputs //
+//$input-bg: $white;
 $input-focus-color: $cyan;
 $input-focus-border-color: $success;
 $input-transition: border-color 0.15s;

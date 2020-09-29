@@ -1,8 +1,8 @@
 <section id="hero">
 	<% content_for :jumbotron do %>
 		<div class="jumbotron jumbotron-fluid">
-			<div class="container text-center">
-				<h1 class ="">Find Background Acting Jobs<br> in New Mexico</h1>
+			<div class="container-fluid text-center">
+				<h1 class ="display-1">Find Background Acting Jobs<br> in New Mexico</h1>
 				<% unless member_signed_in? %>
 				<p class="text-center">
 					<%= link_to 'Sign in',new_member_session_path, class:'btn btn-primary'%>
@@ -17,8 +17,8 @@
 </section>
 
 <section id="casting_calls" class="content">
-	<div class="container" style="max-width: 800px;">
-		<div class="row justify-content-center">
+	<div class="container">
+		<div class="row justify-content-center g-0">
 			<div class="col-12 mb-3 p-md-0">
 				<%= render 'layouts/search-form' %>
 			</div>
@@ -26,9 +26,11 @@
 				<%= render partial: 'jobs/job_card', object: @jobs %>
 				<%# render @jobs %>
 			</div>
-			<div class="col-md-7 bg-light shadown-sm rounded ">
-				<div id="job-details" class="pt-3">
-					Signup to get updates about local productions and casting calls
+			<div class="col-md-7">
+				<div class="bg-light bg-light shadown-sm rounded vh-100">
+					<div id="job-details" class="p-3">
+						<p>Signup to get updates about local productions and casting calls</p>
+					</div>
 				</div>
 			</div>
 		</div>

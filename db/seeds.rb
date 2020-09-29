@@ -10,6 +10,7 @@ p "Deleting all Members"
 Member.delete_all
 p "Deleting all Jobs"
 Job.delete_all
+Role.delete_all
 
 castr = Member.new(email: "castr1@botmail.com", password: "password", password_confirmation: "password", first_name: "castr1", last_name: "castr1lastname", admin: false, talent: false, castr: true)
 castr.save!
@@ -21,13 +22,14 @@ talent = Member.new(email: "talent1@botmail.com", password: "password", password
 talent.save!
 p "Created talent"
 
-3.times do |index|
+2.times do |index|
   job = Job.create!(
     title: Faker::Movie.title,
     company_name: Faker::Company.name,
     description: Faker::Lorem.paragraph(sentence_count: 9, supplemental: false, random_sentences_to_add: 4),
     union_status: "SAG",
-    payment: "$125/day",
+    payment: "10",
+    pay_interval: "Hour",
     shoot_location: "Albuquerque",
     payment_details: Faker::Lorem.paragraph(sentence_count: 4),
     shoot_start_date: Faker::Date.forward(days: 13),
@@ -38,31 +40,34 @@ p "Created talent"
   )
   job.save
 end
-3.times do |index|
+2.times do |index|
   job = Job.create!(
     title: Faker::Movie.title,
     company_name: Faker::Company.name,
     description: Faker::Lorem.paragraph(sentence_count: 9, supplemental: false, random_sentences_to_add: 4),
     union_status: "Nonunion",
-    payment: "$92/8",
+    payment: "125",
+    pay_interval: "Day",
     shoot_location: "Santa Fe",
     payment_details: Faker::Lorem.paragraph(sentence_count: 4),
     shoot_start_date: Faker::Date.forward(days: 23),
     shoot_end_date: Faker::Date.forward(days: 23),
     listing_expires: Faker::Date.forward(days: 43),
+    published: true,
     member_id: admin.id,
     featured: true,
     # main_image: Faker::LoremPixel.image(size: "300x300"),
   )
   job.save
 end
-3.times do |index|
+2.times do |index|
   job = Job.create!(
     title: Faker::Movie.title,
     company_name: Faker::Company.name,
     description: Faker::Lorem.paragraph(sentence_count: 9, supplemental: false, random_sentences_to_add: 4),
     union_status: "Any",
-    payment: "$92/8",
+    payment: "145",
+    pay_interval: "Day",
     shoot_location: "Placitas,NM",
     payment_details: Faker::Lorem.paragraph(sentence_count: 4),
     shoot_start_date: Faker::Date.forward(days: 33),
@@ -73,13 +78,14 @@ end
   )
   job.save
 end
-3.times do |index|
-  job = Job.create!(
-    title: Faker::Movie.title,
+2.times do |index|
+  job3 = Job.create!(
+    title: "Job3",
     company_name: Faker::Company.name,
     description: Faker::Lorem.paragraph(sentence_count: 9, supplemental: false, random_sentences_to_add: 4),
     union_status: "Nonunion",
-    payment: "$150/day",
+    payment: "15",
+    pay_interval: "Hour",
     shoot_location: "Las Vegas,NM",
     payment_details: Faker::Lorem.paragraph(sentence_count: 4),
     shoot_start_date: Faker::Date.forward(days: 83),
@@ -89,9 +95,16 @@ end
     featured: true,
     # main_image: Faker::LoremPixel.image(size: "300x300"),
   )
-  job.save
+  roles = job3.roles.create!(
+    role_name: "Role 3",
+    role_description: "Role 3 Description",
+    job_id: job3.id,
+  )
+  job3.save
 end
+
 p "Created #{Member.count} Members"
 # p "Created #{admin.count} admins"
 # p "Created #{talent.count} BG Actors"
 p "Created #{Job.count} Jobs"
+p "Created #{Role.count} Roles"

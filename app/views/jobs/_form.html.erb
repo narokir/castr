@@ -1,4 +1,4 @@
-<%= form_with(model: job, local: true, multipart: true, id:'job-form') do |f| %>
+<%= form_with(model: @job, local: true, multipart: true, id:'job-form') do |f| %>
   <% if job.errors.any? %>
     <div id="error_explanation" class="alert alert-danger bg-action">
       <h4>Hey check the form</h4>
@@ -39,51 +39,77 @@
     <% end %>
   </div>
 
-  <h2 class="mt-5">Dates and Location</h2>
+  <h3 class="mt-5 mb-4">Roles</h3>
+  
+  <%= f.fields_for :roles do |r| %>
+    <div class="form-group input-group-lg">
+      <%= r.text_field :role_name , class: 'form-control',placeholder:'Role' %>
+    </div>
+    <div class="form-group input-group-lg">
+      <%= r.text_area :role_description, rows: 4, class: 'form-control', placeholder:'Role description'%>
+    </div>
+  <% end %>
 
-  <div class="form-group mb-3">
-    <%= f.label "Shoot dates" %>
-    <div class="input-group input-group-lg">
-      <%= f.text_field :shoot_start_date, class:'form-control flatpickr-input', data: {behavior: 'flatpickr'}, placeholder: "Start Date" %>
-      <div class="input-group-prepend input-group-append">
-        <span class="input-group-text bg-light">to</span>
+  <h3 class="mt-5 mb-4">Dates and Location</h3>
+
+  <div class="form-row">
+    <div class="col-lg-6">
+      <div class="form-group mb-3">
+        <div class="input-group input-group-lg">
+              <div class="input-group-prepend ">
+              <span class="input-group-text bg-light">Start</span>
+            </div>
+          <%= f.text_field :shoot_start_date, class:'form-control flatpickr-input', data: {behavior: 'flatpickr'}, placeholder: "Date Select" %>
+        </div>
       </div>
-      <%= f.text_field :shoot_end_date, class:'form-control flatpickr-input', data: {behavior: 'flatpickr'}, placeholder: "End Date" %>
+    </div>
+    <div class="col-lg-6">
+      <div class="form-group mb-3">
+        <div class="input-group input-group-lg">
+          <div class="input-group-prepend">
+            <span class="input-group-text bg-light">End</span>
+          </div>
+          <%= f.text_field :shoot_end_date, class:'form-control flatpickr-input', data: {behavior: 'flatpickr'}, placeholder: "Date Select" %>
+        </div>
+      </div>
     </div>
   </div>
 
   <div class="form-group input-group-lg">
     <%= f.label "Location" %>
-    <%= f.select :shoot_location, Job::LOCATION,{ include_blank: "Select" }, class: 'form-control custom-select' %>
+    <%= f.select :shoot_location, Job::LOCATION,{ include_blank: false }, class: 'form-control custom-select' %>
   </div>
 
- <h2 class="mt-5">Compensation</h2>
+  <h3 class="mt-5 mb-4">Payment</h3>
 
   <div class="form-row">
     <div class="col">
       <div class="form-group input-group-lg">
-        <%= f.label :union_status %>
-        <%= f.select :union_status, Job::UNION_STATUS,{ include_blank: "Select" }, class: 'form-control custom-select' %>
+        <%= f.select :union_status, Job::UNION_STATUS,{ include_blank: "Union status" }, class: 'form-control custom-select' %>
       </div>
     </div>
   
-    <div class="col">
-      <%= f.label :payment %>
+    <div class="col-lg-5">
       <div class="input-group input-group-lg mb-3">
         <div class="input-group-prepend ">
           <span class="input-group-text bg-light">$</span>
         </div>
-        <%= f.text_field :payment, class: 'form-control' %>
+        <%= f.text_field :payment, class: 'form-control', placeholder:"" %>
+        <div class="input-group-prepend input-group-append">
+          <span class="input-group-text bg-light">/</span>
+        </div>
+        <%= f.select :pay_interval, Job::PAY_INTERVAL,{ include_blank: false }, class: 'form-control custom-select' %>
       </div>
     </div>
   </div>
+      
 
   <div class="form-group input-group-lg">
     <%= f.label :payment_details %>
     <%= f.text_area :payment_details, rows: 5, class: 'form-control' %>
   </div>
 
-  <h2 class="mt-5">Production Details</h2>
+  <h3 class="mt-5 mb-4">Production Details</h3>
   
   <div class="form-group input-group-lg">
     <%= f.label "Production name" %>
@@ -95,7 +121,7 @@
     <%= f.url_field :url, class: 'form-control' %>
   </div>
 
-  <h2 class="mt-5">Submissions</h2>
+  <h3 class="mt-5 mb-4">Submissions</h3>
 
   <div class="form-group input-group-lg">
     <%= f.text_area :special_instructions, class: 'form-control', placeholder:"Special instructionns or requirements for submitting" %>

@@ -7,6 +7,7 @@
 #  description          :text
 #  featured             :boolean          default(FALSE)
 #  listing_expires      :datetime
+#  pay_interval         :string
 #  payment              :string
 #  payment_details      :text
 #  published            :boolean          default(FALSE)
@@ -34,8 +35,10 @@ class Job < ApplicationRecord
   # ASSOCIATIONS
   # ======================================================================
   belongs_to :member
-  # has_rich_text :description
+  has_many :roles, dependent: :destroy
+  accepts_nested_attributes_for :roles, reject_if: lambda { |attributes| attributes["role_name"].blank? }, allow_destroy: true
   has_one_attached :production_image
+  # has_rich_text :description
 
   # VALIDATIONS
   # ======================================================================
@@ -52,6 +55,7 @@ class Job < ApplicationRecord
   # CONSTANTSS
   # ======================================================================
   UNION_STATUS = ["Any", "SAG", "SAG-AFTRA", "Nonunion"]
+  PAY_INTERVAL = ["Hour", "Day", "Week", "Month", "Project"]
   LOCATION = ["Albuquerque", "Santa Fe", "Taos", "Las Vegas", "Espanola"]
 
   # HELPERS
