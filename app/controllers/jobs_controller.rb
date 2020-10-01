@@ -27,7 +27,7 @@ class JobsController < ApplicationController
 
     respond_to do |format|
       if @job.save
-        @job.production_image.attach(params[:production_image])
+        # @job.production_image.attach(params[:signed_blob_id])
         format.html { redirect_to @job, notice: "Job was successfully created." }
         format.json { render :show, status: :created, location: @job }
       else

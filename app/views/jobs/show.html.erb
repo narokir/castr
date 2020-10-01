@@ -4,6 +4,7 @@
       <div class="bg-light shadow-sm rounded p-5">
         <p class="align-text-top py-4 mb-0"><%= icon("chevron-left", class: "text-info align-middle") %><%= link_to 'Back', :back %></p>
         <div class="border-bottom mb-3 bg-light pb-4">
+        <%= @job.production_image.attached? %>
           <h3 class=""><%= @job.title %></h1>
         <p><%= @job.description %></p>
 
@@ -21,10 +22,10 @@
         <hr>
         <p><span class="text-secondary">Special Instructions:</span><br><%= @job.special_instructions %></p>
   
-        <div class="job-image">
+
           <%= image_tag(@job.production_image.variant(resize_to_limit: [2000,2000]),class:"img-fluid w-100 rounded") if @job.production_image.attached? %>
           <%# link_to('Remove Photo', remove_attachment_job_path, method: :patch, remote: true, class:"") if @job.production_image.attached? %>
-        </div>
+
         <% if @job.company_name.present? %>
           <p><span class="text-secondary">Production Details:</span><br>
           <%= @job.company_name %><br>
@@ -37,24 +38,29 @@
     </div>
 
     <% if author_of(@job) || admin? %>
-      <div class="col-md-4 pr-md-0">
-        <div class="card shadow-sm">
-          <h5 class="card-header">Manage Listing</h5>
-          <div class="card-body">
-          <p class="small">Created on: <%= @job.created_at %></p>
-            <% published?(@job) %><p>Status: <span id='status', class='badge bg-<%=@class%>'><%= @status %></span></p>
-            <div class="btn-group mb-4">
-              <% if !@job.published? %>
-                <%= link_to('Publish', publish_job_path(@job), remote: true, method: :put, class:"btn btn-sm btn-outline-secondary") %>
-              <% else %>
-                <%= link_to('Unpublish', unpublish_job_path(@job), remote: true, method: :put, class:"btn btn-sm btn-outline-secondary") %>
-              <% end %>
-              <%= link_to('Edit', edit_job_path(@job),class:"btn btn-sm btn-outline-secondary" )%>
-              <%= link_to 'Delete', job_path(@job), class:"btn btn-sm btn-outline-secondary", method: :delete, data: { confirm: "Are you sure?" }  %>
+
+      <div class="col-md-4 pr-md-0 d-none d-md-block">
+        <div class="card rounded shadow-sm p-3 ">
+          <h4 class="mb-5">Manage Listing</h4>
+          <p class="small">Created on: <%= @job.created_at%></p>
+          <% published?(@job) %><p>Status: <span id='status', class='text-<%=@class%>'><%= @status %></span></p>
+          
+            <div class="d-inline">
+              <div class="btn-group mb-4">
+                <% if !@job.published? %>
+                  <%= link_to('Publish', publish_job_path(@job), remote: true, method: :put, class:"btn btn-sm btn-outline-secondary") %>
+                <% else %>
+                  <%= link_to('Unpublish', unpublish_job_path(@job), remote: true, method: :put, class:"btn btn-sm btn-outline-secondary") %>
+                <% end %>
+                  <div class="btn-group" role="group" aria-label="Basic outlined example">
+                    <%= link_to('Edit', edit_job_path(@job),class:"btn btn-sm btn-outline-secondary" )%>
+                    <%= link_to 'Delete', job_path(@job), class:"btn btn-sm btn-outline-secondary", method: :delete, data: { confirm: "Are you sure?" }  %>
+                  </div>
+              </div>
             </div>
-          </div>
         </div>
       </div>
+
     <% end %>
   </div>
 </div>

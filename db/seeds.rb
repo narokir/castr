@@ -14,6 +14,10 @@ Role.delete_all
 
 castr = Member.new(email: "castr1@botmail.com", password: "password", password_confirmation: "password", first_name: "castr1", last_name: "castr1lastname", admin: false, talent: false, castr: true)
 castr.save!
+# castr.profile_image.attach(
+# io: File.open("storage/3n/sl/0gx9csz5vow9gut4vtsm4xbsdvsr"),
+# filename: "file.png",
+# )
 p "Created castr"
 admin = Member.new(email: "admin@botmail.com", password: "password", password_confirmation: "password", first_name: "admin1", last_name: "admin1lastname", admin: true, talent: false, castr: false)
 admin.save!

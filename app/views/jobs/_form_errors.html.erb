@@ -1,0 +1,10 @@
+  <% if object.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger bg-action">
+      <h4>Hey check the form</h4>
+      <ul>
+        <% object.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>

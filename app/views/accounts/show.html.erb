@@ -1,16 +1,15 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-3">
-      <div class="card shadow-sm">
-        <%= image_tag(current_member.profile_image.variant(resize_to_limit: [800,800]),class:"img-fluid card-img-top") if current_member.profile_image.attached? %>
+      <div class="card shadow-sm bg-light">
+        <%= image_tag(current_member.profile_image.variant(resize_to_limit: [800,800]),class:"img-fluid card-img-top ") if current_member.profile_image.attached? %>
         <div class="card-body">
-          <h5 class="card-title"><%= current_member.first_name %></h5>
-          <h6 class="card-subtitle mb-2 text-muted"><%= current_member.email %></h6>
+          <p class="card-title"><%= current_member.first_name %></p>
+          <p class="card-subtitle mb-2 text-muted"><%= current_member.email %></p>
         </div>
-          <ul class="list-group list-group-flush">
+          <ul class="list-group list-group-flush bg-light">
             <li class="list-group-item bg-light">
-              <%= link_to("Edit profile", edit_member_registration_path(current_member)) %>
-              
+              <%= link_to("Edit account", edit_member_registration_path(current_member)) %>
             </li>
             <li class="list-group-item bg-light">
             <%= link_to("Change Password", edit_member_path(current_member)) %>
@@ -18,16 +17,17 @@
       </div>
     </div>
     
-    <div class="col-6">
+    <div class="col">
     <div class="">
       <% if current_member.jobs.any? %>
-        <h6 class="bg-light p-3 rounded">Your Casting Calls</h6>
-        <hr>
+        <div class=" mb-3 rounded clearfix bg-light p-2">
+          <h5 class="p-2 m-0 float-left">Your Casting Calls</h5>
+          <%= link_to "Add New", new_job_path, class:"btn btn-success float-right" %> 
+        </div>
         <%= render "member_jobs" %>
       <% else %>
         <div class="text-center d-flex justify-content-center flex-column align-items-center h-100">
         <p>You do not have any casting calls yet</p>
-         <%= link_to "Post a Casting Call", new_job_path, class:"btn btn-success" %>
         </div>
       <% end %>
     </div>

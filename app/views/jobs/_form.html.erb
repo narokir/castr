@@ -1,14 +1,5 @@
 <%= form_with(model: @job, local: true, multipart: true, id:'job-form') do |f| %>
-  <% if job.errors.any? %>
-    <div id="error_explanation" class="alert alert-danger bg-action">
-      <h4>Hey check the form</h4>
-      <ul>
-        <% job.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= render "form_errors", object: @job %>
 
  <div class="form-group input-group-lg">
     <%= f.label "Casting title" %>
@@ -127,7 +118,8 @@
     <%= f.text_area :special_instructions, class: 'form-control', placeholder:"Special instructionns or requirements for submitting" %>
   </div>
 
-<hr class="bg-light">
+  <hr class="bg-light">
+
   <div class="form-group input-group-lg">
     <%= f.label :listing_expires %>
     <%= f.text_field :listing_expires, data: {behavior: 'flatpickr'}, class: 'form-control flatpickr-input', placeholder:"Set date when this listing should be removed." %>
