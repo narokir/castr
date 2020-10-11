@@ -1,30 +1,65 @@
-<div class="container-fluid">
-  <div class="row justify-content-center">
-    <div class="col bg-light shadow-sm rounded p-3" style="max-width: 600px;">
-    <p class="align-text-top py-4 mb-0"><%= icon("chevron-left", class: "text-info align-middle") %><%= link_to 'Back', :back %></p>
-    <h1>Change Password</h1>
-      <%= form_for(@member, :url => { :action => "update_password" } ) do |f| %>
-      <%= render "devise/shared/error_messages", resource: @member %>
-        <div class="form-group input-group-lg">
-          <%= f.label :password %>
-            <span class="small text-warning">
-            <% if @minimum_password_length %>
-            ( <%= @minimum_password_length %> characters minimum )
-            <% end %></span>
-          <%= f.password_field :password, autocomplete: "new-password", class: 'form-control'  %>
-          <small id="emailHelp" class="form-text text-muted"> 6 characters minimum</small>
-        </div>
+  <div class="container">
+		<div class="row justify-content-center">
 
-        <div class="form-group input-group-lg">
-          <%= f.label :password_confirmation %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control'  %>
-        </div>
-        <div class="form-group input-group-lg">
-          <div class="actions">
-            <%= f.submit "Update", class: "btn btn-primary btn-lg" %>
+      <div class="col-md-3">
+        <div class="card shadow-sm">
+        <%= image_tag(current_member.profile_image.variant(resize_to_limit: [800,800]),class:"img-fluid card-img-top") if current_member.profile_image.attached? %>
+          <div class="card-body">
+            <%= link_to('Delete Photo', delete_profile_photo_members_path, method: :patch, class:"") if current_member.profile_image.attached? %>
           </div>
         </div>
-      <% end %>
-    </div>
-  </div>
-</div>
+      </div>
+
+
+
+
+			<div class="col bg-light shadow-sm rounded p-3">
+        <p class="align-text-top py-4 mb-0"><%= icon("chevron-left", class: "text-info align-middle") %><%= link_to 'Back', :back %></p>
+
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name),local: true, multipart: true, html: { method: :put }) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+
+          <div class="form-group input-group-lg">
+            <%= f.label :profile_image %>
+            <div class=" bg-light rounded dropzone dropzone-default dz-clickable " data-controller="dropzone" data-dropzone-max-file-size="1" data-dropzone-max-files="2">
+              <%= f.file_field :profile_image, direct_upload: true, data: { target: 'dropzone.input' } %>
+            <div class="dropzone-msg dz-message needsclick ">
+              <p class="dropzone-msg-title">Drag image here to start upload or tap to browse</p>
+              <span class="dropzone-msg-desc small text-muted">2 MB file size maximum. Allowed file types png, jpg.</span>
+            </div>
+            </div>
+          </div>
+        
+          <div class="form-group input-group-lg">
+            <%= f.label :first_name %><br />
+            <%= f.text_field :first_name, autofocus: true, autocomplete: "Name", class: 'form-control' %>
+          </div>
+        
+          <div class="form-group input-group-lg">
+            <%= f.label :last_name %><br />
+            <%= f.text_field :last_name, autofocus: true, autocomplete: "Lastname", class: 'form-control'  %>
+          </div>
+        
+          <div class="form-group input-group-lg">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control'  %>
+          </div>
+        
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+          <% end %>
+                
+          <div class="form-group input-group-lg">
+            <div class="actions">
+              <%= f.submit "Update", class: "btn btn-primary btn-lg" %>
+            </div>
+          </div>
+        <% end %>
+        <hr/>
+        <h5>Delete my account</h5>
+        
+        <p>Once deleted, your account is gone forever.<%= button_to "Delete your account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-outline-danger" %></p>
+			</div>
+
+		</div>
+	</div>

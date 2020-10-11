@@ -12,7 +12,7 @@
           <span class="small d-block"><%= current_member.email %></span>
         </p>
       <div class="dropdown-divider"></div>
-        <%= link_to "Your account", member_account_path, :class => "dropdown-item" %>
+        <%= link_to "Your account", member_path(current_member), :class => "dropdown-item" %>
         <div class="dropdown-divider"></div>
         <%= link_to "Log Out", destroy_member_session_path, method: :delete, :class => "dropdown-item" %>
       </div>

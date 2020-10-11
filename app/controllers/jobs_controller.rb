@@ -26,13 +26,15 @@ class JobsController < ApplicationController
     @job.member = current_member
 
     respond_to do |format|
-      if @job.save
+      if params[:preview_button] || !@job.save
+        format.html { render :new }
+        format.json { render json: @job.errors, status: :unprocessable_entity }
+      else
         # @job.production_image.attach(params[:signed_blob_id])
         format.html { redirect_to @job, notice: "Job was successfully created." }
         format.json { render :show, status: :created, location: @job }
-      else
-        format.html { render :new }
-        format.json { render json: @job.errors, status: :unprocessable_entity }
+        # else
+        # format.html { render :new }
       end
     end
   end

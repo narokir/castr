@@ -1,12 +1,12 @@
 <div class="card shadow-sm mb-3">
   <div class="card-body">
-  <h6 class="card-title">
+  <h4 class="card-title">
     <% unless job.created_at < DateTime.current.days_ago(5) %>
       <span class="badge bg-action small text-dark mr-2">New</span>
     <% end %>
-    <%= link_to job.title, job_path(job), remote: false, class:'text-reset stretched-link', id:'remote' %>
-    </h6>
-    <p class="card-text small"><span class="text-muted">Posted by:</span> <%= job.member.first_name %> <span class="  text-muted">  <%= time_ago_in_words(job.created_at) %> ago</span></p>
+    <%= link_to job.title, job_path(job), remote: false, class:'text-reset', id:'remote' %>
+    </h4>
+    <p class="card-text small"><span class="text-muted">Posted by:</span> <%= link_to(job.member.first_name,member_path(job.member_id)) %> <span class="  text-muted">  <%= time_ago_in_words(job.created_at) %> ago</span></p>
     <p class="text-muted small mb-0">Union Status: <%= job.union_status %></p>
     <p class="text-muted small">Shoots: <%= job.shoot_start_date %> - <%= job.shoot_end_date %> in <%= job.shoot_location %></p>
     <p class="card-text font-weight-light"><%= truncate(job.description, :ommision => "... Read More", :length => 150) %></p>
@@ -21,3 +21,7 @@
     <%# image_tag(job.some_image, class:"card-img clear", :alt => "...") %>
   <%# end %>
 </div>
+
+
+
+

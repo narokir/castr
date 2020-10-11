@@ -1,0 +1,39 @@
+<% @member.jobs.each do |job| %>
+
+<div class="card rounded shadow-sm p-3 mb-3 ">
+<div>
+  <p class="float-right">
+    <% if job.published? %>
+        <span data-toggle="tooltip" data-placement="top" title="Published" id='status', class='text-success'><%= icon('eye') %></span>
+    <% else %>
+      <span data-toggle="tooltip" data-placement="top" title="Pending" id='status', class='text-secondary'><%= icon('eye-slash') %></span>
+    <% end %>
+  </p>
+  <div class="float-left">
+    <% unless job.created_at < DateTime.current.days_ago(5) %>
+      <span class="badge bg-action small text-dark mr-2">New</span>
+    <% end %>
+  </div>
+  <h4><%= link_to job.title, job_path(job), remote: false, class:'text-reset', id:'remote' %></h4>
+</div>
+
+<p class="small text-secondary">Created on: <%= date(job.created_at) %></p>
+<p class="font-weight-light"><%= truncate(job.description, :ommision => "... Read More", :length => 150) %></p>
+<p class="text-muted small mb-0">Union Status: <%= job.union_status %></p>
+<p class="text-muted small mb-0">Shoots: <%= job.shoot_start_date %> - <%= job.shoot_end_date %> in <%= job.shoot_location %></p>
+<p class="font-weight-bold"><span class="text-muted small">Compensation:</span> $<%= job.payment %>/<%= job.pay_interval %></p>
+  
+<% if signed_in? && author_of(job) || admin? %>
+  <div class="d-inline">
+    <div class="btn-group">
+        <div class="btn-group" role="group" aria-label="Basic outlined example">
+          <%= link_to 'View', job_path(job), class:"btn btn-sm btn-outline-secondary"  %>
+          <%= link_to('Edit', edit_job_path(job),class:"btn btn-sm btn-outline-secondary" )%>
+          <%= link_to 'Delete', job_path(job), class:"btn btn-sm btn-outline-secondary", method: :delete, data: { confirm: "Are you sure?" }  %>
+        </div>
+    </div>
+  </div>
+<% end %>
+</div>
+
+<% end %>

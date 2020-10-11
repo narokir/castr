@@ -10,6 +10,6 @@ class Members::RegistrationsController < Devise::RegistrationsController
   end
 
   def after_update_path_for(resource)
-    member_account_path
+    member_path(@member)
   end
 end

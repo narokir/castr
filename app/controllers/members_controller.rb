@@ -1,6 +1,10 @@
 class MembersController < ApplicationController
   before_action :authenticate_member!
 
+  def show
+    @member = Member.find(params[:id])
+  end
+
   def edit
     @member = current_member
   end
@@ -8,7 +12,11 @@ class MembersController < ApplicationController
   def delete_profile_photo
     @member = current_member
     current_member.profile_image.purge
-    redirect_to member_account_path, notice: "Photo Deleted"
+    redirect_to member_path(@member), notice: "Photo Deleted"
+  end
+
+  def edit_password
+    @member = current_member
   end
 
   def update_password
@@ -16,9 +24,9 @@ class MembersController < ApplicationController
     if @member.update(member_params)
       # Sign in the member by passing validation in case their password changed
       bypass_sign_in(@member)
-      redirect_to member_account_path, notice: "Password successfully changed."
+      redirect_to member_path(@member), notice: "Password successfully changed."
     else
-      render "edit"
+      render "edit_password"
     end
   end
 

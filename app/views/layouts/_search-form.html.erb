@@ -1,8 +1,8 @@
 <%= form_with(url: search_path, class: "bg-light shadow-sm p-3 rounded", local: true, method: :get) do |f| %>
   <div class=" input-group input-group-lg">
-    <%= f.text_field :search, class: 'form-control', placeholder: 'Enter search term...' %>
+    <%= f.text_field :search, class: 'form-control', placeholder: 'Search casting calls' %>
     <div class="input-group-append">
-      <%= f.submit "Search", disable_with: 'Searching...', class:"btn btn-lg btn-outline-success" %>
+      <%= f.submit "Search", disable_with: 'Searching...', class:"btn btn-lg btn-outline-secondary" %>
     </div>
   </div>
 <% end %>

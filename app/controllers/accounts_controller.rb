@@ -7,5 +7,6 @@ class AccountsController < ApplicationController
   end
 
   def show
+    @member = Member.find(params[:member_id])
   end
 end

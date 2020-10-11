@@ -2,7 +2,7 @@
 	<% content_for :jumbotron do %>
 		<div class="jumbotron jumbotron-fluid">
 			<div class="container-fluid text-center">
-				<h1 class ="display-1">Find Background Acting Jobs<br> in New Mexico</h1>
+				<h1 class ="display-3">Find Background Acting Jobs<br> in New Mexico</h1>
 				<% unless member_signed_in? %>
 				<p class="text-center">
 					<%= link_to 'Sign in',new_member_session_path, class:'btn btn-primary'%>
@@ -10,7 +10,8 @@
 				</p>
 				<% end %>
 				<hr class='w-50'>
-				<p class="text-center text-muted">Need extras for your project? <%= link_to 'Post a Casting Call', new_job_path, class:'action'  %></p>
+				<p class="text-center text-muted">Need extras for your project? </p>
+				<%= link_to 'Post a Casting Call', new_job_path, class:'btn btn-success'  %>
 			</div>
 		</div>
 	<% end %>
