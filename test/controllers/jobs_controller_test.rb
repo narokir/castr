@@ -59,6 +59,6 @@ class JobsControllerTest < ActionDispatch::IntegrationTest
       delete job_url(@job)
     end
 
-    assert_redirected_to jobs_url
+    assert_redirected_to member_url
   end
 end
