@@ -25,8 +25,13 @@
       <div class="">
         <% if @member.jobs.any? %>
           <div class=" mb-3 rounded clearfix bg-light p-2">
-            <h5 class="p-2 m-0 float-left"><%= @member.first_name %>'s Casting Calls</h5>
-            <%= link_to "Add New", new_job_path, class:"btn btn-success float-right" %> 
+          <% if @member == current_member %>
+          <h5 class="p-2 m-0 float-left">Your Casting Calls</h5>
+          <% else %>
+          <h5 class="p-2 m-0 float-left"><%= @member.first_name %>'s Casting Calls</h5>
+          <% end %>
+            
+            <%= link_to "Post New Casting Call", new_job_path, class:"btn btn-action float-right" %> 
           </div>
           <%= render "member_jobs" %>
         <% else %>

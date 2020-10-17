@@ -45,6 +45,16 @@ class JobsTest < ApplicationSystemTestCase
     click_on "Back"
   end
 
+  test "Preview a Job" do
+    sign_in members(:one)
+    visit jobs_url
+    click_on "Post a Casting Call"
+    fill_in "job[title]", with: @job.title
+    fill_in "job[description]", with: @job.description
+    click_on "Preview"
+    assert_text "Preview Casting Call"
+  end
+
   test "destroying a Job" do
     sign_in members(:one)
     visit job_url(@job)

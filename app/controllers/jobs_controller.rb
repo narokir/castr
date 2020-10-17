@@ -26,15 +26,13 @@ class JobsController < ApplicationController
     @job.member = current_member
 
     respond_to do |format|
-      if params[:preview_button] || !@job.save
-        format.html { render :new }
-        format.json { render json: @job.errors, status: :unprocessable_entity }
-      else
+      if @job.save
         # @job.production_image.attach(params[:signed_blob_id])
         format.html { redirect_to @job, notice: "Job was successfully created." }
         format.json { render :show, status: :created, location: @job }
-        # else
-        # format.html { render :new }
+      else
+        format.html { render :new }
+        format.json { render json: @job.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -54,7 +52,7 @@ class JobsController < ApplicationController
   def destroy
     @job.destroy
     respond_to do |format|
-      format.html { redirect_to jobs_url, notice: "Job was successfully destroyed." }
+      format.html { redirect_to member_url(current_member), notice: "Job was successfully destroyed." }
       format.json { head :no_content }
     end
   end
