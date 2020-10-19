@@ -5,6 +5,7 @@ class JobsControllerTest < ActionDispatch::IntegrationTest
   setup do
     # sign_in members(:one)
     @job = jobs(:one)
+    @unpublished = jobs(:two)
   end
 
   test "should get index" do
@@ -36,6 +37,11 @@ class JobsControllerTest < ActionDispatch::IntegrationTest
   test "should show job" do
     get job_url(@job)
     assert_response :success
+  end
+
+  test "should not show unpublished job" do
+    get job_url(@unpublished)
+    assert_redirected_to root_url
   end
 
   test "should get edit" do

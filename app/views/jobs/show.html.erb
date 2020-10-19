@@ -37,10 +37,11 @@
       </div>
     </div>
 
-    <% if author_of(@job) || admin? %>
+
 
       <div class="col-md-4 pr-md-0 d-none d-md-block">
         <div class="card rounded shadow-sm p-3 ">
+    <% if can? :manage, @job %>
           <h4 class="mb-5">Manage Listing</h4>
           <p class="small">Created on: <%= @job.created_at%></p>
           <% published?(@job) %><p>Status: <span id='status', class='text-<%=@class%>'><%= @status %></span></p>
@@ -48,9 +49,9 @@
             <div class="d-inline">
               <div class="btn-group mb-4">
                 <% if !@job.published? %>
-                  <%= link_to('Publish', publish_job_path(@job), remote: true, method: :put, class:"btn btn-sm btn-outline-secondary") %>
+                <%= link_to('Publish', publish_job_path(@job), remote: true, method: :put, class:"btn btn-sm btn-outline-secondary") %>
                 <% else %>
-                  <%= link_to('Unpublish', unpublish_job_path(@job), remote: true, method: :put, class:"btn btn-sm btn-outline-secondary") %>
+                <%= link_to('Unpublish', unpublish_job_path(@job), remote: true, method: :put, class:"btn btn-sm btn-outline-secondary") %>
                 <% end %>
                   <div class="btn-group" role="group" aria-label="Basic outlined example">
                     <%= link_to('Edit', edit_job_path(@job),class:"btn btn-sm btn-outline-secondary" )%>
@@ -58,9 +59,9 @@
                   </div>
               </div>
             </div>
+    <% end %>
         </div>
       </div>
 
-    <% end %>
   </div>
 </div>

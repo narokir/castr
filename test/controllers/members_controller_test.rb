@@ -18,7 +18,7 @@ class MembersControllerTest < ActionDispatch::IntegrationTest
     sign_in members(:one)
     get edit_password_members_path
     assert_response :success
-    assert_select "h1", "Change Password"
+    assert_select "h4", "Change Password"
   end
 
   # test "should show profile" do

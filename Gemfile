@@ -28,6 +28,7 @@ gem "rack-timeout"
 gem "aws-sdk-s3", require: false
 gem "faker", "~> 2.13"
 gem "sidekiq"
+gem "cancancan"
 
 # Use Active Storage variant
 gem "image_processing", "~> 1.2"

@@ -3,6 +3,14 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :persist_paths, :authenticate_member!
 
+  alias_method :current_user, :current_member
+  rescue_from CanCan::AccessDenied do |exception|
+    respond_to do |format|
+      format.json { head :forbidden }
+      format.html { redirect_to main_app.root_url, :alert => exception.message }
+    end
+  end
+
   def after_sign_out_path_for(member)
     root_path
   end
