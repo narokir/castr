@@ -53,7 +53,8 @@ $success: rgb(0, 188, 157);
 $border-radius: 0.2rem;
 
 // inputs //
-//$input-bg: $white;
+$input-placeholder-color: rgba(77, 76, 76, 0.342);
+$custom-select-color: rgba(77, 76, 76, 0.342);
 $input-focus-color: $cyan;
 $input-focus-border-color: $success;
 $input-transition: border-color 0.15s;
@@ -144,6 +145,12 @@ $font-family-display: 'Asar';
   }
 }
 
+form label {
+  color: $gray-700;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
 // Change how jobs show up on phone screens
 
 // Dark mode Styles
@@ -172,6 +179,7 @@ $font-family-display: 'Asar';
     border-color: $gray-800 !important;
     color: $cyan !important;
   }
+
   .input-group-text {
     border-color: $gray-800 !important;
   }

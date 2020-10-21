@@ -36,7 +36,7 @@ class Job < ApplicationRecord
   # ======================================================================
   belongs_to :member
   has_many :roles, dependent: :destroy
-  accepts_nested_attributes_for :roles, reject_if: lambda { |attributes| attributes["role_name"].blank? }, allow_destroy: true
+  accepts_nested_attributes_for :roles, allow_destroy: true, reject_if: :all_blank
   has_one_attached :production_image
   # has_rich_text :description
 
@@ -55,7 +55,7 @@ class Job < ApplicationRecord
   # CONSTANTSS
   # ======================================================================
   UNION_STATUS = ["Any", "SAG", "SAG-AFTRA", "Nonunion"]
-  PAY_INTERVAL = ["Hour", "Day", "Week", "Month", "Project"]
+  PAY_INTERVAL = ["Hour", "Day", "Week", "Month", "Project", "8 Hours"]
   LOCATION = ["Albuquerque", "Santa Fe", "Taos", "Las Vegas", "Espanola"]
 
   # HELPERS

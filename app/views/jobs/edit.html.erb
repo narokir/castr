@@ -1,23 +1,25 @@
 <div class="container">
+  <h3 class="mb-5">Edit Casting Call</h3>
+  <p class=""><%# icon("chevron-left", class: "text-info align-middle") %><%= link_to 'Back', :back %></p>
   <div class="row justify-content-center">
     <div class="col">
-      <div class="bg-light shadow-sm rounded p-5">
-        <p class="align-text-top py-4 mb-0"><%= icon("chevron-left", class: "text-info align-middle") %><%= link_to 'Back', :back %></p>
+      <div class="">
         <%= render 'form', job: @job %>
-        <%= link_to 'Show Listing', @job %>
       </div>
     </div>
 
     <% if author_of(@job) || admin? %>
       <div class="col-md-4 pr-md-0 d-none d-md-block">
-        <div class="card rounded shadow-sm p-3 ">
-          <h4 class="mb-5">Edit Job</h4>
+        <div class="card rounded shadow-sm p-3">
           <p class="small">Created on: <%= @job.created_at%></p>
             <% published?(@job) %><p>Status: <span id='status', class='text-<%=@class%>'><%= @status %></span></p>
+            
             <div class="d-inline">
               <div class="btn-group mb-4">
                 <% if !@job.published? %>
+                
                   <%= link_to('Publish', publish_job_path(@job), remote: true, method: :put, class:"btn btn-sm btn-outline-secondary") %>
+                  <%= link_to 'View', @job, class:"btn btn-sm btn-outline-secondary" %>
                 <% else %>
                 <%= link_to('Unpublish', unpublish_job_path(@job), remote: true, method: :put, class:"btn btn-sm btn-outline-secondary") %>
                 <%= link_to 'Delete', job_path(@job), class:"btn btn-sm btn-outline-secondary", method: :delete, data: { confirm: "Are you sure?" }  %>
@@ -25,6 +27,18 @@
               </div>
             </div>
         </div>
+
+          <ul class="list-group list-group-flush mt-3">
+            <li class="list-group-item bg-light"><a href="#">Basic Info</a></li>
+            <li class="list-group-item bg-light"><a href="#">Image</a></li>
+            <li class="list-group-item bg-light"><a href="#">Roles</a></li>
+            <li class="list-group-item bg-light"><a href="#">Dates and Locationn</a></li>
+            <li class="list-group-item bg-light"><a href="#">Payment</a></li>
+            <li class="list-group-item bg-light"><a href="#">Production Details</a></li>
+            <li class="list-group-item bg-light"><a href="#">Submitions</a></li>
+          </ul>
+
+
       </div>
     <% end %>
   </div>

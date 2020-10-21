@@ -32,18 +32,19 @@
 #
 
 one:
-  title: MyString
+  title: NM CASTING MAJOR FEATURE
+  description: Upcoming Feature Film “Abilene” is looking for a Photo Double for the actor below. Sizes for Actor 6'ft, 200 lbs, T-shirt - M/L, Dress shirt - 17.5/34-5 Pant - 32/32, Shoe - 13, Hat - 7 1/4, FULL FACIAL HAIR/HAIR LONGER.
   company_name: MyString
-  description: This is the description of job one
   listing_expires: 2020-08-23 15:19:47
   url: http://www.example.com
   union_status: Nonunion
-  payment: 12/h
-  payment_details: MyText
+  payment: $125
+  pay_interval: 8 hours
+  payment_details: Rates start at $125/8
   shoot_start_date: 2020-08-23 15:19:47
   shoot_end_date: 2020-08-24 15:19:47
   shoot_location: Albuquerque
-  special_instructions: MyText
+  special_instructions: If this is you or someone you know, please email in Current Photos, location, full sizes (height, weight, shirt, shoes, pants), and your contact cell to ah.abilene@gmail.com with "ROWDY DOUBLE” in the subject line
   published: true
   member: one
 

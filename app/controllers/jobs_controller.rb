@@ -1,7 +1,7 @@
 class JobsController < ApplicationController
   before_action :fetch_job, only: [:publish, :unpublish, :apply, :show, :edit, :update, :destroy]
   before_action :authenticate_member!, except: %i[index show search]
-  load_and_authorize_resource
+  load_and_authorize_resource #cancancan authorizationn
 
   def index
     @jobs = Job.published.all.limit(9)
@@ -16,11 +16,9 @@ class JobsController < ApplicationController
 
   def new
     @job = Job.new
-    2.times { @job.roles.build }
   end
 
   def edit
-    2.times { @job.roles.build }
   end
 
   def create

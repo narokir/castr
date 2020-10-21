@@ -7,10 +7,12 @@
           <h3 class=""><%= @job.title %></h1>
         <p><%= @job.description %></p>
 
-        <h3>Roles</h3>
-        <% @job.roles.each do |job| %>
-          <p><%= job.role_name %></p>
-          <p><%= job.role_description %></p>
+        <% if @job.roles.present? %>
+          <h3>Roles</h3>
+          <% @job.roles.each do |job| %>
+            <p><%= job.role_name %></p>
+            <p><%= job.role_description %></p>
+          <% end %>
         <% end %>
         <p><span class="text-secondary">Payment: </span>  $<%= @job.payment %>/<%= @job.pay_interval %><br><%= @job.payment_details %></p>
           <%= link_to 'Apply Now', apply_job_path, method: :put, class:'btn btn-success ' %>
