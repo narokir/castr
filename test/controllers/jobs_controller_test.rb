@@ -39,11 +39,6 @@ class JobsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should not show unpublished job" do
-    get job_url(@unpublished)
-    assert_redirected_to root_url
-  end
-
   test "should get edit" do
     get edit_job_url(@job)
     assert_redirected_to new_member_session_path

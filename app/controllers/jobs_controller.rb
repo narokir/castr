@@ -66,7 +66,7 @@ class JobsController < ApplicationController
 
   def search
     if params[:search].blank?
-      redirect_to(root_path, notice: "Nothing to search") and return
+      redirect_to(jobs_path, notice: "Nothing to search") and return
     else
       @parameter = params[:search].downcase
       @results = Job.all.where("title ILIKE :search OR description ILIKE :search", search: "%#{@parameter}%")

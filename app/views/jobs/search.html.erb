@@ -1,21 +1,19 @@
-<section id="casting_calls" class="display">
-	<div class="container-fluid">
+<div class="container-fluid mt-5">
+<div class="row justify-content-center ">
+  <div class="col-sm-12 mx-auto" style="max-width: 600px;" >
+    <%= render 'layouts/search-form' %>
+  </div>
+</div>
   <div class="row justify-content-center ">
-    <div class="col-sm-12 mx-auto" style="max-width: 600px;" >
-      <%= render 'layouts/search-form' %>
+    <div class="col-md-12 col-lg-6" style="max-width: 600px;">
+    <% if @results.empty? %>
+      <p class="text-center my-4">Your serch for <strong>"<%= @parameter %>"</strong> returned <strong><%= @results.count %></strong> results. Please try diferent serch terms.</p>
+      <% else %>
+      <p class="text-center my-4">Found <strong><%= pluralize(@results.count,'job') %></strong> matching <strong>"<%= @parameter %>"</strong></p>
+        <% @results.each do |job| %>
+          <%= render job %>
+        <% end %>
+    <% end %>
     </div>
   </div>
-		<div class="row justify-content-center ">
-			<div class="col-md-12 col-lg-6" style="max-width: 600px;">
-      <% if @results.empty? %>
-        <p class="text-center my-4">Your serch for <strong>"<%= @parameter %>"</strong> returned <strong><%= @results.count %></strong> results. Please try diferent serch terms.</p>
-        <% else %>
-        <p class="text-center my-4">Found <strong><%= pluralize(@results.count,'job') %></strong> matching <strong>"<%= @parameter %>"</strong></p>
-          <% @results.each do |job| %>
-            <%= render job %>
-          <% end %>
-      <% end %>
-			</div>
-		</div>
-	</div>
-</section>
+</div>

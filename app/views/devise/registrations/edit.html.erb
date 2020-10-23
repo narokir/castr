@@ -1,5 +1,7 @@
-  <div class="container">
+  <div class="container mt-5">
+  <h4>Edit Profile</h4>
 		<div class="row justify-content-center">
+
     <div class="col-md-3">
       <div class="card shadow-sm bg-light">
         <%= image_tag(@member.profile_image.variant(resize_to_limit: [800,800]),class:"img-fluid card-img-top ") if @member.profile_image.attached? %>
@@ -25,7 +27,6 @@
 
 
 			<div class="col bg-light shadow-sm rounded p-3">
-        <p class="align-text-top py-4 mb-0"><%= icon("chevron-left", class: "text-info align-middle") %><%= link_to 'Back', :back %></p>
 
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name),local: true, multipart: true, html: { method: :put }) do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>

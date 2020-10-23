@@ -49,9 +49,8 @@ one:
   member: one
 
 two:
-  title: MyString
-  company_name: MyString
-  description: This is the description of job Two
+  title: MIXED RACED BOYS CASTING Ages 9-12
+  description: Casting Mixed Raced Boys (African American & Caucasian Mix) ages 9-12.
   listing_expires: 2020-09-23 15:19:47
   url: http://www.example.com
   union_status: Nonunion
@@ -60,6 +59,23 @@ two:
   shoot_start_date: 2020-08-01 15:19:47
   shoot_end_date: 2020-08-02 15:19:47
   shoot_location: Albuquerque
-  special_instructions: MyText
-  published: false
+  company_name: CL Casting
+  special_instructions: To apply, please send name, age, height, weight, phone number & 3 photos to extras@roselockecasting.com
+  published: true
+  member: one
+
+three:
+  title: Three Native American Males
+  description: Casting Mixed Raced Boys (African American & Caucasian Mix) ages 9-12.
+  listing_expires: 2020-09-23 15:19:47
+  url: http://www.example.com
+  union_status: Nonunion
+  payment: 12/h
+  payment_details: MyText
+  shoot_start_date: 2020-08-01 15:19:47
+  shoot_end_date: 2020-08-02 15:19:47
+  shoot_location: Albuquerque
+  company_name: CL Casting
+  special_instructions: To apply, please send name, age, height, weight, phone number & 3 photos to extras@roselockecasting.com
+  published: true
   member: one

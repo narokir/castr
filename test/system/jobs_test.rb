@@ -27,7 +27,6 @@ class JobsTest < ApplicationSystemTestCase
     click_on "Create Job"
 
     assert_text "Job was successfully created"
-    click_on "Back"
   end
 
   test "updating a Job" do
@@ -42,7 +41,6 @@ class JobsTest < ApplicationSystemTestCase
     click_on "Update Job"
 
     assert_text "Job was successfully updated"
-    click_on "Back"
   end
 
   test "destroying a Job" do

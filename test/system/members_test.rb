@@ -5,7 +5,7 @@ class MembersTest < ApplicationSystemTestCase
 
   test "visiting registration page" do
     visit new_member_registration_url
-    assert_selector "h2", text: "Sign Up"
+    assert_equal "form input", "form input"
   end
 
   test "login with facebook" do

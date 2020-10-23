@@ -1,8 +1,9 @@
 <div class="container-fluid">
   <div class="row justify-content-center align-items-center vh-100">
-    <div class="col-sm-9 col-md-8 col-lg-4">
+    <div class="col-lg-6 col-md-8 col-sm-10">
       <div class="bg-light rounded shadow-sm p-4">
-      	<h2>Sign Up</h2>
+      	<h4>Sign Up</h4>
+				<hr>
       	
       	<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       	  <%= render "devise/shared/error_messages", resource: resource %>
@@ -43,7 +44,7 @@
       	
       	  <div class="form-group input-group-lg">
       	    <div class="actions">
-      	      <%= f.submit "Sign up", class: 'btn btn-success btn-lg btn-block' %>
+      	      <%= f.submit "Sign up", class: 'btn btn-success btn-lg' %>
       	    </div>
       	  </div>
       	<% end %>

@@ -1,28 +1,27 @@
-<div class="container">
+<div class="container-fluid bg-light py-5">
   <div class="row justify-content-center">
-    <div class="col-md-3">
-      <div class="card shadow-sm bg-light">
-        <%= image_tag(@member.profile_image.variant(resize_to_limit: [800,800]),class:"img-fluid card-img-top ") if @member.profile_image.attached? %>
-        <div class="card-body">
-          <p class="card-title"><%= @member.first_name %></p>
-          <p class="card-subtitle mb-2 text-muted"><%= @member.email %></p>
-        </div>
+    <div class="mx-auto text-center" style="width: 200px;">
+      <%= image_tag(@member.profile_image.variant(resize_to_limit: [200,200]),class:"img-fluid border rounded-circle") if @member.profile_image.attached? %>
+      <h4 class="mt-4"><%= @member.first_name %></h4>
+      <p class="mb-2 text-muted small"><%= @member.email %></p>
         <% if signed_in? && @member == current_member %>
-          <ul class="list-group list-group-flush bg-light">
+          <ul class="list-group  bg-light">
             <li class="list-group-item bg-light">
               <%= link_to("Edit Prfile", edit_member_registration_path) %>
             </li>
             <li class="list-group-item bg-light">
-              
               <%= link_to("Change Password", edit_password_members_path) %>
             </li>
           </ul>
         <% end %>
-      </div>
     </div>
+  </div>
+</div>
 
-    
-    <div class="col">
+
+<div class="container mt-5">
+  <div class="row justify-content-center">    
+    <div class="col-lg-6">
       <div class="">
         <% if @member.jobs.any? %>
           <div class=" mb-3 rounded clearfix bg-light p-2">
@@ -30,14 +29,13 @@
           <h5 class="p-2 m-0 float-left">Your Casting Calls</h5>
           <% else %>
           <h5 class="p-2 m-0 float-left"><%= @member.first_name %>'s Casting Calls</h5>
-          <% end %>
-            
-            <%= link_to "Post New Casting Call", new_job_path, class:"btn btn-action float-right" %> 
+          <% end %> 
           </div>
           <%= render "member_jobs" %>
         <% else %>
           <div class="text-center d-flex justify-content-center flex-column align-items-center h-100">
-          <p>You do not have any casting calls yet</p>
+          <p>You have not posted any casting calls yet</p>
+          <%= link_to "Create New Casting Call", new_job_path, class:"btn btn-action float-right" %>
           </div>
         <% end %>
       </div>
