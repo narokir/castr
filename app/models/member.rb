@@ -58,6 +58,10 @@ class Member < ApplicationRecord
     errors.add(:profile_image, "must be JPEG or PNG") unless acceptable_types.include?(profile_image.content_type)
   end
 
+  def thumbnail
+    return self.profile_image.variant(resize: "200x200!").processed
+  end
+
   def self.from_omniauth(auth)
     member = find_or_initialize_by(provider: auth.provider, uid: auth.uid)
     member.email = auth.info.email
