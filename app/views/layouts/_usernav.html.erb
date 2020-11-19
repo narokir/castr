@@ -1,5 +1,4 @@
 <% if member_signed_in? %>
-
   <ul class="nav navbar-nav navbar-right ">
     <li class="nav-item dropdown bg-gray-200 border border-gray-300 rounded">
       <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
@@ -11,7 +10,7 @@
           <span class="font-weight-bold text-uppercase small"><%= current_member.first_name %> <%= current_member.last_name %></span>
           <span class="small d-block"><%= current_member.email %></span>
         </p>
-      <div class="dropdown-divider"></div>
+        <div class="dropdown-divider"></div>
         <%= link_to "Post New casting call", new_job_path, :class => "dropdown-item" %>
         <div class="dropdown-divider"></div>
         <%= link_to "Your account", member_path(current_member), :class => "dropdown-item" %>
@@ -20,14 +19,9 @@
       </div>
     </li>
   </ul>
-
 <% else %>
-
   <ul class="nav navbar-nav">
     <li class='nav-item'><%= link_to "Log In", new_member_session_path, :class => "nav-link"%></li>
     <li class='nav-item'><%= link_to "Sign Up", new_member_registration_path, :class => "btn btn-outline-action " %></li>
   </ul>
-  
 <% end %>
-
-

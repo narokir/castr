@@ -28,6 +28,19 @@ $theme-colors: (
   'gray-800': #343a40,
   'gray-900': #212529,
 );
+$utilities: (
+  'border-width': (
+    property: border-width,
+    class: border,
+    values: (
+      1: 1px,
+      2: 2px,
+      3: 3px,
+      4: 4px,
+      5: 5px,
+    ),
+  ),
+);
 
 $white: #fff !default;
 $gray-100: #f8f9fa !default;

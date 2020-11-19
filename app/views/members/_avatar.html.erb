@@ -1,0 +1,5 @@
+<% if @member.avatar %>
+  <%= image_tag(@member.avatar ,class:"img-fluid border border-3 border-info rounded-circle", id:"avatar") %>
+<% else %>
+  <%= icon("person-circle",  width: 150, height: 150, class: "text-info align-middle", id:"avatar" ) %>
+<% end %>

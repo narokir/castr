@@ -52,14 +52,20 @@ class Member < ApplicationRecord
 
   def acceptable_image
     return unless profile_image.attached?
+
     errors.add(:profile_image, "is nil") if profile_image.attached?.nil?
     errors.add(:profile_image, "is too big") unless profile_image.byte_size <= 1.megabyte
     acceptable_types = ["image/jpeg", "image/png"]
     errors.add(:profile_image, "must be JPEG or PNG") unless acceptable_types.include?(profile_image.content_type)
   end
 
-  def thumbnail
-    return self.profile_image.variant(resize: "200x200!").processed
+  def avatar
+    if profile_image.attached?
+      return self.profile_image.variant(resize: "200x200!").processed
+    else
+      #render image placeholder
+      print "<p>There is no image</p>"
+    end
   end
 
   def self.from_omniauth(auth)

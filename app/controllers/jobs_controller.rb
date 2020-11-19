@@ -77,8 +77,8 @@ class JobsController < ApplicationController
     respond_to do |format|
       if @job.update(published: true)
         format.js { redirect_to @job, notice: "This job is now published!" }
-        #format.html { redirect_to @job, notice: "This job is now published!" }
-        #format.json { render :show, status: :ok, location: @job }
+        # format.html { redirect_to @job, notice: "This job is now published!" }
+        # format.json { render :show, status: :ok, location: @job }
       else
         format.html { render :edit }
         format.json { render json: @job.errors, status: :unprocessable_entity }

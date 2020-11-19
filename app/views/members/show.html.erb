@@ -1,23 +1,4 @@
-<div class="container-fluid bg-light py-5">
-  <div class="row justify-content-center">
-    <div class="mx-auto text-center" style="width: 200px;">
-      <%= image_tag(@member.thumbnail ,class:"img-fluid border rounded-circle") if @member.profile_image.attached?%>
-      <h4 class="mt-4"><%= @member.first_name %></h4>
-      <p class="mb-2 text-muted small"><%= @member.email %></p>
-        <% if signed_in? && @member == current_member %>
-          <ul class="list-group  bg-light">
-            <li class="list-group-item bg-light">
-              <%= link_to("Edit Prfile", edit_member_registration_path) %>
-            </li>
-            <li class="list-group-item bg-light">
-              <%= link_to("Change Password", edit_password_members_path) %>
-            </li>
-          </ul>
-        <% end %>
-    </div>
-  </div>
-</div>
-
+<%= render "layouts/profile_header" %>
 
 <div class="container mt-5">
   <div class="row justify-content-center">    
