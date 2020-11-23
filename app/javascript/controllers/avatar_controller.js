@@ -12,6 +12,8 @@ export default class extends Controller {
     const input = this.sourceTarget;
     const file = input.files[0];
     let cropper;
+    let cropBoxData;
+    let canvasData;
 
     // cache the image file name
     var cachedFilename = file.name;
@@ -19,6 +21,7 @@ export default class extends Controller {
 
     // read the input file in open modal
     const reader = new FileReader();
+
     reader.onloadend = (e) => {
       if (e.target.result) {
         img.id = 'avatar';
@@ -33,8 +36,10 @@ export default class extends Controller {
     // When modal opens init Cropper
     $modal.on('shown.bs.modal', function () {
       cropper = new Cropper(img, {
+        viewMode: 1,
         aspectRatio: 1,
-        //viewMode: 3,
+        responsive: true,
+        highlight: true,
       });
     });
 
@@ -57,6 +62,7 @@ export default class extends Controller {
       requestDidLoad(event) {
         // submit the avatar form when direct upload ends
         document.querySelector('#avatar-form').submit();
+        console.log(event);
       }
     }
 

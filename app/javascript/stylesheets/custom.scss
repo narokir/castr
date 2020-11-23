@@ -80,6 +80,10 @@ $font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
 $font-family-base: $font-family-sans-serif !default;
 $font-family-display: 'Asar';
 
+img#avatar {
+  max-width: 100%;
+}
+
 // logo
 .navbar-brand {
   font-size: 21px;

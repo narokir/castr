@@ -14,7 +14,7 @@ class MembersController < ApplicationController
     respond_to do |format|
       if @member.update(member_params)
         format.html { redirect_to member_path(@member), notice: "Avatar Updated" }
-        #format.js { flash.now[:notice] = "Avatar Updated" }
+        # format.js { flash.now[:notice] = "Avatar Updated" }
         #format.json { render json: @member.profile_image }
       else
         format.html { redirect_to member_path(@member), notice: "Avatar Did Not Update" }
