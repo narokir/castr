@@ -1,6 +1,5 @@
 import { Controller } from 'stimulus';
 import { DirectUpload } from '@rails/activestorage';
-import { MyUploader } from '../my_uploader';
 import 'cropperjs/dist/cropper.css';
 import Cropper from 'cropperjs';
 
@@ -39,6 +38,29 @@ export default class extends Controller {
       });
     });
 
+    class MyUploader {
+      constructor(file, url) {
+        this.upload = new DirectUpload(this.file, this.url, this);
+      }
+
+      directUploadWillStoreFileWithXHR(request) {
+        request.upload.addEventListener('progress', (event) =>
+          this.directUploadDidProgress(event)
+        );
+        request.addEventListener('load', (event) => this.requestDidLoad(event));
+      }
+
+      directUploadDidProgress(event) {
+        const progress = (event.loaded / event.total) * 100;
+        console.log(progress);
+      }
+      requestDidLoad(event) {
+        // submit the avatar form when direct upload ends
+        document.querySelector('#avatar-form').submit();
+      }
+    }
+
+    // listen for crop btn click
     document.querySelector('.crop-btn').addEventListener('click', () => {
       let canvas;
 
@@ -77,13 +99,6 @@ export default class extends Controller {
         cropper.destroy();
         cropper = null;
       });
-
-      // submit form after .3 seconds allowing upload of image to complete
-      // !!!! moved submit to  to my_uploader.js
-
-      // setTimeout(() => {
-      //   form.submit();
-      // }, 300);
     });
   }
 }

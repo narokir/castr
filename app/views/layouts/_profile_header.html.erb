@@ -4,27 +4,26 @@
       <div class="avatar" data-controller="avatar" >
         <label class="label" data-toggle="tooltip" title="Change your avatar" style="cursor:pointer;">
           <%= render partial: 'members/avatar' %>
-          <%= form_with(model: @member, remote: :true,  id:'avatar-form') do |f| %>
-            <%# form_for(@member, as: :member, remote: :true, html:{id:'avatar-form'}) do |f| %>
-              <%= f.file_field(:profile_image, direct_upload: true, accept: 'image/*', class: "sr-only", data:{action:'change->avatar#cropAvatar',target:'avatar.source'}) %>
-              <%# f.submit "Update", class: "btn btn-primary" %>
-            <% end %>
-          </label>
-        </div>
-        <h4 class="mt-4"><%= @member.first_name %></h4>
-        <p class="mb-2 text-muted small"><%= @member.email %></p>
-        <% if signed_in? && @member == current_member %>
-          <div class="dropdown">
-            <a class="btn btn-info btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Edit Menu
-            </a>
-            <div class="dropdown-menu" >
-              <%= link_to("Change Password", edit_password_members_path, class:"dropdown-item" ) %>
-              <%= link_to('Delete Photo', delete_profile_photo_members_path, method: :patch, class:"dropdown-item") if current_member.profile_image.attached? %>
-              <%= link_to("Edit Profile", edit_member_registration_path,class:"dropdown-item") %>
-            </div>
-          </div>
-        <% end %>
+          <%= form_with(model: @member,  id:'avatar-form') do |f| %>
+            <%= f.file_field(:profile_image, direct_upload: true, accept: 'image/*', class: "sr-only", data:{action:'change->avatar#cropAvatar',target:'avatar.source'}) %>
+            <%# f.submit "Update", class: "btn btn-primary" %>
+          <% end %>
+        </label>
       </div>
+      <h4 class="mt-4"><%= @member.first_name %></h4>
+      <p class="mb-2 text-muted small"><%= @member.email %></p>
+      <% if signed_in? && @member == current_member %>
+        <div class="dropdown">
+          <a class="btn btn-info btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Edit Menu
+          </a>
+          <div class="dropdown-menu" >
+            <%= link_to("Change Password", edit_password_members_path, class:"dropdown-item" ) %>
+            <%= link_to('Delete Photo', delete_profile_photo_members_path, method: :patch, class:"dropdown-item") if current_member.profile_image.attached? %>
+            <%= link_to("Edit Profile", edit_member_registration_path,class:"dropdown-item") %>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
+</div>
