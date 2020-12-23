@@ -21,7 +21,8 @@
     "stimulus": "^1.1.1",
     "toastr": "^2.1.4",
     "trix": "^1.2.0",
-    "turbolinks": "^5.2.0"
+    "turbolinks": "^5.2.0",
+    "vue": "^2.6.12"
   },
   "version": "0.1.0",
   "devDependencies": {

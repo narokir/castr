@@ -1,12 +1,19 @@
 <div class="container-fluid bg-light py-5">
   <div class="row justify-content-center">
     <div class="mx-auto text-center" style="width: 200px;">
+      <% if @member.avatar  %>
+        <%= image_tag(@member.avatar ,class:"img-fluid border border-3 border-info rounded-circle", id:"avatar") %>
+      <% else %>
+        <%= icon("person-circle",  width: 150, height: 150, class: "text-info align-middle", id:"avatar" ) %>
+      <% end %>
       <div class="avatar" data-controller="avatar" >
         <label class="label" data-toggle="tooltip" title="Change your avatar" style="cursor:pointer;">
-          <%= render partial: 'members/avatar' %>
-          <%= form_with(model: @member,  id:'avatar-form') do |f| %>
-            <%= f.file_field(:profile_image, direct_upload: true, accept: 'image/*', class: "sr-only", data:{action:'change->avatar#cropAvatar',target:'avatar.source'}) %>
-            <%# f.submit "Update", class: "btn btn-primary" %>
+          <%# render partial: 'members/avatar' %>
+          <% if signed_in? && @member == current_member %>
+            <%= form_with(model: @member,  id:'avatar-form') do |f| %>
+              <%= f.file_field(:profile_image, direct_upload: true, accept: 'image/*', class: "sr-only", data:{action:'change->avatar#cropAvatar',target:'avatar.source'}) %>
+              <%# f.submit "Update", class: "btn btn-primary" %>
+            <% end %>
           <% end %>
         </label>
       </div>

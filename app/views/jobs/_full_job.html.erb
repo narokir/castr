@@ -1,22 +1,25 @@
 <%# This template is for home page only  %>
 <div class="mx-auto pb-3" style="max-width: 600px;" >
-<div class="sticky-top bg-light">
-  <h3 class=""><%= @job.title %></h1>
-  <p><%= @job.description %></p>
-  <p><%= @job.union_status %> <strong>$ <%= @job.payment %></strong></p>
-    <%= link_to 'Apply Now', apply_job_path(@job), method: :put, class:'btn btn-success' %>
+  <div class="sticky-top bg-light">
+    <h3 class=""><%= @job.title %></h1>
+    <p><%= @job.description %></p>
+    <p><%= @job.union_status %> <strong>$ <%= @job.payment %></strong></p>
+    <% if can? :apply, @job || member_signed_in? %>
+      <%= link_to 'Apply Now', apply_job_path(@job), method: :put, class:'btn btn-success' %>
+    <% else %>
+      <%= link_to 'Log in to Apply', new_member_session_path, class:'btn btn-action' %>
+    <% end %>
     <%= link_to('#', class: "float-right mx-2", title:'Save', :data => { :'toggle' => 'tooltip' }) do %>
       <%= icon("bookmark", class: "text-info align-middle") %>
     <% end %>
     <%= link_to(job_path(@job),class: "float-right mx-2", title:'Show', :data => { :'toggle' => 'tooltip' }) do %>
       <%= icon("box-arrow-up-right", class: "text-info align-middle") %>
     <% end %>
-  <hr>
+    <hr>
   </div>
   <p> <span>Dates & Location:</span><br>
-  <%= @job.shoot_start_date %> - <%= @job.shoot_end_date %> in <%= @job.shoot_location %></p>
+    <%= @job.shoot_start_date %> - <%= @job.shoot_end_date %> in <%= @job.shoot_location %></p>
   <p><%= @job.url %></p>
   <p><%= @job.payment_details %></p>
   <%= image_tag(@job.production_image, class:'img-fluid w-100') if @job.production_image.attached? %>
-
-  </div>
+</div>

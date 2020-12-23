@@ -1,22 +1,14 @@
-<h1>apply view</h1>
-
-<p>Your profile has been submited to <%= @job.title %></p>
-
-whats a good way to do this?
-
-1. Create an Applications table and set up "through" associations.
-for example
-
-Member:
-  has_many :applications :through :jobs
-
-2.  Add "applicant_id" colum to Jobs table
-
-def apply
- applicant_id = member_id
- <h1>
-   Castr: <%= @job.member.email %>
-
- </h1>
-
- <h1>Talent:Current_member <%= current_member.email %></h1>
+<div class="row justify-content-center align-items-center vh-100">
+  <div class="col-lg-5 col-md-8 col-sm-10">
+    <div class="bg-light shadow-sm rounded p-4">
+      <h1>Application Submited</h1>
+      <p><strong><%= current_member.first_name %></strong>,
+        <br>
+        Your application for background actor on <strong><%= @job.title %></strong> has been submited. If your application is accepted, the casting director or a production assistant will contact you at (Phone number)
+        or<strong>
+          <%= current_member.email %>
+        </strong>with instructions and shoot details.</p>
+      <%= link_to "Back To Casting Calls", jobs_path %>
+    </div>
+  </div>
+</div>

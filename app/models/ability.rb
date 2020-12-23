@@ -4,6 +4,8 @@ class Ability
   def initialize(member)
     can :read, Job, published: true
     can :search, Job, public: true
+    can :apply, Job
+
     if member.present?
       can :manage, Member, :member_id => member.id
       can :manage, Job, :member_id => member.id
